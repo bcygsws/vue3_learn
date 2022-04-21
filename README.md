@@ -59,6 +59,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ##### npm 6.x
 
 - npm create vite@latest my-vue-app --template vue
+- 或者 npm init @vitejs/app my-vue-app --template vue
+- 区别在于 npm create vite 和 npm init @vitejs/app,后面配置项目名称+vue 模板，方式是一样的
 
 ##### npm 7+, extra double-dash is needed:
 
