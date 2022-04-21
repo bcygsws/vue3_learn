@@ -7,6 +7,7 @@
     <p>{{ number }}</p>
     <!-- setup和ref使用演示组件 -->
     <Learn></Learn>
+    <Update></Update>
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 // 在Home中定义一个子组件HelloWorld
 import HelloWorld from '../components/HelloWorld.vue';
 import Learn from '../components/setup_ref/Learn.vue';
+import Update from '../components/update/Update.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -23,7 +25,8 @@ export default defineComponent({
   components: {
     // 注册一个子组件
     HelloWorld,
-    Learn
+    Learn,
+    Update
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
