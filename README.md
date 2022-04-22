@@ -1,34 +1,6 @@
-# vue3_learn
+# 项目 vue3_learn
 
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## 创建 vue3 项目的两种方式
+## 一、创建 vue3 项目的两种方式
 
 ### 一、脚手架方式(vue ui 实质也是使用的是脚手架方式)，推荐使用 vue ui 界面化的方式
 
@@ -73,6 +45,37 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ##### pnpm
 
 - pnpm create vite my-vue-app -- --template vue
+
+## 二、vue2 和 vue3 数据响应式的实现原理的比较
+
+### vue2 的响应式
+
+- 对象：是通过 defineProperty 对对象的属性值的读取和修改进行劫持（监视/拦截）
+- 数组：通过重写数组的【更新数组的元素的一系列方法】来实现元素修改的劫持，例如：Array 的 unshift、push、pop、shift
+- 等方法都需要重写
+-
+- 缺点：
+- 1.添加和删除属性，页面不更新
+- 2.通过下标更改元素值(arr[3]="更改元素值")或更新 length，页面不更新
+-
+-
+- Object.defineProperty(data,"count",{
+- get(){},
+- set(){}
+- })
+
+### vue3 的数据响应式，Proxy 对属性的操作进行拦截，Reflect 对属性的操作进行处理
+
+#### 一、通过 Proxy 代理：拦截 data 对任意属性的任意(13 种)操作，包括读取、更改、添加、删除属性等---属性操作拦截
+
+- new Proxy(data,{
+- get(target,prop){return Reflect.get(target,prop)}, // 拦截读取属性
+- set(target,prop,value){return Reflect.set(target,prop,value)},// 拦截设置或添加新属性
+- deleteProperty(target,prop){return Reflect.deleteProperty(target,prop)}, // 拦截删除属性
+-
+- })
+
+#### 二、通过 Reflect 反射：动态地被代理对象(目标对象)进行特定的操作---属性操作处理
 
 ## Bug 修复
 
