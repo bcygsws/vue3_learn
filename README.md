@@ -77,6 +77,15 @@
 
 #### 二、通过 Reflect 反射：动态地被代理对象(目标对象)进行特定的操作---属性操作处理
 
+## 三、ref 和 reactive 的一些细节
+
+- 1. ref 和 reactive 是 composition API 的两个响应式 API
+- 2. ref 主要用基本数据类型的响应式，reactive 用于深度的响应式数据
+- 3. ref 也可以处理对象和数组(在 setup 中要多加一个.value,而 reactive 方式不需要.value)，当 ref 中传入对象或数组时，系统内部会用 reactive 来处理它（打印 m3，能看到里面包含代理对象）
+- 4. ref 内部是通过 getter/setter 来实现数据劫持的
+- 5. proxy 内部通过 Proxy 对象拦截传入的属性对象的任何属性的任何操作（多达 13 种操作），通过反射对象 Reflect 来处理 Proxy 拦截的属性的操作
+- 6. ref 在 setup 中处理时，const user=ref('dfaggfa');要添加一个 value(user.value 才能拿到值)，才能拿到值；在模板中处理它时，系统会自动加 value,不用带 value
+
 ## Bug 修复
 
 ### Bug1:项目运行时，有警告
