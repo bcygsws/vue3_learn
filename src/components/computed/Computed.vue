@@ -74,8 +74,8 @@ export default defineComponent({
       get() {
         return user.firstName + '-' + user.lastName;
       },
-      set(val) {
-        let arr = user.val.split('-');
+      set(val: string) {
+        let arr = val.split('-');
         user.firstName = arr[0];
         user.lastName = arr[1];
       }
@@ -126,7 +126,8 @@ export default defineComponent({
     //   user.firstName = arr[0];
     //   user.lastName = arr[1];
     // });
-    // 上面用watchEffect进行等效，watchEffect不用配置监视对象，默认会进行监视，只执行一次
+    // 上面用watchEffect进行等效，watchEffect不用配置监视对象，回调中使用哪些数据，就监视这些数据，默认执行一次，
+    // 收集要监视的对象
     watchEffect(() => {
       let arr = fullName4.value.split('-');
       user.firstName = arr[0];

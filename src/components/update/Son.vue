@@ -60,6 +60,8 @@ export default defineComponent({
   },
   // 接收父组件Fat传递的数据
   props: ['cmsg'],
+  // 解决分发给子组件的事件不能自动继承的警告
+  emits: ['emitxx'],
   beforeCreate() {
     console.log('钩子beforeCreate执行了');
   },

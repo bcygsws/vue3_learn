@@ -1,5 +1,4 @@
 <template>
-  <div class="home">
     <h3>这是Home组件</h3>
     <HelloWorld></HelloWorld>
     <!-- <p>{number}</p> -->
@@ -11,7 +10,6 @@
     <Fat></Fat>
     <!-- 计算属性和监听 -->
     <Computed></Computed>
-  </div>
 </template>
 
 <script lang="ts">
