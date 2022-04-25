@@ -1,15 +1,15 @@
 <template>
-    <h3>这是Home组件</h3>
-    <HelloWorld></HelloWorld>
-    <!-- <p>{number}</p> -->
-    <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
-    <p>{{ number }}</p>
-    <!-- setup和ref使用演示组件 -->
-    <Learn></Learn>
-    <Update></Update>
-    <Fat></Fat>
-    <!-- 计算属性和监听 -->
-    <Computed></Computed>
+  <h3>这是Home组件</h3>
+  <HelloWorld></HelloWorld>
+  <!-- <p>{number}</p> -->
+  <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
+  <p>{{ number }}</p>
+  <!-- setup和ref使用演示组件 -->
+  <Learn></Learn>
+  <Update></Update>
+  <Fat></Fat>
+  <!-- 计算属性和监听 -->
+  <Computed></Computed>
 </template>
 
 <script lang="ts">

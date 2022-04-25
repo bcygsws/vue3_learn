@@ -1,5 +1,5 @@
 <template>
-  <h3>生命周期钩子vue2和vue3对比</h3>
+  <h3>五、生命周期钩子vue2和vue3对比</h3>
   <p>{{ msg }}</p>
   <button @click="changeMsg">点击按钮，改变msg的值，观察执行的钩子</button>
 </template>
