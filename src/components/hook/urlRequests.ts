@@ -17,15 +17,17 @@ export default function urlRequests<T>(url: string) {
   const data = ref<T | null>(null);
   // 错误提示信息，字符串类型
   const errorMsg = ref('');
-  // 向后台发起请求，此处用本地数据模拟，将假数据json文件放在public静态文件夹下，当项目启动时；index.html托管在
+  // 1.向后台发起请求，此处用本地数据模拟，将假数据json文件放在public静态文件夹下，当项目启动时；index.html托管在
   // localhost:8080下了，访问的是本地的数据，不存在跨域的问题
-  // 当使用index.html
+  // 2.给获得data的代码，添加一个定时器，模拟数据异步请求过程
   axios
     .get(url)
     .then((res) => {
       // axios是基于promise封装的，then后面是异步的过程，数据请求完成后，才会执行其中的两行代码
-      loading.value = false;
-      data.value = res.data;
+      setTimeout(function () {
+        loading.value = false;
+        data.value = res.data;
+      }, 2000);
     })
     .catch((error) => {
       // 异常捕获
