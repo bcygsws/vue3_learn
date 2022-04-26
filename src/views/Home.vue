@@ -14,6 +14,8 @@
   <ShallowReactive></ShallowReactive>
   <!-- 只读和浅只读 -->
   <ReadOnlyProperty></ReadOnlyProperty>
+  <!-- toRaw 和markRaw -->
+  <ToAndMarkRaw></ToAndMarkRaw>
 </template>
 
 <script lang="ts">
@@ -28,6 +30,7 @@ import Computed from '../components/computed/Computed.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
+import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -41,7 +44,8 @@ export default defineComponent({
     Fat,
     Computed,
     ShallowReactive,
-    ReadOnlyProperty
+    ReadOnlyProperty,
+    ToAndMarkRaw
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
