@@ -12,6 +12,8 @@
   <Computed></Computed>
   <!-- 浅劫持 -->
   <ShallowReactive></ShallowReactive>
+  <!-- 只读和浅只读 -->
+  <ReadOnlyProperty></ReadOnlyProperty>
 </template>
 
 <script lang="ts">
@@ -24,6 +26,8 @@ import Fat from '../components/update/Fat.vue';
 // 计算属性和监听
 import Computed from '../components/computed/Computed.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
+// 只读和浅只读
+import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -36,7 +40,8 @@ export default defineComponent({
     Update,
     Fat,
     Computed,
-    ShallowReactive
+    ShallowReactive,
+    ReadOnlyProperty
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
