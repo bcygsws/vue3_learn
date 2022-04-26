@@ -10,6 +10,8 @@
   <Fat></Fat>
   <!-- 计算属性和监听 -->
   <Computed></Computed>
+  <!-- 浅劫持 -->
+  <ShallowReactive></ShallowReactive>
 </template>
 
 <script lang="ts">
@@ -21,6 +23,7 @@ import Update from '../components/update/Update.vue';
 import Fat from '../components/update/Fat.vue';
 // 计算属性和监听
 import Computed from '../components/computed/Computed.vue';
+import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -32,7 +35,8 @@ export default defineComponent({
     Learn,
     Update,
     Fat,
-    Computed
+    Computed,
+    ShallowReactive
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
