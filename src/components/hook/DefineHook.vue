@@ -83,7 +83,7 @@ export default defineComponent({
     // 总结：
     // 1. 解构中起别名，像键值一样，从起别名之后，data1就代替解构的键data了
     // 2. 如果某个函数或接口或类被限定为泛型T了，实现时，变成T[]，代码也是可以成立的；比如：定义的泛型是urlRequests<T>
-      // 在此处调用时，声明的是urlRequests<IProducts[]>
+    // 在此处调用时，声明的是urlRequests<IProducts[]>
     const { data: data1 } = urlRequests<IProducts[]>('data/products.json');
     // 问题来了，如果我要监视data1的长度怎么办？
     // 代码写完后，报错：原因是泛型IProducts不一定有length属性的
