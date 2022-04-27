@@ -18,7 +18,8 @@
  */
 // import { defineComponent, ref, customRef } from 'vue';
 import { defineComponent } from 'vue';
-import useBounceRef from "./useBounceRef.ts";
+// import useBounceRef from "./useBounceRef.ts";// 错误的方式
+import useBounceRef from "./useBounceRef";// 正确的方式，系统内部解析成了useBounceRef.js文件，省略后缀，自动依引入.js
 // 自定义hook
 // 传入的值除了字符串类型，可能是number数字；使用泛型来约束
 // 抽离出去，封装成useBounceRef.ts
