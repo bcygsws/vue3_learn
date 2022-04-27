@@ -24,7 +24,8 @@ export default defineComponent({
     const inputObj = ref<HTMLElement | null>(null);
     // 在页面中获取焦点，时机肯定是组件完全挂载到页面以后，使用生命周期钩子onMounted
     onMounted(() => {
-      if(inputObj.value){// 判断一下，如果inputObj.value不是null，空对象，才可以调用focus()方法
+      if (inputObj.value) {
+        // 判断一下，如果inputObj.value不是null，空对象，才可以调用focus()方法
         inputObj.value.focus();
       }
     });
