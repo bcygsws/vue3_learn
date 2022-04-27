@@ -18,6 +18,8 @@
   <ToAndMarkRaw></ToAndMarkRaw>
   <!-- toRef的使用，和ref的区别 -->
   <ToRef></ToRef>
+  <!-- customRef的使用 -->
+  <CustomRef></CustomRef>
 </template>
 
 <script lang="ts">
@@ -33,7 +35,8 @@ import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue'
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
-import ToRef from "../components//to_ref/ToRef.vue";
+import ToRef from '../components//to_ref/ToRef.vue';
+import CustomRef from '../components/custom_ref/CustomRef.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -49,7 +52,8 @@ export default defineComponent({
     ShallowReactive,
     ReadOnlyProperty,
     ToAndMarkRaw,
-    ToRef
+    ToRef,
+    CustomRef
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
