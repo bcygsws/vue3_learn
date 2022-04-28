@@ -57,7 +57,7 @@ export default defineComponent({
     ToAndMarkRaw,
     ToRef,
     CustomRef,
-    ProInj
+    ProInj,
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
