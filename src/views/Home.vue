@@ -4,6 +4,8 @@
   <!-- <p>{number}</p> -->
   <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
   <p>{{ number }}</p>
+  <!-- 使用Suspense标签 -->
+  <Sus></Sus>
   <!-- setup和ref使用演示组件 -->
   <Learn></Learn>
   <Update></Update>
@@ -40,6 +42,7 @@ import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
 import ToRef from '../components//to_ref/ToRef.vue';
 import CustomRef from '../components/custom_ref/CustomRef.vue';
 import ProInj from '../components/provide_inject/ProInj.vue';
+import Sus from '../components/suspense/Sus.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
 export default defineComponent({
@@ -58,6 +61,7 @@ export default defineComponent({
     ToRef,
     CustomRef,
     ProInj,
+    Sus
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
