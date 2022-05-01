@@ -3,7 +3,8 @@ import Home from '../views/Home.vue';
 import Learn from '../components/setup_ref/Learn.vue';
 import Update from '../components/update/Update.vue';
 import Fat from '../components/setup/Fat.vue';
-
+// 计算属性和监听
+import Computed from '../components/computed/Computed.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -21,6 +22,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/setup',
         component: Fat
+      },
+      {
+        path: '/home/computed',
+        component: Computed
       }
     ]
   },

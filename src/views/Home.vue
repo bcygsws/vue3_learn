@@ -4,14 +4,16 @@
   <router-link to="/home/learn">二、这是setup和ref演示组件</router-link>
   <router-link to="/home/update">三、操作代理数据，影响界面更新</router-link>
   <router-link to="/home/setup">四、setup的执行时机</router-link>
+  <!-- 计算属性和监听 -->
+  <router-link to="/home/computed"
+    >五、计算属性和监听演示组件Computed</router-link
+  >
   <router-view></router-view>
-  <!-- <p>{number}</p> -->
+  <!-- <p>{num}</p> -->
   <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
-  <p>{{ number }}</p>
+  <p>{{ num }}</p>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- 计算属性和监听 -->
-  <Computed></Computed>
   <!-- vue2和vue3响应式的处理的不同点 -->
   <version-reactive></version-reactive>
   <!-- 浅劫持 -->
@@ -33,8 +35,6 @@
 // 在Home中定义一个子组件HelloWorld
 
 import VersionReactive from '../components/reactive//VersionReactive.vue';
-// 计算属性和监听
-import Computed from '../components/computed/Computed.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
@@ -50,7 +50,6 @@ export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    Computed,
     VersionReactive,
     ShallowReactive,
     ReadOnlyProperty,
@@ -60,10 +59,9 @@ export default defineComponent({
     ProInj,
     Sus
   },
-  // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
-    let number = 16;
-    return { number };
+    const num = 16;
+    return { num };
   }
 });
 </script>
