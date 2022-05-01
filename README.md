@@ -86,6 +86,32 @@
 - 5. proxy 内部通过 Proxy 对象拦截传入的属性对象的任何属性的任何操作（多达 13 种操作），通过反射对象 Reflect 来处理 Proxy 拦截的属性的操作
 - 6. ref 在 setup 中处理时，const user=ref('dfaggfa');要添加一个 value(user.value 才能拿到值)，才能拿到值；在模板中处理它时，系统会自动加 value,不用带 value
 
+## 四、setup 的一些注意问题
+
+### setup 的执行时机
+
+- setup 执行发生在 beforeCreate 和 created 之前，因此 setup 不能操作 data,methods,computed 等属性；只能操作 setup 固有的参数 props,attrs,slots,emit 这四个属性
+- 在 vue3 中 setup 被当做 vue2 中生命周期钩子 beforeCreate 和 created 使用，准确的说是顶替了这两个钩子的使用
+
+### setup 的参数(props,{attrs,slots,emit})
+
+#### [setup 参数官方文档](https://www.javascriptc.com/vue3js/guide/composition-api-setup.html#%E4%B8%8A%E4%B8%8B%E6%96%87)
+
+#### 响应式参数 props
+
+- props 参数是响应式的，不能随便其进行解构，解构会丢失其响应式
+- 强行解构它，用到另外一个对象，toRefs。toRefs 的作用是在不丢失响应式的前提下，分解响应式对象，这个对象的每一个属性都是一个 ref;我们知道 ref 也是响应式的-处理基本数据类型的响应式数据
+- 强制解构举例：const user=reactive({name:\'\',age:\'\'}); const {name,age}=toRefs(user); name 和 age 就是两个 ref 了，在 setup 中操作数据，需要按照 ref 的用法，name.value,age.value 来进行读写操作
+
+#### 有状态参数 attrs 和 slots
+
+- 打印这两个对象，看到是 Prox 代理对象，它们是有状态的；会随着组件自身的更新而更新；因此要避免对它们解构，使用 attrs.x,slots.x 获取响应属性。context 上下文对象是一个普通的 js 对象，是非响应式的可以对其解构，解构成了{attrs,slots,emit}
+- attrs 和 slots 是非响应式的，如果打算根据 attrs 和 slots 更改应用副作用，需要在生命周期钩子 onUpdated 中操作
+
+#### 常用参数 emits，用来分发事件的
+
+- 常用于子组件向父组件传值，类似 vue2 中的 this.$emit(父组件绑定的方法名称@emitxx,参数 val)
+
 ## Bug 修复
 
 ### Bug1:项目运行时，有警告
