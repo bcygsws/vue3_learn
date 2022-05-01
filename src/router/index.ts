@@ -1,11 +1,18 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+// 计算属性和监听
+import Computed from '../components/computed/Computed.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/home/computed',
+        component: Computed
+      }
+    ]
   },
   {
     path: '/about',
