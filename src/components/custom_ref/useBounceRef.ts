@@ -1,6 +1,6 @@
-import { customRef } from 'vue';
+import { customRef, Ref } from 'vue';
 // 关于防抖的封装见文档：https://blog.csdn.net/weixin_41246825/article/details/115206682
-export default function useBounceRef<T>(value: T, delay = 200) {
+export default function useBounceRef<T>(value: T, delay = 200): Ref {
   // 定时器是number类型，在setTimeout第一个函数参数内部，清除定时器，timer=null;弱化它的类型约束，定义为any类型
   let timer: any;
   // 返回的是一个Ref类型

@@ -19,7 +19,7 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="less">
-.use_axios{
-  background-color:pink;
+.use_axios {
+  background-color: pink;
 }
 </style>

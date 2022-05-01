@@ -1,17 +1,19 @@
 <template>
   <h3>这是Home组件</h3>
-  <HelloWorld></HelloWorld>
+  <!-- setup和ref使用演示组件 -->
+  <router-link to="/home/learn">二、这是setup和ref演示组件</router-link>
+  <router-view></router-view>
   <!-- <p>{number}</p> -->
   <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
   <p>{{ number }}</p>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- setup和ref使用演示组件 -->
-  <Learn></Learn>
   <Update></Update>
   <Fat></Fat>
   <!-- 计算属性和监听 -->
   <Computed></Computed>
+  <!-- vue2和vue3响应式的处理的不同点 -->
+  <version-reactive></version-reactive>
   <!-- 浅劫持 -->
   <ShallowReactive></ShallowReactive>
   <!-- 只读和浅只读 -->
@@ -29,10 +31,10 @@
 <script lang="ts">
 // vue3的script和setup语法，推荐使用Volar,注意Volar和原来vue2的Vetur是互斥的；使用Volar时，搜索Vetur插件禁用
 // 在Home中定义一个子组件HelloWorld
-import HelloWorld from '../components/HelloWorld.vue';
-import Learn from '../components/setup_ref/Learn.vue';
+
 import Update from '../components/update/Update.vue';
 import Fat from '../components/update/Fat.vue';
+import VersionReactive from '../components/reactive//VersionReactive.vue';
 // 计算属性和监听
 import Computed from '../components/computed/Computed.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
@@ -50,11 +52,10 @@ export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    HelloWorld,
-    Learn,
     Update,
     Fat,
     Computed,
+    VersionReactive,
     ShallowReactive,
     ReadOnlyProperty,
     ToAndMarkRaw,

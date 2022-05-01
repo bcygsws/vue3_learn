@@ -46,7 +46,7 @@
 
 - pnpm create vite my-vue-app -- --template vue
 
-## 二、vue2 和 vue3 数据响应式的实现原理的比较
+## 二、vue2 和 vue3 数据响应式的实现原理的比较,实例：./setup_ref/Learn.vue
 
 ### vue2 的响应式
 

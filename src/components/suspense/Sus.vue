@@ -21,7 +21,7 @@
       <template v-slot:fallback><h3>加载中……</h3></template>
     </Suspense>
     <!-- 使用async await的方式 -->
-     <Suspense>
+    <Suspense>
       <template v-slot:default><UseAwait></UseAwait></template>
       <template v-slot:fallback><h3>加载中……</h3></template>
     </Suspense>
