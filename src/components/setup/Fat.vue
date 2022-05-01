@@ -6,7 +6,16 @@
     <button @click="handle">更新数据</button>
     <!-- msg里的数据传递给子组件 -->
     <!-- 在Son子组件中，点击按钮分发事件 -->
-    <Son :cmsg="msg" msg2="真香啊" @emitxx="handleEvent"></Son>
+    <Son :cmsg="msg" msg2="真香啊" @emitxx="handleEvent">
+      <!-- 放入子组件中的插件模板v-slot:slot1,v-slot:slot2 -->
+      <!-- vue3 新组件Suspense就是通过作用域插槽实现的v-slot:default放后来显示的，v-slot:fallback放后备内容 -->
+      <template v-slot:slot1>
+        <p>桃李春风一杯酒，江湖夜雨十年灯</p>
+      </template>
+      <template v-slot:slot2>
+        <p>永忆江湖归白发，欲回天地入扁舟</p>
+      </template>
+    </Son>
     <!-- 演示ref和reactive的细节 -->
     <Detail></Detail>
   </div>

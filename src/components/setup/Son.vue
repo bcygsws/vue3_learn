@@ -9,6 +9,9 @@
   <p>使用哪里的info?{{ info }}</p>
   <!-- 点击按钮，分发事件emitxx -->
   <button @click="toFat">点击按钮，分发事件</button>
+  <!-- 演示有状态数据，非响应式对象插槽，slots -->
+  <slot name="slot1"></slot>
+  <slot name="slot2"></slot>
 </template>
 <script lang="ts">
 /**
@@ -23,7 +26,7 @@
  * 二、setup的返回值
  * 2.1 setup的返回值一般是一个对象，这个对象的属性和方法，可以提供给模板直接使用
  * 2.2 setup返回对象中的属性，会和data函数（vue3仍然可以写）中返回对象的属性合并成组件的属性
- * 2.3 setup返回独享中方法，会和methods中定义的方法合并成组件的方法
+ * 2.3 setup返回对象中方法，会和methods中定义的方法合并成组件的方法
  * 2.4 如果键名或方法名重复，setup中的属性或方法优先
  * 2.5 但最好不要混合用，现在使用的是vue3版本
  *
@@ -31,6 +34,17 @@
  * setup(props,context){
  *    return {};
  * }
+ *
+ * 特别注意：
+ * 3.1 setup执行在beforeCreated之前，只能访问props,attrs,slots,emit;不能访问data,methods,computed
+ * 3.2 context 上下文对象是一个普通的js对象，它是非响应式的，可以对它进行解构
+ * 而其中的attrs和slots都是有状态对象，这就意味着，它们会随着组件本身的的更新而更新。因此，应该避免对它们解构，
+ * 而是使用attrs.x slots.x引用属性
+ * 3.3 attrs和slots都是非响应式的。然而，如果想应用这种副作用，需要在onUpdated钩子中处理
+ *
+ * 3.4 props是响应式的，因此，不能随便对其解构，解构会使其丧失响应式；如果非要解构，使用toRefs对象
+ * const {name}=toRefs(props);
+ * 然后，在setup中操作name.value就可以了，这是toRefs的用法，将一个对象分解，而不丧失其响应式，对象中的每个属性都是一个ref
  *
  * props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
@@ -59,8 +73,13 @@ export default defineComponent({
     // }
   },
   // 接收父组件Fat传递的数据
-  props: ['cmsg'],
-  // 解决分发给子组件的事件不能自动继承的警告
+  props: {
+    cmsg: {
+      type: String,
+      required: true
+    }
+  },
+  // 解决分发给子组件的事件不能自动继承的警告,emits中分发事件名，是父组件绑定在子组件上@emitxx,emitxx写在子组件中，去掉警告
   emits: ['emitxx'],
   beforeCreate() {
     console.log('钩子beforeCreate执行了');
@@ -74,10 +93,15 @@ export default defineComponent({
     // 2.context 参数也是是一个对象
     console.log(context);
     // 2.1 context.attrs是用于获取当前组件标签上的未在props上声明的属性对象
+    // Proxy {msg2: '真香啊',__vInternal: 1}
     console.log(context.attrs);
     console.log(context.attrs.msg2);
-    // 2.2 context.emit是用于分发事件的
-    console.log(context.emit);
+    // 2.2 打印具名插槽
+    // Proxy {_: 1,__vInternal: 1, slot1: f, slot2: f}
+    console.log(context.slots);
+    // console.log(context.slots.slot1);
+    // 2.3 context.emit是用于分发事件的
+    console.log(context.emit); // (event, ...args) => instance.emit(event, ...args)
 
     console.log('setup在beforeCrete之前执行了~');
     function handle() {
