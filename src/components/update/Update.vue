@@ -48,12 +48,14 @@ export default defineComponent({
       // 首先user.gender上也报错，提示类型不匹配的问题，为reactive添加泛型reactive<any>(obj)，这个
       // 报错bug解决；然后，点击按钮，查看性别处，由【空值】变成了【男】，页面更新了，而且打印的代理对象
       // 中user也增加了gender这个键值对，obj目标对象上也有gender这个属性了
+
+      // 特别注意：在后面手写reactive的源码中，下面三种操作分别对应，get,set和deleteProperty
+      user.name += '==';
       // user.gender = '男';
-      delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
+      // delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
 
       console.log(user);
     }
-
     return { user, updatePage };
   }
 });

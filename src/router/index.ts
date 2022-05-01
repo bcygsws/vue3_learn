@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Learn from '../components/setup_ref/Learn.vue';
 import Update from '../components/update/Update.vue';
+import Fat from '../components/setup/Fat.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -9,16 +11,21 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
     children: [
       {
-        path:'/home/learn',
-        component:Learn
+        path: '/home/learn',
+        component: Learn
       },
       {
-        path:'/home/update',
-        component:Update
+        path: '/home/update',
+        component: Update
+      },
+      {
+        path: '/home/setup',
+        component: Fat
       }
     ]
   },
-    {path: '/about',
+  {
+    path: '/about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     component: () =>
