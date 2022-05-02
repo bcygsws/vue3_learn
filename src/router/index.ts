@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
       children:[
         {
-          path:"/about/define_hook",
+          path:"/about/hook",
           component:DefineHook
         },
       {
