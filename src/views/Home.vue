@@ -22,11 +22,11 @@
   <router-link to="/home/raw">十一、转换为普通对象，toRaw和markRaw</router-link>
   <!-- toRef的使用，和ref的区别 -->
   <router-link to="/home/to_ref">十二、演示toRef的用法</router-link>
-  <router-view></router-view>
+ <!-- customRef的使用 -->
+ <router-link to="/home/custom_ref">十三、演示customRef的使用</router-link>
+ <router-view></router-view>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- customRef的使用 -->
-  <CustomRef></CustomRef>
   <!-- 祖孙组件传值provide/inject -->
   <ProInj></ProInj>
 </template>
@@ -35,16 +35,12 @@
 // vue3的script和setup语法，推荐使用Volar,注意Volar和原来vue2的Vetur是互斥的；使用Volar时，搜索Vetur插件禁用
 // 在Home中定义一个子组件HelloWorld
 import { defineComponent } from 'vue';
-// 只读和浅只读
-import CustomRef from '../components/custom_ref/CustomRef.vue';
-import ToRef from '../components/to_ref/ToRef.vue';
 import Sus from '../components/suspense/Sus.vue';
 import ProInj from '../components/provide_inject/ProInj.vue';
 export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    CustomRef,
     ProInj,
     Sus
   }
