@@ -61,6 +61,8 @@ import {
 export default defineComponent({
   name: 'Computed',
   setup() {
+    // -字符按照"-横线"劈开，得到两个空字符组件的数组
+    console.log('-'.split('-')); // ['','']
     const user = reactive({
       firstName: '东方',
       lastName: '不败'
@@ -76,6 +78,7 @@ export default defineComponent({
       },
       set(val: string) {
         let arr = val.split('-');
+        console.log(val);
         user.firstName = arr[0];
         user.lastName = arr[1];
       }

@@ -112,6 +112,50 @@
 
 - 常用于子组件向父组件传值，类似 vue2 中的 this.$emit(父组件绑定的方法名称@emitxx,参数 val)
 
+## 五、计算属性和监听
+
+### 计算属性 computed
+
+- 两种使用方式：
+- getter 形式，监听变化不修改返回值。const fullName=computed(()=>{return user.firstName+"-"+user.lastName;})
+- getter/setter，监听变化并修改返回值 const fullName=computed({
+- get(){
+-      return 返回监听数据fullName
+- },
+- set(val){
+- // val 是变化的 fullName，它又影响别人
+- }
+- });
+- getter/setter 这种形式的监听，具体应用场景：
+- getter:就是总复选框，子列表中的复选框都选中了，总复选框必定选中；子列表复选框有一个没选中，总复选框就需要取消选中了
+- setter:总复选框选中，子列表中所有复选框都要选中；总复选框取消，子列表中所有复选框取消
+
+### 监听或者叫侦听属性 watch 和 watchEffect
+
+- 1.watch 监听的是原因对象，而非结果对象，比如：要拿到一个 fullName,要根据 user 中的 firstName 和 lastName 作拼接；那么，user 要作为参数放在 watch 的第一个参数中，而要监听的结果对象是 fullName
+- const fullName=ref('');
+- watch(user,(value)=>{
+- let arr=value.split('-'); // 参数 value 里面不用在.value 了，内部已经作了处理
+- fullName.value=arr[0]+"-"+arr[1];
+-
+- })
+- 2.watch 的第三参数声明两个特定属性：{immediate:true,deep:true},immediate 表示初始化时立即执行一次，deep 表示深度监视(不论数据对象的层级有多深)
+- 3.watchEffect 写法更为简洁，不需要指定依赖的监视对象，操作什么响应式对象，就监视谁。而且默认会执行一次
+- const fullName=ref('');
+- watch(()=>{
+-     fullName.value=user.firstName+"-"+user.lastName;
+- })
+- 4.watch 监视多个数据，必须使用数组，reactive 的属性，要使用函数形式，ref 对象则直接使用
+- const fullName=ref('');
+- const user=reactive({
+  - firstName:'张',
+  - lastName:'无忌'
+-
+- });
+- watch([fullName,()=>user.firstName,()=>user.lastName],(val)=>{
+- console.log(val);// 第一个参数的数组，顺序一一对应
+- });
+
 ## Bug 修复
 
 ### Bug1:项目运行时，有警告
