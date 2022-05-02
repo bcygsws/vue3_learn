@@ -8,6 +8,9 @@
   <router-link to="/home/computed"
     >五、计算属性和监听演示组件Computed</router-link
   >
+  <router-link to="/home/version_reactive"
+    >八、vue2和vue3响应式实现原理的对比</router-link
+  >
   <router-view></router-view>
   <!-- <p>{num}</p> -->
   <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
@@ -50,7 +53,6 @@ export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    VersionReactive,
     ShallowReactive,
     ReadOnlyProperty,
     ToAndMarkRaw,

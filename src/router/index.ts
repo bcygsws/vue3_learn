@@ -9,6 +9,7 @@ import Computed from '../components/computed/Computed.vue';
 import DefineHook from '../components/hook/DefineHook.vue';
 import FatLife from '../components/life/FatLife.vue';
 import Base from '../components/to_refs/Base.vue';
+import VersionReactive from '../components/reactive/VersionReactive.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -30,6 +31,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/computed',
         component: Computed
+      },
+      {
+        path: '/home/version_reactive',
+        component: VersionReactive
       }
     ]
   },
@@ -39,20 +44,21 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
-      children:[
-        {
-          path:"/about/hook",
-          component:DefineHook
-        },
+    children: [
       {
-        path:"/about/fat_life",
+        path: '/about/hook',
+        component: DefineHook
+      },
+      {
+        path: '/about/fat_life',
         component: FatLife
       },
       {
         path: '/about/to_refs',
         component: Base
       }
-    ]}
+    ]
+  }
 ];
 const router = createRouter({
   history: createWebHashHistory(),

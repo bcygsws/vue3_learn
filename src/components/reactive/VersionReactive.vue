@@ -1,5 +1,5 @@
 <template>
-  <h3>五、vue2和vue3响应式实现原理的对比</h3>
+  <h3>文本：vue2和vue3响应式实现原理的对比</h3>
 </template>
 <script lang="ts">
 /**
