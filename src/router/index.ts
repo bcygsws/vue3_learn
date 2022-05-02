@@ -1,11 +1,18 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+// 只读和浅只读
+import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/home/readonly',
+        component: ReadOnlyProperty
+      }
+    ]
   },
   {
     path: '/about',

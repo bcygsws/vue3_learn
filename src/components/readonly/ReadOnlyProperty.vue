@@ -22,6 +22,10 @@ export default defineComponent({
     // 2.浅只读：对象自身的property只读，但是不对嵌套对象的深度进行只读转换
     const user2 = shallowReadonly(user);
     function changeUser() {
+      // Error:Cannot assign to 'name' because it is a read-only property.
+      // user1.name+="==";
+      // user1.cars.red += '**';
+      // delete user1.age;
       // name是user对象自身的property,是只读的，不能更改
       // user2.name += '==';
       // 浅只读不对嵌套对象的深度进行只读转换，换言之；在shallowReadonly中，嵌套的深度是可读可写的
