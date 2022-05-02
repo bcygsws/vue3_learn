@@ -18,7 +18,7 @@ import {
 /**
  *
  * @ vue2 和vue3生命周期钩子的对比
- * 使用About父级组件和Life子级组件演示vue3的生命周期钩子
+ * 使用FatLife父级组件和Life子级组件演示vue3的生命周期钩子
  * 1.vue3中vue2的钩子还是可以书写的
  * vue2中8个+errorCaptured，共9个钩子
  * vue3中上面9个+调试用的两个onRenderTacked和onRenderTriggered,其中beforeCreate和created,在vue3.x中被setup代替

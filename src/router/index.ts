@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+import FatLife from '../components/life/FatLife.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -14,7 +14,13 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    children: [
+      {
+        path: '/about/fat_life',
+        component: FatLife
+      }
+    ]
   }
 ];
 
