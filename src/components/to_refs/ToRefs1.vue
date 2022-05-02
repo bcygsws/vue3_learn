@@ -1,7 +1,4 @@
 <template>
-  <h3>
-    七、toRefs将reactive包裹的对象，转换成普通对象，普通对象的每一个属性都是一个ref
-  </h3>
   <!-- 不使用toRefs版本 -->
   <!-- <p>姓名：{{ info.name }}</p>
   <p>年龄：{{ info.age }}</p> -->
@@ -12,7 +9,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
 export default defineComponent({
-  name: 'ToRefs',
+  name: 'ToRefs1',
   setup() {
     const info = reactive({
       name: '张仲景',

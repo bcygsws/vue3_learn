@@ -7,8 +7,8 @@ import Fat from '../components/setup/Fat.vue';
 import Computed from '../components/computed/Computed.vue';
 // 自定义hook
 import DefineHook from '../components/hook/DefineHook.vue';
-
 import FatLife from '../components/life/FatLife.vue';
+import Base from '../components/to_refs/Base.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -47,6 +47,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path:"/about/fat_life",
         component: FatLife
+      },
+      {
+        path: '/about/to_refs',
+        component: Base
       }
     ]}
 ];
