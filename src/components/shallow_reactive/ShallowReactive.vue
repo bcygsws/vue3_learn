@@ -55,25 +55,28 @@ export default defineComponent({
       // m1：深度监视、深度响应式，深度劫持
       // m1.name += '==';
       // m1.fallow.cars.red += '1';
+      // console.log(m1);
 
       // m2：浅监视、浅响应式、浅劫持
       // m2.name += '==';
       // m2.fallow.cars.red += '1';
-
+      // m2仍然是一个Proxy对象，深层次的数据能够改变，但是深层次的数据改变不会触发页面更新
+      // console.log(m2);
       // m3：ref传入对象，内部会按照reactive进行处理，等效于第一种情形了
       // m3深监视、深劫持、深度响应式
       // m3.value.name += '==';
-      // m3.value.fallow.cars.red+="1";
+      // m3.value.fallow.cars.red += '1';
+      // console.log(m3);// m3里面的属性__v_isShallow: false，表示是深监视，深劫持
 
       // m4:浅ref shallowRef
-      // 打印m4中是一个普通对象Object，name的值确实变化了，但是没有触发页面更新
+      // 打印m4中是一个普通对象Object---不再是Proxy代理对象了,最外层属性和深层次属性的数据都能改变，但是不能触发页面更新
       // m4.value.name += '==';
       // 打印m4，m4.value是一个普通对象，cars的red值确实变化了，但是没有触发页面更新
-      // m4.value.fallow.cars.red += '1';
-      // console.log(m4);
+      m4.value.fallow.cars.red += '1';
+      console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
 
       // m5:shallowRef只会处理value的响应式，不会进行对象的reactive处理
-      m5.value += 1;
+      // m5.value += 1;
     }
     return {
       m1,

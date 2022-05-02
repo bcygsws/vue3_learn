@@ -10,6 +10,7 @@ import DefineHook from '../components/hook/DefineHook.vue';
 import FatLife from '../components/life/FatLife.vue';
 import Base from '../components/to_refs/Base.vue';
 import VersionReactive from '../components/reactive/VersionReactive.vue';
+import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -35,6 +36,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/version_reactive',
         component: VersionReactive
+      },
+      {
+        path: '/home/shallow_reactive',
+        component: ShallowReactive
       }
     ]
   },
