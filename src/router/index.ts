@@ -8,6 +8,7 @@ import Computed from '../components/computed/Computed.vue';
 // 自定义hook
 import DefineHook from '../components/hook/DefineHook.vue';
 
+import FatLife from '../components/life/FatLife.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -40,13 +41,15 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
       children:[
         {
-          path:'/about/hook',
+          path:"/about/define_hook",
           component:DefineHook
-        }
-      ]
-  }
+        },
+      {
+        path:"/about/fat_life",
+        component: FatLife
+      }
+    ]}
 ];
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes
