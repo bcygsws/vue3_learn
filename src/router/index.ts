@@ -5,6 +5,9 @@ import Update from '../components/update/Update.vue';
 import Fat from '../components/setup/Fat.vue';
 // 计算属性和监听
 import Computed from '../components/computed/Computed.vue';
+// 自定义hook
+import DefineHook from '../components/hook/DefineHook.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -34,7 +37,13 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      children:[
+        {
+          path:'/about/hook',
+          component:DefineHook
+        }
+      ]
   }
 ];
 
