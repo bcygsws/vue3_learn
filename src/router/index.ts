@@ -11,6 +11,8 @@ import FatLife from '../components/life/FatLife.vue';
 import Base from '../components/to_refs/Base.vue';
 import VersionReactive from '../components/reactive/VersionReactive.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
+// 只读和浅只读
+import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -40,12 +42,15 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/shallow_reactive',
         component: ShallowReactive
+      },
+      {
+        path: '/home/readonly',
+        component: ReadOnlyProperty
       }
     ]
   },
   {
     path: '/about',
-    // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),

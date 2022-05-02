@@ -15,6 +15,10 @@
   <router-link to="/home/shallow_reactive"
     >九、浅监视或者浅劫持或者浅响应式</router-link
   >
+  <!-- 只读和浅只读 -->
+  <router-link to="/home/readonly"
+    >十、readonly和shallowReadonly-只读和浅只读</router-link
+  >
   <router-view></router-view>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
@@ -36,17 +40,15 @@
 import { defineComponent } from 'vue';
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
-import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
-import ToRef from '../components//to_ref/ToRef.vue';
-import CustomRef from '../components/custom_ref/CustomRef.vue';
-import ProInj from '../components/provide_inject/ProInj.vue';
 import Sus from '../components/suspense/Sus.vue';
+import ProInj from '../components/provide_inject/ProInj.vue';
+import CustomRef from "../components/custom_ref/CustomRef.vue";
+import ToRef from "../components/to_ref/ToRef.vue";
+import ToAndMarkRaw from "../components/raw/ToAndMarkRaw.vue";
 export default defineComponent({
-  // 当前组件名称
   name: 'Home',
   components: {
     // 注册一个子组件
-    ReadOnlyProperty,
     ToAndMarkRaw,
     ToRef,
     CustomRef,
@@ -54,6 +56,4 @@ export default defineComponent({
     Sus
   }
 });
-
-// setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
 </script>
