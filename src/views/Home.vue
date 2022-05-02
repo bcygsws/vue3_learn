@@ -18,14 +18,11 @@
   <!-- 只读和浅只读 -->
   <router-link to="/home/readonly"
     >十、readonly和shallowReadonly-只读和浅只读</router-link
-  >
+    >
+    <router-link to="/home/raw">十一、转换为普通对象，toRaw和markRaw</router-link>
   <router-view></router-view>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- 只读和浅只读 -->
-  <ReadOnlyProperty></ReadOnlyProperty>
-  <!-- toRaw 和markRaw -->
-  <ToAndMarkRaw></ToAndMarkRaw>
   <!-- toRef的使用，和ref的区别 -->
   <ToRef></ToRef>
   <!-- customRef的使用 -->
@@ -39,17 +36,14 @@
 // 在Home中定义一个子组件HelloWorld
 import { defineComponent } from 'vue';
 // 只读和浅只读
-import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
+import CustomRef from '../components/custom_ref/CustomRef.vue';
+import ToRef from '../components/to_ref/ToRef.vue';
 import Sus from '../components/suspense/Sus.vue';
 import ProInj from '../components/provide_inject/ProInj.vue';
-import CustomRef from "../components/custom_ref/CustomRef.vue";
-import ToRef from "../components/to_ref/ToRef.vue";
-import ToAndMarkRaw from "../components/raw/ToAndMarkRaw.vue";
 export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    ToAndMarkRaw,
     ToRef,
     CustomRef,
     ProInj,

@@ -13,6 +13,7 @@ import VersionReactive from '../components/reactive/VersionReactive.vue';
 import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
+import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -46,6 +47,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/readonly',
         component: ReadOnlyProperty
+      },
+      {
+        path: '/home/raw',
+        component: ToAndMarkRaw
       }
     ]
   },
