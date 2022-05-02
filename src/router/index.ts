@@ -1,11 +1,18 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
+import CustomRef from '../components/custom_ref/CustomRef.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/home/custom_ref',
+        component: CustomRef
+      }
+    ]
   },
   {
     path: '/about',
