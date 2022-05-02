@@ -14,6 +14,8 @@ import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue'
 // 只读和浅只读
 import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
+import ToRef from '../components/to_ref/ToRef.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -51,6 +53,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/raw',
         component: ToAndMarkRaw
+      },
+      {
+        path: '/home/to_ref',
+        component: ToRef
       }
     ]
   },

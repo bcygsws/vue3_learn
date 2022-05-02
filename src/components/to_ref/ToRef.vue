@@ -6,7 +6,7 @@
   <p>年龄：{{ age }}</p>
   <p>金钱：{{ money }}</p>
   <button @click="update">更新数据，观察数据变化</button>
-  <Son :age="age"></Son>
+  <Son :age="age" :money="money"></Son>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRef, ref } from 'vue';
@@ -15,6 +15,8 @@ import Son from './Son.vue';
  *
  * 区别：
  * toRef 为源响应式对象上的某个属性创建了一个ref对象，二者同步操作的是同一数值，且同步更新
+ * 语法：const age=toRef(state,'age');和解构toRefs(state)拿到age是一个意思
+ *
  * ref相当于把原来的对象的属性做了一份拷贝，操作时和原来的数据之间互不影响
  *
  *
@@ -36,8 +38,8 @@ export default defineComponent({
     const update = () => {
       // {{state.age}}和{{age}}中的数据都改变了
       age.value += 1;
-      // 原来state中的money结果不变，仅仅{{money}改变
-      // money.value += 10;
+      // 原来state中的money结果不变，仅仅{{money}}改变
+      money.value += 10;
       console.log('测试是否执行');
     };
     return {

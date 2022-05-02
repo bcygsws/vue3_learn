@@ -2,12 +2,15 @@
   <h4>这是ToRef的子组件Son</h4>
   <!-- 在其父组件中点击按钮，age也同步变化 -->
   <p>Son子组件年龄：{{ age }}</p>
+  <!-- ToRef父组件组state.money渲染的金额不会发生改变，一直是2000 -->
+  <p>Son子组件金额：{{ money }}</p>
   <!-- 增加一个需求，如果要拿到传入的数据位数，length怎么办?而且getLength函数是别人封装的，传入的参数是Ref类型 -->
   <p>length:{{ length }}</p>
 </template>
 <script lang="ts">
 import { defineComponent, toRef, computed, Ref } from 'vue';
 // 别人封装的获取长度函数
+// const getLength=computed((age:Ref)=>{})
 function getLength(age: Ref) {
   // 数据age只要变化，就计算长度，需要监听
   // 这种属于只有getter的computed的监听
@@ -21,6 +24,10 @@ export default defineComponent({
     age: {
       type: Number,
       required: true // 必须的
+    },
+    money: {
+      type: Number,
+      required: true
     }
   },
   setup(props) {

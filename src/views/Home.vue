@@ -18,13 +18,13 @@
   <!-- 只读和浅只读 -->
   <router-link to="/home/readonly"
     >十、readonly和shallowReadonly-只读和浅只读</router-link
-    >
-    <router-link to="/home/raw">十一、转换为普通对象，toRaw和markRaw</router-link>
+  >
+  <router-link to="/home/raw">十一、转换为普通对象，toRaw和markRaw</router-link>
+  <!-- toRef的使用，和ref的区别 -->
+  <router-link to="/home/to_ref">十二、演示toRef的用法</router-link>
   <router-view></router-view>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- toRef的使用，和ref的区别 -->
-  <ToRef></ToRef>
   <!-- customRef的使用 -->
   <CustomRef></CustomRef>
   <!-- 祖孙组件传值provide/inject -->
@@ -44,7 +44,6 @@ export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    ToRef,
     CustomRef,
     ProInj,
     Sus
