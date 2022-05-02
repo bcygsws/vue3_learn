@@ -33,23 +33,27 @@ export default defineComponent({
       }
     });
     // raw初始的，原始的
-    // 1.toRaw是一个还原方法，对象只能读取，数据可以改变，但是页面不会更新
+    // 1.toRaw是一个还原方法，将成为深度响应式的对象还原成普通对象，可读可写，但是页面不会更新
+    // Object--->Reactive(深度响应式)--->Object 数据最外层和深层次都能变化，但是页面不会更新
     const handleToRaw = () => {
       const user = toRaw(state);
       // toRaw(state)之后，state变化了，state对象数据确实改变了，但页面没有更新；打印user还原成了一个普通对象，普通对象
       // 是无法触发响应式的，这在ref和reactive的使用中验证过
-      user.name += '==';
+      // user.name += '==';
+      user.cars.red += '==';
       console.log(user);
     };
     // 标记一个对象，永远不能成为代理对象
+    // likes在被标记成markRaw后，执行了当前的操作一次；此后，其值再也不会变化了
     const handleMarkRaw = () => {
       const likes = ['吃', '喝', '玩', '乐'];
       // 标记likes数组，永远不能成为代理对象了
       state.likes = markRaw(likes); // error: Property 'likes' does not exist on type '{ name: string; age: number; cars: { red: string; }; }'.
       if (state.likes) {
+        // 就执行了这一次的改变，在点击按钮，就不会改变了;
         state.likes[0] += '***';
         console.log(state);
-        // 点击无数次按钮后，state.likes[0]="吃***"，不会再改变了
+        // 这行likes[0]=likes[0]+"***";点击无数次按钮后，state.likes[0]="吃***"，最外层和深层次的所有属性值，都不会再改变了。界面更不会更新
         console.log('分支执行了~');
       }
     };
