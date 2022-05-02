@@ -1,11 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+import ShallowReactive from '../components/shallow_reactive/ShallowReactive.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/home/shallow_reactive',
+        component: ShallowReactive
+      }
+    ]
   },
   {
     path: '/about',
