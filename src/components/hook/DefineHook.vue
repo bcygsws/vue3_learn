@@ -73,17 +73,18 @@ export default defineComponent({
     // onBeforeUnmount(() => {
     //   window.removeEventListener('click', handleClick);
     // });
-    // 解构引入的函数，拿到x,y
+    // 解构引入的函数，拿到x,y;并不是{x,y}整体是响应式的，而是x,y分别定义成了ref,因此可以解构
     const { x, y } = getXAndY();
     // 进入页面，就请求数据，在created生命周期钩子中引入自定义钩子urlRequests.ts
     // 结构自定义钩子调用的返回对象
+    // 使用的是函数泛型的用法，在函数调用时，明确其返回值的类型
     const { loading, data, errorMsg } =
       urlRequests<IAddress>('data/address.json');
     // 为了和上面的区别，为products解构出的变量起别名，loading:loading1,data:data1,errorMsg:errorMsg1
     // 总结：
     // 1. 解构中起别名，像键值一样，从起别名之后，data1就代替解构的键data了
     // 2. 如果某个函数或接口或类被限定为泛型T了，实现时，变成T[]，代码也是可以成立的；比如：定义的泛型是urlRequests<T>
-      // 在此处调用时，声明的是urlRequests<IProducts[]>
+    // 在此处调用时，声明的是urlRequests<IProducts[]>
     const { data: data1 } = urlRequests<IProducts[]>('data/products.json');
     // 问题来了，如果我要监视data1的长度怎么办？
     // 代码写完后，报错：原因是泛型IProducts不一定有length属性的
@@ -92,6 +93,7 @@ export default defineComponent({
     // });
     // watch监听时，如果回调中没有参数，data1.value来操作数据。如果有参数val，val=data1.value
     watch(data1, () => {
+      // data1是data的别名，data在自定义hook中定义的是一个ref对象，ref<T|null>(null);因此，在setup中操作是用data1.value
       if (data1.value) {
         console.log(data1.value.length);
       }

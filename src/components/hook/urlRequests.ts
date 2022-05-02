@@ -10,10 +10,21 @@
 import { ref } from 'vue';
 import axios from 'axios';
 // 应对res的不同类型，使用泛型来约束data
+/**
+ *
+ * @ 对get请求数据做了很好的封装
+ *
+ * 不论返回数据的是数组还是对象，不论返回数据对象的属性类型是什么，都抽象成了3个ref对象
+ * loading 布尔类型，控制后备内容的显示
+ * data 获取的数据ref<T|null>(null)
+ * 出错时 提示消息，是string字符串
+ *
+ *
+ */
 export default function urlRequests<T>(url: string) {
   // 数据加载完成前，动画，布尔类型，默认值为true
   const loading = ref(true);
-  // data数据，数组或者对象
+  // data数据，数组或者对象，数组也是对象，空的时候，设定为null,表示空对象
   const data = ref<T | null>(null);
   // 错误提示信息，字符串类型
   const errorMsg = ref('');
