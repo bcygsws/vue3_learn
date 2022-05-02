@@ -1,11 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+import VersionReactive from "../components/reactive/VersionReactive.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children:[
+      {
+        path:"/home/version_reactive",
+        component:VersionReactive
+      }
+    ]
   },
   {
     path: '/about',
