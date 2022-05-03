@@ -1,11 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-
+import ProInj from '../components/provide_inject/ProInj.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children:[
+      {
+        path:"/home/provide_inject",
+        component:ProInj
+      }
+    ]
   },
   {
     path: '/about',
