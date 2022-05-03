@@ -1,6 +1,6 @@
 <template>
   <div class="use_await">
-    <p>{{ address }}</p>
+    <p>await方式制作异步组件：{{ address }}</p>
   </div>
 </template>
 

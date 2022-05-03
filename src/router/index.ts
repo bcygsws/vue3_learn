@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Learn from '../components/setup_ref/Learn.vue';
+import Sus from '../components/suspense/Sus.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,6 +12,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/learn',
         component: Learn
+      },
+      {
+        path: '/home/suspense',
+        component: Sus
       }
     ]
   },

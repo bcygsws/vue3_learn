@@ -1,6 +1,6 @@
 <template>
   <div class="use_axios">
-    <p>{{ address }}</p>
+    <p>axios方式制作异步组件：{{ address }}</p>
   </div>
 </template>
 

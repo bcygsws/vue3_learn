@@ -1,6 +1,6 @@
 <template>
   <div class="use_dynamicImp">
-    <p>{{ msg }}</p>
+    <p>动态导入同步组件模拟异步效果：{{ msg }}</p>
   </div>
 </template>
 
