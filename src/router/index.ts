@@ -16,6 +16,7 @@ import ReadOnlyProperty from '../components/readonly/ReadOnlyProperty.vue';
 import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
 import ToRef from '../components/to_ref/ToRef.vue';
 import CustomRef from '../components/custom_ref/CustomRef.vue';
+import Sus from '../components/suspense/Sus.vue';
 
 import ProInj from '../components/provide_inject/ProInj.vue';
 const routes: Array<RouteRecordRaw> = [
@@ -67,12 +68,15 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/provide_inject',
         component: ProInj
+      },
+      {
+        path: '/home/suspense',
+        component: Sus
       }
     ]
   },
   {
     path: '/about',
-    // this generates a separate chunk (about.[hash].js) for this route
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
     children: [

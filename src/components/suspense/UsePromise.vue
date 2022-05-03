@@ -1,7 +1,7 @@
 <template>
   <div class="use_timeout">
     <h3>十六、Suspense组件的使用</h3>
-    <p>{{ msg }}</p>
+    <p>promise+setTimeout方法制作异步组件：{{ msg }}</p>
   </div>
 </template>
 

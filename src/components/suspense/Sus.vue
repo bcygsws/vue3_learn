@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Suspense标签为等待异步加载组件时提供后备内容</h3>
+    <h3>十六、Suspense标签为等待异步加载组件时提供后备内容</h3>
     <!-- 定时器模拟异步组件UseSuspense -->
     <Suspense>
       <template v-slot:default>
