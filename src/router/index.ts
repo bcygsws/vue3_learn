@@ -17,6 +17,7 @@ import ToAndMarkRaw from '../components/raw/ToAndMarkRaw.vue';
 import ToRef from '../components/to_ref/ToRef.vue';
 import CustomRef from '../components/custom_ref/CustomRef.vue';
 
+import ProInj from '../components/provide_inject/ProInj.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -62,6 +63,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/custom_ref',
         component: CustomRef
+      },
+      {
+        path: '/home/provide_inject',
+        component: ProInj
       }
     ]
   },

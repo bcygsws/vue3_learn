@@ -24,11 +24,13 @@
   <router-link to="/home/to_ref">十二、演示toRef的用法</router-link>
  <!-- customRef的使用 -->
  <router-link to="/home/custom_ref">十三、演示customRef的使用</router-link>
+ <!-- 祖孙组件传值provide/inject -->
+ <router-link to="/home/provide_inject"
+ >十四、provide/inject组孙组件传值</router-link
+>
  <router-view></router-view>
   <!-- 使用Suspense标签 -->
   <Sus></Sus>
-  <!-- 祖孙组件传值provide/inject -->
-  <ProInj></ProInj>
 </template>
 
 <script lang="ts">
@@ -36,12 +38,10 @@
 // 在Home中定义一个子组件HelloWorld
 import { defineComponent } from 'vue';
 import Sus from '../components/suspense/Sus.vue';
-import ProInj from '../components/provide_inject/ProInj.vue';
 export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    ProInj,
     Sus
   }
 });

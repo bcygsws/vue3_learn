@@ -8,12 +8,22 @@
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
+/**
+ *
+ * @ provide传递的是ref
+ * inject('color1')接收的同样是Ref
+ *
+ * 在祖父级组件中，更改数据时，孙子组件模板中数据改变，页面更新；但是，setup只是在孙子组件初次渲染时，执行了一次
+ *
+ *
+ *
+ */
 export default defineComponent({
   name: 'GrandSon',
   setup() {
     // 为color添加类型注解，避免模板中:style报错
     const color: any = inject('color1');
-    console.log(color); // 打印发现inject后的color是一个对象
+    console.log(color); // 打印发现inject后的color是一个Ref对象
     console.log(color.value);
     return {
       color
