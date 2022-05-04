@@ -34,6 +34,7 @@
   >
   <router-link to="/home/v_model">十七、v-model实现双向通信</router-link>
   <router-link to="/home/refs_comu">十八、vue组件通信之三-refs方法</router-link>
+  <router-link to="/home/vuex">十九、vue组件通信之四-状态管理器vuex</router-link>
   <router-view></router-view>
 </template>
 

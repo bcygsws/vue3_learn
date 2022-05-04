@@ -20,6 +20,7 @@ import Sus from '../components/suspense/Sus.vue';
 import Father from '../components/v_model/Father.vue';
 import ProInj from '../components/provide_inject/ProInj.vue';
 import MyFat from '../components/refs_comu/MyFat.vue';
+import VuexFat from '../components/vuex/VuexFat.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -79,8 +80,12 @@ const routes: Array<RouteRecordRaw> = [
         component: Father
       },
       {
-        path:"/home/refs_comu",
-        component:MyFat
+        path: '/home/refs_comu',
+        component: MyFat
+      },
+      {
+        path: '/home/vuex',
+        component: VuexFat
       }
     ]
   },
