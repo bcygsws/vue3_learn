@@ -14,8 +14,16 @@ const handleChange = () => {
   // 清空文本框
   txt.value = '';
 };
+// 暴露一个方法给父组件
 // setup组件默认是关闭的，如果通过模板ref获取组件的公开实例，不会暴露任何在<script setup>中的声明，如果需要暴露，
 // 需要使用defineExpose
-defineExpose({ list });
+defineExpose({
+  list,
+  toFat: '我是子组件数据',
+  // 我是子组件方法
+  toFatMet() {
+    console.log('传给父组件的方法toFatMet');
+  }
+});
 </script>
 <style scoped lang="less"></style>
