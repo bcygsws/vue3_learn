@@ -21,6 +21,7 @@ import Father from '../components/v_model/Father.vue';
 import ProInj from '../components/provide_inject/ProInj.vue';
 import MyFat from '../components/refs_comu/MyFat.vue';
 import VuexFat from '../components/vuex/VuexFat.vue';
+import AttrsFat from '../components/attrs/AttrsFat.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -86,6 +87,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/vuex',
         component: VuexFat
+      },
+      {
+          path: '/home/attrs',
+          component: AttrsFat
       }
     ]
   },

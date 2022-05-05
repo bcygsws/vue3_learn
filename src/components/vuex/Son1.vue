@@ -11,13 +11,13 @@
     <button @click="changeName">更改姓名</button>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { useStore, mapGetters, mapMutations, mapActions } from 'vuex';
 import { defineComponent } from 'vue';
 // 引入封装的useState文件
-import { useState } from './hook/useState';
-import { useActions } from './hook/useActions';
-import { useGetters } from './hook/useGetters';
+import { useState } from './hook/useState.js';
+import { useActions } from './hook/useActions.js';
+import { useGetters } from './hook/useGetters.js';
 /**
  * @ vue3中使用映射模板，要进行一定的封装
  * 封装思路见文档：https://blog.csdn.net/qq_16139383/article/details/119935755?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_antiscanv2&utm_relevant_index=1
