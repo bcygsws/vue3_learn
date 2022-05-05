@@ -1,4 +1,12 @@
 import { createStore } from 'vuex';
+import moduleA from './others';
+/**
+ *
+ * @ vuex中命名空间的使用
+ * namespaced:true
+ *
+ *
+ */
 
 export default createStore({
   state: {
@@ -35,5 +43,8 @@ export default createStore({
       context.commit('remendName', props);
     }
   },
-  modules: {}
+  modules: {
+    // 使用了命名空间,导入时名称为moduleA,这就是命名空间的名字
+    moduleA
+  }
 });

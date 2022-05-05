@@ -34,13 +34,9 @@
   >
   <router-link to="/home/v_model">十七、v-model实现双向通信</router-link>
   <router-link to="/home/refs_comu">十八、vue组件通信之三-refs方法</router-link>
-  <router-link to="/home/vuex">十九、vue组件通信之四-状态管理器vuex</router-link>
-  <router-link to="/home/attrs">二十、vue组件通信-attrs</router-link>
-  <router-view></router-view>
 </template>
 
 <script lang="ts">
-// vue3的script和setup语法，推荐使用Volar,注意Volar和原来vue2的Vetur是互斥的；使用Volar时，搜索Vetur插件禁用
 // 在Home中定义一个子组件HelloWorld
 import { defineComponent } from 'vue';
 export default defineComponent({
