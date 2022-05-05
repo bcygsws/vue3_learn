@@ -156,6 +156,55 @@
 - console.log(val);// 第一个参数的数组，顺序一一对应
 - });
 
+## 六、vue3 中组件通信的七种方式
+
+### [参考文档](https://www.jb51.net/article/223816.htm#_label0)
+
+### 1.父组件向子组件传值，v-bind 绑定子组件 props 接收
+
+- Parent.vue :title="某变量"，子组件 Child.vue，props 属性接收 title，两种方式数组接收方式或者对象接收方式
+
+### 2.子组件向父组件传值 emit
+
+- vue3 版本低于 3.2,setup(props,{attrs,slots,emit}){
+-
+-
+- }
+- vue3.2 及其以上版本，可以使用 setup 语法糖
+- props,emits 都需要从 vue 中按需引入，{defineProps,defineEmits}
+
+### 3.ref/defineExpose 方式
+
+- 适用于父组件获取子组件的属性或调用子组件的方法
+- setup 语法糖中使用 defineExpose 暴露属性或方法，父组件才能使用。原因：通过 ref 获取的组件实例，不会暴露任何属性在\<script setup\>中，如果需要引用。需要手动导出这些属性或方法，以供父组件使用
+- [参考文档 1：Vue3 的七种组件通信方式，别再说不会组件通信了](https://blog.csdn.net/qq_27318177/article/details/122967669)
+
+### 4.attrs 实现组件通信
+
+- attrs 中拿到的是父组件中传递的 style、class 除外的非 props 属性
+- vue3.2 以后，使用 useAttrs
+- vue3.2 以前的 vue3 版本，useContext.attrs();
+
+### 5.v-model 方式，可以实多个数据的双向绑定
+
+- 父组件中 v-model:list="list"
+- 子组件中 props 接收，defineEmits 更改
+- const emit=defineEmits(['list'])
+- emit('update:list',新值)
+
+### 6.provide/inject
+
+- 唯一的区别在于，vue3 中 provide/inject 是响应式的了
+
+### 7.vuex 状态管理器
+
+- state、getters、mutations、actions 方式和原来 vue2 差别不大
+- mapState 等映射对象的方式，需要自己封装一下 components/vuex/hook 文件夹下的封装
+- hooks 中封装代码的基本思路：
+  - 就是自己定义 useState,useGetters,useActions，然后使用
+  - useState 返回 return useStateMapper(mapper,mapperFn);mapper 是共享的 state 的属性组成的数据，mapperFn 是 mapState,如果使用了命名空间，需要使用 mapperFn=createNamespacedHelpers(moduleName).mapState;
+  - useMapper.js 中声明 useStateMapper,useActionsMapper 等函数
+
 ## Bug 修复
 
 ### Bug1:项目运行时，有警告

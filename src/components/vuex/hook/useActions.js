@@ -11,7 +11,7 @@ export function useActions(moduleName, mapper) {
   let mapperFn = mapActions;
 
   // 如果使用模块化，则使用vuex提供的createNamespacedHelpers方法找到对应模块的mapActions方法
-  if (checkType(moduleName) === '[string Object]' && moduleName.length > 0) {
+  if (checkType(moduleName) === '[Object string]' && moduleName.length > 0) {
     mapperFn = createNamespacedHelpers(moduleName).mapActions;
   }
 
