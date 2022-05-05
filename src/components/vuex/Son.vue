@@ -1,7 +1,7 @@
 <template>
   <h4>这是Son子组件</h4>
-  <p>{{ store.state.count }}</p>
   <p>{{ store.getters.getData }}</p>
+  <p>{{ store.state.name }}</p>
   <button @click="addTwo(2)">+2</button>
   <button @click="reduceTwo(2)">-2</button>
 </template>

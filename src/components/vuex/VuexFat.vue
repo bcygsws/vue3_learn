@@ -8,12 +8,16 @@
   <button @click="reduce(1)">-1</button>
   <hr />
   <Son></Son>
+  <hr />
+  <Son1></Son1>
 </template>
 <script lang="ts" setup>
 import { useStore } from 'vuex';
-import {computed} from 'vue';
+import { computed } from 'vue';
 // 导入子组件Son
 import Son from './Son.vue';
+// 导入子组件Son1
+import Son1 from './Son1.vue';
 const store = useStore();
 const count = computed(() => {
   return store.state.count;
