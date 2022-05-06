@@ -201,9 +201,11 @@
 - state、getters、mutations、actions 方式和原来 vue2 差别不大
 - mapState 等映射对象的方式，需要自己封装一下 components/vuex/hook 文件夹下的封装
 - hooks 中封装代码的基本思路：
-  - 就是自己定义 useState,useGetters,useActions，然后使用
+  - 就是自己定义 useState,useGetters,useMutations,useActions，然后使用
   - useState 返回 return useStateMapper(mapper,mapperFn);mapper 是共享的 state 的属性组成的数据，mapperFn 是 mapState,如果使用了命名空间，需要使用 mapperFn=createNamespacedHelpers(moduleName).mapState;
   - useMapper.js 中声明 useStateMapper,useActionsMapper 等函数
+- 命名空间：vuex 是单状态树，如果所有的状态都集中到一个对象上，这个对象可能会变得非常臃肿。vue 允许将 store 分成许多模块，每个模块拥有自己的 state,getters,mutations,actions,modules
+- 命名空间中操作默认空间的数据的方式，[参考文档](https://blog.csdn.net/lzb348110175/article/details/89387495?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=1)
 
 ## Bug 修复
 

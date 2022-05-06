@@ -4,6 +4,17 @@
  * tsconfig.json中 strict:true
  * 要使用严格模式，原因是：ts的优势就在于类型系统，如果strict:false,是可以规避很多错误，但是这没有任何意义，写ts代码还和写js一样
  *
+ * context上下文解构出来包含六个对象
+ * {state,commit,dispatch,getters,rootState,rootGetters}
+ * 
+ * rootState,rootGetter是某个之命名空间，用于读取或操作默认空间里的state数据的
+ * actions:{
+ *    moduleAActions({state,commit,dispatch,getters,rootState,rootGetters}){
+ * // do something
+ *  }
+ * 
+ * }
+ * 
  *
  */
 interface IState {

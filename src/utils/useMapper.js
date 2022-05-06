@@ -23,11 +23,21 @@ export function useStateMapper(mapper, mapFn) {
 export function useActionMapper(mapper, mapFn) {
   const store = useStore();
   const storeActionsFns = mapFn(mapper); // 对象
-  const storeAction = {};
+  const storeActions = {};
   // Object.keys将storeStateFns的键名取出，组成一个数组
   Object.keys(storeActionsFns).forEach((fnKey) => {
     // vuex源码中mapState和mapActions方法使用的是this.$store，更改this绑定为{$store:store}
-    storeAction[fnKey] = storeActionsFns[fnKey].bind({ $store: store });
+    storeActions[fnKey] = storeActionsFns[fnKey].bind({ $store: store });
   });
-  return storeAction;
+  return storeActions;
+}
+// 处理mutations的Mapper
+export function useMutationsMapper(mapper, mapFn) {
+  const store = useStore();
+  const storeMutationsFns = mapFn(mapper);
+  const storeMutations = {};
+  Object.keys(storeMutationsFns).forEach((fnKey) => {
+    storeMutations[fnKey] = storeMutationsFns[fnKey].bind({ $store: store });
+  });
+  return storeMutations;
 }
