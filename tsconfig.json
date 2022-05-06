@@ -24,6 +24,6 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/store/addition.ts"  ],
+, "src/store/addition.ts", "src/utils/checkType.js", "src/utils/useState.js", "src/utils/useMapper.js", "src/utils/useGetters.js", "src/utils/useActions.js"  ],
   "exclude": ["node_modules"]
 }
