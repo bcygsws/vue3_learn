@@ -23,6 +23,7 @@ import Son1 from './Son1.vue';
 import Son2 from './Son2.vue';
 const store = useStore();
 const count = computed(() => {
+  // 类似在vue2中，使用映射模板；computed:{...mapState(['count']) }
   return store.state.count;
 });
 const add = (step) => {

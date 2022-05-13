@@ -1,5 +1,5 @@
 <template>
-  <h4>这是Son子组件</h4>
+  <h4>这是Son1子组件</h4>
   <div>
     姓名：<span>{{ name }}</span
     ><br />
