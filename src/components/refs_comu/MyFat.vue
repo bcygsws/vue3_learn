@@ -25,10 +25,15 @@ import MySon from './MySon.vue';
 const childRef = ref(null);
 const handleExpose = () => {
   console.log(childRef);
-  console.log(childRef.value);
+  console.log(childRef.value); // childRef.value是一个代理对象，是代理对象就能够深度监视
   console.log(childRef.value.list); // Proxy{0: 'HTML', 1: 'CSS', 2: 'JavaScript'}
   console.log(childRef.value.toFat); // 我是子组件数据
   childRef.value.toFatMet(); // 传给父组件的方法toFatMet
 };
+console.log(childRef.value);// null 初次渲染时，childRef.value为null
+// const { list, toFat, toFatMet } = childRef.value;
+// console.log(list); // Proxy{0: 'HTML', 1: 'CSS', 2: 'JavaScript'}
+// console.log(toFat); // 我是子组件数据
+// toFatMet(); // 传给父组件的方法toFatMet
 </script>
 <style scoped lang="less"></style>
