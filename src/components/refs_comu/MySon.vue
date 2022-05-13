@@ -15,8 +15,9 @@ const handleChange = () => {
   txt.value = '';
 };
 // 暴露一个方法给父组件
-// setup组件默认是关闭的，如果通过模板ref获取组件的公开实例，不会暴露任何在<script setup>中的声明，如果需要暴露，
+// 1.setup组件默认是关闭的，如果通过模板ref获取组件的公开实例，不会暴露任何在<script setup>中的声明，如果需要暴露，
 // 需要使用defineExpose
+// 2.注意：父组件中childRef.value拿到这个暴露的对象{}，是一个Proxy代理对象
 defineExpose({
   list,
   toFat: '我是子组件数据',
