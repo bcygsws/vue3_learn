@@ -27,7 +27,7 @@ interface IContext {
 }
 const moduleA = {
   // namespaced为true的作用是告诉vuex，该模块所有的state 、getters、mutations、actions
-  // 里面的东西调用时都需要加上命名空间，这个命名空间就是该模块被improt时命名的名字
+  // 里面的东西调用时都需要加上命名空间，这个命名空间就是该模块被import时命名的名字
   namespaced: true,
   state: {
     name: '楚留香',
