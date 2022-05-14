@@ -11,6 +11,7 @@
       </template>
     </Suspense>
     <!-- 动态导入同步组件模拟这种异步,Network中调成slow 3G才能看到效果 -->
+    <!-- 这是具名插槽的一个实现,在Suspense组件中的应用，父组件提供模板，在子组件中引用 -->
     <Suspense>
       <template v-slot:default><UseAsyncCom></UseAsyncCom></template>
       <template v-slot:fallback><h3>加载中……</h3></template>
