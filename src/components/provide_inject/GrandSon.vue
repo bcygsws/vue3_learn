@@ -6,8 +6,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject } from 'vue';
+<script>
+import { defineComponent, inject, Ref } from 'vue';
 /**
  *
  * @ provide传递的是ref
@@ -22,7 +22,7 @@ export default defineComponent({
   name: 'GrandSon',
   setup() {
     // 为color添加类型注解，避免模板中:style报错
-    const color: any = inject('color1');
+    const color = inject('color1');
     console.log(color); // 打印发现inject后的color是一个Ref对象
     console.log(color.value);
     return {
