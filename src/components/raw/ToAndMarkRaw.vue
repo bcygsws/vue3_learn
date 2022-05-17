@@ -6,6 +6,10 @@
   <!-- markRaw的使用 -->
   <p>{{ state }}</p>
   <button @click="handleMarkRaw">markRaw,数据不能更改</button>
+  <p>{{ raw1 }}</p>
+  <button @click="handleMR">markRaw</button>
+  <p>{{ person1 }}</p>
+  <button @click="handleObj">普通对象改变值</button>
 </template>
 <script lang="ts">
 interface IUser {
@@ -20,6 +24,9 @@ import { defineComponent, reactive, toRaw, markRaw } from 'vue';
  * 1.toRaw 是一个还原方法，可以用于临时读取，但是对象不被代理/跟踪，数据可以改变，页面不能更新
  *
  * 2.markRaw 标记一个对象，永远不能转化为代理对象；返回对象本身
+ * 使用场景：
+ * 1.第三方类实例或组件对象不宜定义为响应式
+ * 2.在渲染不可变数据源的大列表时，使用markRaw可以提升性能
  *
  */
 export default defineComponent({
@@ -44,7 +51,8 @@ export default defineComponent({
       console.log(user);
     };
     // 标记一个对象，永远不能成为代理对象
-    // likes在被标记成markRaw后，执行了当前的操作一次；此后，其值再也不会变化了
+    // 情形一、深度响应式数据reactive对象，likes在被标记成markRaw后，执行了当前的操作一次；
+    // 此后，其值再也不会变化了
     const handleMarkRaw = () => {
       const likes = ['吃', '喝', '玩', '乐'];
       // 标记likes数组，永远不能成为代理对象了
@@ -57,11 +65,36 @@ export default defineComponent({
         console.log('分支执行了~');
       }
     };
-
+    // 情形二、普通对象编辑为markRaw属性和深度的属性值都能改变，但是不会触发页面更新
+    const person = {
+      name: '张衡',
+      age: 18,
+      cars: ['北京', '上海', '南京']
+    };
+    const raw1 = markRaw(person);
+    const handleMR = () => {
+      // raw1.name += '==';// name属性值改变，但是界面不会更新
+      raw1.cars[0] += '==';
+      console.log(raw1); // 同样，深度属性的值也能够改变，但是界面不会更新
+    };
+    // 对比:普通对象，能改变值，但无法触发界面更新
+    const person1 = {
+      name: '张衡',
+      age: 18,
+      cars: ['北京', '上海', '南京']
+    };
+    const handleObj = () => {
+      person1.cars[0] += '==';
+      console.log(person1);
+    };
     return {
       state,
+      raw1,
+      person1,
       handleToRaw,
-      handleMarkRaw
+      handleMarkRaw,
+      handleMR,
+      handleObj
     };
   }
 });
