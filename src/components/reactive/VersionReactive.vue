@@ -8,6 +8,7 @@
  *
  *
  * vue2的响应式：
+ * 详情参考：https://www.cnblogs.com/fundebug/p/responsive-vue.html
  * 对象：是通过defineProperty对对象的属性值的读取和修改进行劫持（监视/拦截）
  * 数组：通过重写数组的【更新数组的元素的一系列方法】来实现元素修改的劫持，例如：Array的unshift、push、pop、shift
  * 等方法都需要重写
