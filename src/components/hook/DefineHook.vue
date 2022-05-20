@@ -91,7 +91,8 @@ export default defineComponent({
     // watch(data1, () => {
     //   console.log(data1.length);
     // });
-    // watch监听时，如果回调中没有参数，data1.value来操作数据。如果有参数val，val=data1.value
+    // 注意：1.watch监听时，如果回调中没有参数，data1.value来操作数据。如果有参数val，val=data1.value
+    // 注意2：数据data1从空数组变成了有内容的，watch能够监听到
     watch(data1, () => {
       // data1是data的别名，data在自定义hook中定义的是一个ref对象，ref<T|null>(null);因此，在setup中操作是用data1.value
       if (data1.value) {
