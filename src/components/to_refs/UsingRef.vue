@@ -25,7 +25,8 @@ export default defineComponent({
     // 在页面中获取焦点，时机肯定是组件完全挂载到页面以后，使用生命周期钩子onMounted
     onMounted(() => {
       if (inputObj.value) {
-        // 判断一下，如果inputObj.value不是null，空对象，才可以调用focus()方法
+        // 判断一下，如果inputObj.value不是null(这个inputObj.value是ref对象中，操作时添加一个value,不是
+        // 文本框中的内容那个value)，表明元素input渲染完成了，才可以调用focus()方法
         inputObj.value.focus();
       }
     });
