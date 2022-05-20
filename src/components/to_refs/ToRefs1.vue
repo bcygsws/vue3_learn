@@ -22,7 +22,7 @@ export default defineComponent({
       // info.name += '**';
       // 同toRefs处理，解构出来的name，是ref
       name.value += '**';
-    }, 1000);
+    }, 2000);
     // return { info };
     return { name, age };
   }
