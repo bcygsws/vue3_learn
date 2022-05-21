@@ -94,10 +94,12 @@ export default defineComponent({
       console.log(count3.value);
     }
     function handleObjChange() {
-      user.age++;
-      console.log(user.age);
+      // user最外层属性
+      // user.age++;
+      // console.log(user.age);
+      // user内层属性
       user.wife.name += '++';
-      user.wife.cars[0] = '玛莎拉蒂';
+      user.wife.cars[0] += '&&';
     }
     return {
       count3,
