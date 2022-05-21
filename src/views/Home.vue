@@ -1,7 +1,7 @@
 <template>
   <h3>这是Home组件</h3>
   <!-- setup和ref使用演示组件 -->
-  <router-link to="/home/learn">二、这是setup和ref演示组件</router-link>
+  <router-link to="/home/learn">二、vue3响应式两个重要对象-ref和reactive</router-link>
   <router-link to="/home/update">三、操作代理数据，影响界面更新</router-link>
   <router-link to="/home/setup">四、setup的执行时机</router-link>
   <!-- 计算属性和监听 -->

@@ -1,5 +1,7 @@
+/** * @description: * @event:
+vue3响应式的两个对象-ref和reactive，路径：components/setup_ref * @return {*} */
 <template>
-  <h3>二、这是setup和ref演示组件</h3>
+  <h3>二、vue3响应式两个重要对象-ref和reactive</h3>
   <!-- <h4>vue2方式</h4>
   <button @click="handlePlus">+1</button>
   <p>{{ count2 }}</p> -->
