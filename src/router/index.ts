@@ -22,6 +22,9 @@ import ProInj from '../components/provide_inject/ProInj.vue';
 import MyFat from '../components/refs_comu/MyFat.vue';
 import VuexFat from '../components/vuex/VuexFat.vue';
 import AttrsFat from '../components/attrs/AttrsFat.vue';
+import Transition from '../components/transition/Transition.vue';
+import DefineClass from '../components/transition/DefineClass.vue';
+import SomeWay from '../components/transition/SomeWay.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -89,8 +92,22 @@ const routes: Array<RouteRecordRaw> = [
         component: VuexFat
       },
       {
-          path: '/home/attrs',
-          component: AttrsFat
+        path: '/home/attrs',
+        component: AttrsFat
+      },
+      {
+        path: '/home/transition',
+        component: SomeWay,
+        children: [
+          {
+            path: '/home/transition/tr_name',
+            component: Transition
+          },
+          {
+            path: '/home/transition/define_class',
+            component: DefineClass
+          }
+        ]
       }
     ]
   },
