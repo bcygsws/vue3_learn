@@ -21,7 +21,6 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   name: 'DefineClass',
   setup() {
-    console.log('1-开始创建组件-setup');
     const flag = ref(true);
     return {
       flag

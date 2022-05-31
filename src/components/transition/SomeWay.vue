@@ -1,31 +1,32 @@
 <template>
   <div>
-<!-- transition动画的几种方式 -->
-  <router-link to="/home/transition/tr_name">1.使用transition的name属性更改默认类</router-link>
-  <router-link to="/home/transition/define_class">2.自定义动画类名</router-link>
-  <router-view></router-view>
+    <!-- transition动画的几种方式 -->
+    <router-link to="/home/transition/tr_name"
+      >1.使用transition的name属性更改默认类</router-link
+    >
+    <router-link to="/home/transition/define_class"
+      >2.自定义动画类名</router-link
+    >
+    <router-link to="/home/transition/life"
+      >3.transition的生命周期钩子</router-link
+    >
+    <router-link to="/home/transition/use_gsap"
+      >4.使用gsap库实现丝滑动画</router-link
+    >
+    <router-link to="/home/transition/use_animate"
+      >5.单独使用animate.css实现动画</router-link
+    >
+    <router-link to="/home/transition/tr_group"
+      >6.使用transition-group实现动画</router-link
+    >
+    <router-view></router-view>
   </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent, reactive, toRefs, onBeforeMount, onMounted } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 export default defineComponent({
-  name: 'SomeWay',
-  setup() {
-    console.log('1-开始创建组件-setup')
-    const data = reactive({})
-    onBeforeMount(() => {
-      console.log('2.组件挂载页面之前执行----onBeforeMount')
-    })
-    onMounted(() => {
-      console.log('3.-组件挂载到页面之后执行-------onMounted')
-    })
-    return {
-      ...toRefs(data),
-    }
-  },
-})
-
+  name: 'SomeWay'
+});
 </script>
-<style scoped lang='less'>
-</style>
+<style scoped lang="less"></style>

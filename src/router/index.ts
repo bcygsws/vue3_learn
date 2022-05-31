@@ -24,7 +24,11 @@ import VuexFat from '../components/vuex/VuexFat.vue';
 import AttrsFat from '../components/attrs/AttrsFat.vue';
 import Transition from '../components/transition/Transition.vue';
 import DefineClass from '../components/transition/DefineClass.vue';
+import TransitionLife from '../components/transition/TransitionLife.vue';
 import SomeWay from '../components/transition/SomeWay.vue';
+import UsingGSAP from '../components/transition/UsingGSAP.vue';
+import UsingAnimate from '../components/transition/UsingAnimate.vue';
+import TransitionGroup from '../components/transition/TransitionGroup.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -106,6 +110,22 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/home/transition/define_class',
             component: DefineClass
+          },
+          {
+            path: '/home/transition/life',
+            component: TransitionLife
+          },
+          {
+            path: '/home/transition/use_gsap',
+            component: UsingGSAP
+          },
+          {
+            path: '/home/transition/use_animate',
+            component: UsingAnimate
+          },
+          {
+            path: '/home/transition/tr_group',
+            component: TransitionGroup
           }
         ]
       }
