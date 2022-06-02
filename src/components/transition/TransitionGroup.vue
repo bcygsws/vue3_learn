@@ -57,7 +57,7 @@ export default defineComponent({
   flex: 1;
   margin: 8.454rpx;
   border: 0.604rpx solid #ccc;
-  overflow: auto;
+  overflow: hidden;
   .wraps {
     display: flex;
     flex-wrap: wrap;

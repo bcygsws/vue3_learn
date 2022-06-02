@@ -20,6 +20,9 @@
  * cnpm i gsap --save
  * cnpm i animate.css --save
  *
+ * gsap除了可以设置过渡效果外，还能设置一个reactive对象的过渡效果，
+ * 在GSAPWatch中监听了num(定义的一个reactive对象)
+ *
  *
  *
  *

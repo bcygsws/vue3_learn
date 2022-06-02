@@ -29,6 +29,8 @@ import SomeWay from '../components/transition/SomeWay.vue';
 import UsingGSAP from '../components/transition/UsingGSAP.vue';
 import UsingAnimate from '../components/transition/UsingAnimate.vue';
 import TransitionGroup from '../components/transition/TransitionGroup.vue';
+import RandomNum from '../components/transition/RandomNum.vue';
+import GSAPWatch from '../components/transition/GSAPWatch.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -126,6 +128,14 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/home/transition/tr_group',
             component: TransitionGroup
+          },
+          {
+            path: '/home/transition/random_num',
+            component: RandomNum
+          },
+          {
+            path: '/home/transition/gsap_watch',
+            component: GSAPWatch
           }
         ]
       }

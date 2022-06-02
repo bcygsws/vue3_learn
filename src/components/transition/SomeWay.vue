@@ -19,6 +19,12 @@
     <router-link to="/home/transition/tr_group"
       >6.使用transition-group实现动画</router-link
     >
+    <router-link to="/home/transition/random_num"
+      >7.使用transition-group实现81宫格随机数字</router-link
+    >
+    <router-link to="/home/transition/gsap_watch"
+      >8.gsap配合watch监听</router-link
+    >
     <router-view></router-view>
   </div>
 </template>
