@@ -1,5 +1,4 @@
-/** * @description: * @event:
-vue3响应式的两个对象-ref和reactive，路径：components/setup_ref * @return {*} */
+/** * @description: start分支 * @event: 2023/1/15 * @return {*} */
 <template>
   <h3>二、vue3响应式两个重要对象-ref和reactive</h3>
   <!-- <h4>vue2方式</h4>
@@ -22,7 +21,6 @@ vue3响应式的两个对象-ref和reactive，路径：components/setup_ref * @r
  * 需求:点击按钮实现，count2和count3数值的增加
  * 分别使用vue2和vue3的方式实现
  * 一、vue2 data +methods
- *
  * 二、vue3 setup
  * 注意：setup是composition API的入口函数
  * 在setup中声明了count3和事件处理函数handlePlus，但是点击按钮，没有反应
