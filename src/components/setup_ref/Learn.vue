@@ -1,4 +1,4 @@
-/** * @description: start分支 * @event: 2023/1/15 * @return {*} */
+/** * @description: 2.start分支 * @event: 2023/1/15 * @return {*} */
 <template>
   <h3>二、这是setup和ref演示组件</h3>
   <!-- <h4>vue2方式</h4>
@@ -125,7 +125,7 @@ export default {
   // }
   setup() {
     // 需求：显示基本数据类型count3，点击按钮可以更新
-    // count3的类型是Ref
+    // count3的类型是Ref，自动浅层解包；基本数据类型常用ref这个响应式API
     const count3 = ref(0);
     console.log(count3);
     // 需求：显示用户的基本信息（包含多个基本数据类型，使用对象），点击按钮可以更新用户信息
