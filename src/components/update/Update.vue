@@ -21,6 +21,8 @@ import { defineComponent, reactive } from 'vue';
  * 2.使用obj.gender/delete obj.age 是不能实现页面更新的；obj.gender的方式，不能将属性添加
  * 到目标对象obj中，页面不会更新；delete obj.age的方式，确实可以从目标对象中删除age属性，但
  * 是无法更新页面
+ * 
+ * b.尝试使用泛型或者接口，来去掉any这种类型定义
  *
  */
 export default defineComponent({
