@@ -23,7 +23,6 @@ import { defineComponent, reactive } from 'vue';
  * 是无法更新页面
  * 
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
- *
  */
 export default defineComponent({
   name: 'Update',
@@ -58,7 +57,7 @@ export default defineComponent({
       // delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
       console.log(user);
     }
-    return { user, updatePage };
+   return { user, updatePage };
   }
 });
 </script>
