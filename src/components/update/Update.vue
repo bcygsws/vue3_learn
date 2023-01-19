@@ -23,7 +23,6 @@ import { defineComponent, reactive } from 'vue';
  * 是无法更新页面
  * 
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
- *
  */
 export default defineComponent({
   name: 'Update',
@@ -59,7 +58,7 @@ export default defineComponent({
       console.log(user);
     }
 
-    return { user, updatePage };
+ADEFRSV     return { user, updatePage };
   }
 });
 </script>
