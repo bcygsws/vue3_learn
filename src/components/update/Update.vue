@@ -8,7 +8,9 @@
   <button @click="updatePage">更新数据和页面</button>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+// 定义代理对象的接口
+import {  defineComponent,reactive } from 'vue';
+import IObj from '../../types/person';
 // 代理数据影响界面更新
 /**
  *
@@ -26,11 +28,11 @@ import { defineComponent, reactive } from 'vue';
  */
 export default defineComponent({
   name: 'Update',
-  setup() {
+    setup(){
     // const obj = {
     // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面，最终失败，gender显示还是空值，
     //  而且Proxy代理对象中也没有gender属性；将obj的any类型注解去掉，恢复原状
-    const obj: any = {
+    const obj= {
       name: '张三',
       age: 25,
       wife: {
@@ -40,7 +42,7 @@ export default defineComponent({
       }
     };
     // 定义一个代理对象user,目标对象是obj
-    let user = reactive<any>(obj);
+    let user:IObj= reactive(obj);
     function updatePage() {
       // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
