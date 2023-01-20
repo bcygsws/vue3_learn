@@ -8,6 +8,7 @@
   <button @click="updatePage">更新数据和页面</button>
 </template>
 <script lang="ts">
+// 定义代理对象的接口
 import { defineComponent, reactive } from 'vue';
 import IObj from '../../types/person';
 // 代理数据影响界面更新
@@ -25,7 +26,6 @@ import IObj from '../../types/person';
  *
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
  */
-
 export default defineComponent({
   name: 'Update',
   setup() {
@@ -44,9 +44,7 @@ export default defineComponent({
     // 定义一个代理对象user,目标对象是obj
     let user: IObj = reactive(obj);
     function updatePage() {
-      // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
-      // 结果：控制台打印的obj对象确实增加了一个属性，gender，但是界面没有更新
       // obj.gender = '男'; // 报错：obj对象上不存在gender属性，为obj添加一个any的类型注解
       // 结果：控制台打印的 obj对象确实删除了age属性，但是界面没有更新
       // delete obj.age; // age的值没了，目标对象obj中也没有age属性了，但是页面没有更新

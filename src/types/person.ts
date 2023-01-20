@@ -2,7 +2,7 @@
  * @Description:
  * @Author: bcygsws@163.com
  * @Date: 2023-01-20 13:52:50
- * @LastEditTime: 2023-01-20 14:03:20
+ * @LastEditTime: 2023-01-20 14:29:50
  * @FilePath: \vue_shop_serverd:\Web-project\vue3_learn\src\types\person.ts
  */
 // 任意名字的可选属性[propName:string]:string
