@@ -9,6 +9,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import IObj from '../../types/person';
 // 代理数据影响界面更新
 /**
  *
@@ -21,25 +22,9 @@ import { defineComponent, reactive } from 'vue';
  * 2.使用obj.gender/delete obj.age 是不能实现页面更新的；obj.gender的方式，不能将属性添加
  * 到目标对象obj中，页面不会更新；delete obj.age的方式，确实可以从目标对象中删除age属性，但
  * 是无法更新页面
- * 
+ *
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
  */
-// 定义代理对象的接口
-interface IRow{
- key:string;
- value:string;
-}
-// 任意名字的可选属性[propName:string]:string
-// 或者固定名字的 可选属性;如：gender?:string
-interface IObj{
-  name:string;
-  age:number;
-  gender?:string;
-  wife:{
-    name:string;
-    age:number;
-    cars:IRow[]
-}
 
 export default defineComponent({
   name: 'Update',
@@ -47,7 +32,7 @@ export default defineComponent({
     // const obj = {
     // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面，最终失败，gender显示还是空值，
     //  而且Proxy代理对象中也没有gender属性；将obj的any类型注解去掉，恢复原状
-    const obj= {
+    const obj = {
       name: '张三',
       age: 25,
       wife: {
@@ -57,7 +42,7 @@ export default defineComponent({
       }
     };
     // 定义一个代理对象user,目标对象是obj
-    let user = reactive<IObj>(obj);
+    let user: IObj = reactive(obj);
     function updatePage() {
       // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
@@ -74,7 +59,7 @@ export default defineComponent({
       // delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
       console.log(user);
     }
-return { user, updatePage };
+    return { user, updatePage };
   }
 });
 </script>
