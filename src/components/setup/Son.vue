@@ -1,17 +1,25 @@
 <template>
-  <h5>这是Son子组件</h5>
-  <!-- 父组件传递的数据 -->
-  <p>{{ cmsg }}</p>
-  <!-- 子组件中data返回的属性会和setup中返回的属性合并，成组件的属性，重名setup中的优先 -->
-  <p>data中的count:{{ count }}</p>
-  <button @click="handle">调用的是setup中的handle</button>
-  <!-- setup中的info和data中的info重名，setup中优先使用 -->
-  <p>使用哪里的info?{{ info }}</p>
-  <!-- 点击按钮，分发事件emitxx -->
-  <button @click="toFat">点击按钮，分发事件</button>
-  <!-- 演示有状态数据，非响应式对象插槽，slots -->
-  <slot name="slot1"></slot>
-  <slot name="slot2"></slot>
+  <!-- 警告：[Vue warn]: Extraneous non-emits event listeners (emitxx) were passed to component but could not
+     be automatically inherited because component renders fragment or text root nodes. 
+    If the listener is intended to be a component custom event listener only, declare it using the "emits" 
+    option.
+    bug修复：弹出此警告的原因是：vue3中定义组件，模板template中不严格要求唯一根节点;Fat.vue文件中传入msg2属性；只需要同vue2中
+  为Son子组件添加一个唯一根节点 div.son_container即可，警告随之消失-->
+  <div class="son_container">
+    <h5>这是Son子组件</h5>
+    <!-- 父组件传递的数据 -->
+    <p>{{ cmsg }}</p>
+    <!-- 子组件中data返回的属性会和setup中返回的属性合并，成组件的属性，重名setup中的优先 -->
+    <p>data中的count:{{ count }}</p>
+    <button @click="handle">调用的是setup中的handle</button>
+    <!-- setup中的info和data中的info重名，setup中优先使用 -->
+    <p>使用哪里的info?{{ info }}</p>
+    <!-- 点击按钮，分发事件emitxx -->
+    <button @click="toFat">点击按钮，分发事件</button>
+    <!-- 演示有状态数据，非响应式对象插槽，slots -->
+    <slot name="slot1"></slot>
+    <slot name="slot2"></slot>
+  </div>
 </template>
 <script lang="ts">
 /**
@@ -82,7 +90,7 @@ export default defineComponent({
     }
   },
   // 解决分发给子组件的事件不能自动继承的警告,emits中分发事件名，是父组件绑定在子组件上@emitxx,emitxx写在子组件中，去掉警告
-  emits: ['emitxx'],
+  // emits: ['emitxx'],
   beforeCreate() {
     console.log('钩子beforeCreate执行了');
   },
@@ -113,7 +121,7 @@ export default defineComponent({
     function toFat() {
       // 分发事件
       // context.emit('父组件中@的事件名',传给父组件的参数)
-      context.emit('emitxx', '***');
+      context.emit('emitxx', '---');
     }
     const info = ref('望极蓝桥，但暮云千里，几重山，几重水');
     return { info, handle, toFat };
