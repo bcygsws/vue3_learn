@@ -9,9 +9,11 @@
     <Son :cmsg="msg" msg2="真香啊" @emitxx="handleEvent">
       <!-- 放入子组件中的插件模板v-slot:slot1,v-slot:slot2 -->
       <!-- vue3 新组件Suspense就是通过作用域插槽实现的v-slot:default放后来显示的，v-slot:fallback放后备内容 -->
+      <!-- <template v-slot:slot1> -->
       <template v-slot:slot1>
         <p>桃李春风一杯酒，江湖夜雨十年灯</p>
       </template>
+      <!-- <template v-slot:slot2> -->
       <template v-slot:slot2>
         <p>永忆江湖归白发，欲回天地入扁舟</p>
       </template>
@@ -21,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-// setup的执行时机
+// 一 、setup的执行时机
 import { defineComponent, ref } from 'vue';
 import Son from './Son.vue';
 import Detail from './Detail.vue';
