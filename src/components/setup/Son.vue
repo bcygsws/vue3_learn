@@ -30,10 +30,10 @@
  * 1.1 中返回的是一个对象myRef或方法，对象或方法可以在模板中直接使用；但是ref方式定义的对象，在setup内操作时，
  * 需要使用myRef.value
  * 1.2 setup在beforeCreate生命周期钩子之前执行,而且只执行一次
- * 1.3 setup在执行时，组件还没有创建出来(mounted阶段组件创建完成)，this还不能使用，就不能通过this调用
- * data/computed/props/methods
+ * 1.3 setup在执行时，组件还没有创建出来(mounted阶段组件创建完成，mounted阶段可以调用组件实例this)，this还不能使用，
+ * 就不能通过this调用data/computed/props/methods
  *
- * 二、setup的返回值
+ * 二、setup的返回值(当前组合是API和选项式API的组合使用，不推荐)
  * 2.1 setup的返回值一般是一个对象，这个对象的属性和方法，可以提供给模板直接使用
  * 2.2 setup返回对象中的属性，会和data函数（vue3仍然可以写）中返回对象的属性合并成组件的属性
  * 2.3 setup返回对象中方法，会和methods中定义的方法合并成组件的方法
@@ -46,7 +46,7 @@
  * }
  *
  * 特别注意：
- * 3.1 setup执行在beforeCreated之前，只能访问props,attrs,slots,emit;不能访问data,methods,computed
+ * 3.1 setup执行在beforeCreate之前，只能访问props,attrs,slots,emit;不能访问data,methods,computed
  * 3.2 context 上下文对象是一个普通的js对象，它是非响应式的，可以对它进行解构
  * 而其中的attrs和slots都是有状态对象，这就意味着，它们会随着组件本身的的更新而更新。因此，应该避免对它们解构，
  * 而是使用attrs.x slots.x引用属性
@@ -59,11 +59,6 @@
  * props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
  *
- *
- *
- *
- *
- *
  */
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
@@ -72,11 +67,13 @@ export default defineComponent({
     return {
       count: 10
       // 同名时，setup中的属性优先，data中的info会被setup中info取代
+      // error  Duplicated key 'info'
       // info: '曾经沧海难为水'
     };
   },
   methods: {
     // 同名的方法，setup中返回的方法优先使用
+    // error  Duplicated key 'handle'
     // handle() {
     //   console.log('调用了methods的handle?');
     //   this.count += 1;
