@@ -58,8 +58,7 @@
  *
  * props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
- * 
- * 
+ *
  */
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
