@@ -37,7 +37,8 @@ export default defineComponent({
     Detail
   },
   setup() {
-    let msg = ref('what are you nong sha lei');
+    // msg这个目标对象（代理对象），是引用类型；栈中存储对象的地址，堆中存放对象的键值；此时键值变化，是可以使用const关键字声明的 
+    const msg = ref('what are you nong sha lei');
     function handle() {
       // 点击按钮更新数据
       msg.value += '***';
