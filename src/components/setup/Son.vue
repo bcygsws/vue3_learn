@@ -115,7 +115,8 @@ export default defineComponent({
     function handle() {
       console.log('调用了setup中的handle');
     }
-    // 模拟的实际上是子组件向父组件传值，改变了父组件中的msg的值，而这个msg值又是响应式的，会影响当前子组件zhong
+    // 单向数据流，需要使用emit向父组件Fat中传递一个事件
+    // 模拟的实际上是子组件向父组件传值，改变了父组件中的msg的值，而这个msg值又是响应式的，会影响当前子组件中
     function toFat() {
       // 分发事件
       // context.emit('父组件中@的事件名',传给父组件的参数)

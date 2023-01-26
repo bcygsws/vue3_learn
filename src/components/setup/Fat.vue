@@ -1,14 +1,15 @@
+/**书写ts的文件中，切换成vue文件 */
 <template>
   <div>
-    <h4>Fat组件，演示setup的执行时机</h4>
+    <h2>Fat组件，演示setup的执行时机</h2>
     <!-- setup中数据渲染 -->
     <p>{{ msg }}</p>
     <button @click="handle">更新数据</button>
     <!-- msg里的数据传递给子组件 -->
     <!-- 在Son子组件中，点击按钮分发事件 -->
     <Son :cmsg="msg" msg2="真香啊" @emitxx="handleEvent">
-      <!-- 放入子组件中的插件模板v-slot:slot1,v-slot:slot2 -->
-      <!-- vue3 新组件Suspense就是通过作用域插槽实现的v-slot:default放后来显示的，v-slot:fallback放后备内容 -->
+      <!-- 1.放入子组件中的插件模板v-slot:slot1,v-slot:slot2 -->
+      <!-- 2.其他用处：vue3 新组件Suspense就是通过作用域插槽实现的v-slot:default放后来显示的，v-slot:fallback放后备内容 -->
       <!-- <template v-slot:slot1> -->
       <template v-slot:slot1>
         <p>桃李春风一杯酒，江湖夜雨十年灯</p>
