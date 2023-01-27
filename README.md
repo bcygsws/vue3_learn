@@ -10,7 +10,7 @@
 
 - 安装或者升级 npm install -g @vue/cli
 
-- 保证 vue cli 版本在 4.5.0 以上;vue --version
+- 保证 vue cli 版本在 4.5.0 以上;vue --version或者vue -V
 
 - 创建项目 vue create my-project
 
