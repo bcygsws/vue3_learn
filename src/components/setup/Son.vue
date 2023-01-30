@@ -56,7 +56,7 @@
  * const {name}=toRefs(props);
  * 然后，在setup中操作name.value就可以了，这是toRefs的用法，将一个对象分解，而不丧失其响应式，对象中的每个属性都是一个ref
  *
- * props：包含了props配置声明且传了的所有属性的对象
+ * 其中props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
  *
  */
