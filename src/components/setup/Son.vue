@@ -25,8 +25,8 @@
 /**
  *
  * @ 参考文档：https://blog.csdn.net/weixin_43613849/article/details/120262509
- *
  * 一、setup的执行时机-详细
+ * 
  * 1.1 中返回的是一个对象myRef或方法，对象或方法可以在模板中直接使用；但是ref方式定义的对象，在setup内操作时，
  * 需要使用myRef.value
  * 1.2 setup在beforeCreate生命周期钩子之前执行,而且只执行一次
