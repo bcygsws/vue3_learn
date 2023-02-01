@@ -21,6 +21,8 @@
     </Son>
     <!-- 演示ref和reactive的细节 -->
     <Detail></Detail>
+    <!-- 演示context解构出的expose语法糖 -->
+    <ExpFat></ExpFat>
   </div>
 </template>
 <script lang="ts">
@@ -28,6 +30,7 @@
 import { defineComponent, ref } from 'vue';
 import Son from './Son.vue';
 import Detail from './Detail.vue';
+import ExpFat from './ExpFat.vue'
 export default defineComponent({
   name: 'Fat',
   // 解决传入组件的属性不能自动继承的警告
@@ -35,7 +38,8 @@ export default defineComponent({
   // 注册组件
   components: {
     Son,
-    Detail
+    Detail,
+    ExpFat
   },
   setup() {
     // msg这个目标对象（代理对象），是引用类型；栈中存储对象的地址，堆中存放对象的键值；此时键值变化，是可以使用const关键字声明的 
