@@ -45,19 +45,22 @@
  *    return {};
  * }
  *
- * 四、特别注意：
+ * 四、特别注意
  * 3.1 setup执行在beforeCreate之前，只能访问props,attrs,slots,emit;不能访问data,methods,computed
  * 3.2 context 上下文对象是一个普通的js对象，它是非响应式的，可以对它进行解构
  * 而其中的attrs和slots都是【有状态对象】，这就意味着，它们会随着组件本身的的更新而更新。因此，应该避免对它们解构，
  * 而是使用attrs.x slots.x引用属性
  * 3.3 attrs和slots都是非响应式的。然而，如果想应用这种副作用，需要在onUpdated钩子中处理
- *
  * 3.4 props是响应式的，因此，不能随便对其解构，解构会使其丧失响应式；如果非要解构，使用toRefs对象
  * const {name}=toRefs(props);
  * 然后，在setup中操作name.value就可以了，这是toRefs的用法，将一个对象分解，而不丧失其响应式，对象中的每个属性都是一个ref
  *
  * 其中props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
+ * 
+ * 五、返回值
+ * 5.1 返回值：可以供组件模板和组件实例（在其他选项式API中才能用，setup由于在beforeCreate之前执行一次，里面的this还是undefined）使用
+ * 
  *
  */
 import { defineComponent, ref } from 'vue';
