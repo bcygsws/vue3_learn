@@ -10,7 +10,7 @@
 
 - 安装或者升级 npm install -g @vue/cli
 
-- 保证 vue cli 版本在 4.5.0 以上;vue --version或者vue -V
+- 保证 vue cli 版本在 4.5.0 以上;vue --version 或者 vue -V
 
 - 创建项目 vue create my-project
 
@@ -90,10 +90,10 @@
 
 ### setup 的执行时机
 
-- setup 执行发生在 beforeCreate 和 created 之前，因此 setup 不能操作 data,methods,computed 等属性；只能操作 setup 固有的参数 props,attrs,slots,emit 这四个属性
+- setup 执行发生在 beforeCreate 和 created 之前，因此 setup 不能操作 data,methods,computed 等属性；只能操作 setup 固有的参数 props,attrs,slots,emit,expose 这五个属性
 - 在 vue3 中 setup 被当做 vue2 中生命周期钩子 beforeCreate 和 created 使用，准确的说是顶替了这两个钩子的使用
 
-### setup 的参数(props,{attrs,slots,emit})
+### setup 的参数(props,{attrs,slots,emit,expose})
 
 #### [setup 参数官方文档](https://www.javascriptc.com/vue3js/guide/composition-api-setup.html#%E4%B8%8A%E4%B8%8B%E6%96%87)
 
@@ -111,6 +111,16 @@
 #### 常用参数 emits，用来分发事件的
 
 - 常用于子组件向父组件传值，类似 vue2 中的 this.$emit(父组件绑定的方法名称@emitxx,参数 val)
+
+#### 参数 expose，新增
+
+- expose 用于显式的限制暴露出的公共属性；父组件通过模板引用可以获取子组件中 expose({count})暴露出的那些属性
+
+##### 细节-模板引用步骤
+
+- 模板中，ref="myson"
+- setup 中 const mySon=ref()，并使用 return 返回 mySon
+- mySon.value.count 中就可以获取子组件暴露的属性 count
 
 ## Bug 修复
 
