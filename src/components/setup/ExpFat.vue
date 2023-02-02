@@ -10,6 +10,8 @@
  * @ expose语法糖的演示
  * 文档：https://blog.csdn.net/LueLueLue77/article/details/124964058
  *
+ * expose实质上，实现子组件向父组件传值（父组件操作子组件，原本需要子组件使用emit来实现的，expose简化了这种通信方式 ）
+ *
  *
  */
 import { defineComponent, ref } from 'vue';
@@ -21,8 +23,9 @@ export default defineComponent({
   // expose用于显式地有限制的暴露属性，父组件只能通过【模板引用】获得子组件暴露的那些属性
   setup(props) {
     const mySon = ref();
-    console.log(mySon)
+    console.log(mySon);
     const changeCount = () => {
+      console.log(mySon.value); // 点击按钮时，mounted阶段已经执行，mySon.value才由undefined变成对象，而且是一个Proxy代理对象
       mySon.value.count += 1;
     };
     return { mySon, changeCount };
