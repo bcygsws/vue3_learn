@@ -10,7 +10,7 @@
 
 - 安装或者升级 npm install -g @vue/cli
 
-- 保证 vue cli 版本在 4.5.0 以上;vue --version或者vue -V
+- 保证 vue cli 版本在 4.5.0 以上;vue --version 或者 vue -V
 
 - 创建项目 vue create my-project
 
@@ -90,10 +90,10 @@
 
 ### setup 的执行时机
 
-- setup 执行发生在 beforeCreate 和 created 之前，因此 setup 不能操作 data,methods,computed 等属性；只能操作 setup 固有的参数 props,attrs,slots,emit 这四个属性
+- setup 执行发生在 beforeCreate 和 created 之前，因此 setup 不能操作 data,methods,computed 等属性；只能操作 setup 固有的参数 props,attrs,slots,emit,expose 这五个属性
 - 在 vue3 中 setup 被当做 vue2 中生命周期钩子 beforeCreate 和 created 使用，准确的说是顶替了这两个钩子的使用
 
-### setup 的参数(props,{attrs,slots,emit})
+### setup 的参数(props,{attrs,slots,emit,expose})
 
 #### [setup 参数官方文档](https://www.javascriptc.com/vue3js/guide/composition-api-setup.html#%E4%B8%8A%E4%B8%8B%E6%96%87)
 
@@ -206,6 +206,15 @@
   - useMapper.js 中声明 useStateMapper,useActionsMapper 等函数
 - 命名空间：vuex 是单状态树，如果所有的状态都集中到一个对象上，这个对象可能会变得非常臃肿。vue 允许将 store 分成许多模块，每个模块拥有自己的 state,getters,mutations,actions,modules
 - 命名空间中操作默认空间的数据的方式，[参考文档](https://blog.csdn.net/lzb348110175/article/details/89387495?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=1)
+#### 参数 expose，新增
+
+- expose 用于显式的限制暴露出的公共属性；父组件通过模板引用可以获取子组件中 expose({count})暴露出的那些属性
+
+##### 细节-模板引用步骤
+
+- 模板中，ref="myson"
+- setup 中 const mySon=ref()，并使用 return 返回 mySon
+- mySon.value.count 中就可以获取子组件暴露的属性 count
 
 ## Bug 修复
 
