@@ -4,18 +4,26 @@
 <script lang="ts">
 /**
  *
- * @ 比较vue2和vue3的数据响应式
+ * @ 比较vue2和vue3的数据响应式的底层实现原理
+ * reactive分支
+ * 八、vue2和vue3数据响应式对比
  *
  *
  * vue2的响应式：
- * 详情参考：https://www.cnblogs.com/fundebug/p/responsive-vue.html
+ * 详情参考文档：https://www.cnblogs.com/fundebug/p/responsive-vue.html
+ * 一、vue2响应式实现原理步骤-术语
+ * 1.1数据劫持/数据代理（侦测数据的变化）
+ * 1.2收集依赖（视图中依赖哪些数据）
+ * 1.3发布订阅模式（“数据”变化时，自动通知需要更新的视图部分，并进行更新）
+ * 
+ * 
  * 对象：是通过defineProperty对对象的属性值的读取和修改进行劫持（监视/拦截）
  * 数组：通过重写数组的【更新数组的元素的一系列方法】来实现元素修改的劫持，例如：Array的unshift、push、pop、shift
  * 等方法都需要重写
  *
  * 缺点：
- * 1.添加和删除属性，页面不更新
- * 2.通过下标更改元素值(arr[3]="更改元素值")或更新length，页面不更新
+ * 1.对象中：添加和删除属性，页面不更新
+ * 2.数组中：通过下标更改元素值(arr[3]="更改元素值")或更新length，页面不更新
  *
  *
  * Object.defineProperty(data,"count",{
