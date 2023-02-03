@@ -83,7 +83,6 @@ export default defineComponent({
     // watch方式一、使用watch的两个特性来监听，如果数据层次很深，只监视外层的数据,此处监视user,user中有多个属性
     // 1.深度监听 deep:true; 默认值false
     // 2.初始化立即执行 immediate:true; 默认值为false
-
     // a.watch回调中不使用参数
     // watch(
     //   user,
