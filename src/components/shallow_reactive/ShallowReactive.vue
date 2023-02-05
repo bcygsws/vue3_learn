@@ -58,18 +58,27 @@ export default defineComponent({
       // m1.fallow.cars.red += '1';
       // console.log(m1);
 
-      // m2：浅监视、浅响应式、浅劫持。恰好是shallowReadonly的补集
-      // m2.name += '==';
-      m2.fallow.cars.red += '1';
+      // 二、shallowReactive的使用
+      // m2：shallowReactive是浅监视、浅响应式、浅劫持。恰好是shallowReadonly的补集
       // m2仍然是一个Proxy对象，深层次的数据能够改变，但是深层次的数据改变不会触发页面更新
-      console.log(m2);
+      // 三种情形：
+      // 2.1 单独作用m2的最外层属性name;数据更新，且触发页面更新
+      // m2.name += '==';
+      // 2.2 单独作用m2的内层属性，fallow.cars;数据更新，但是不能触发页面国内新能
+      // 2.3 m2最外层和最内层的对象更改操作都有，则深层次的更改仍然会显示在页面中（原因是存在浅层的劫持name,更新页面的同时，会将
+      // 深层次改变的数据，显示在页面上）
+
+      // m2.fallow.cars.red += '1';
+      // console.log(m2);
+      // 三、Ref对象的使用（Ref作用于对象，会按照reactive进行处理）
       // 1.m3：ref传入对象，内部会按照reactive进行处理，等效于第一种情形了
       // 2.m3中 _value是一个代理对象Proxy
       // 3.m3深监视、深劫持、深度响应式
-      // m3.value.name += '==';
-      // m3.value.fallow.cars.red += '1';
-      // console.log(m3); // m3里面的属性_shallow: false，表示是深监视，深劫持
+      m3.value.name += '==';
+      m3.value.fallow.cars.red += '11';
+      console.log(m3); // m3里面的属性_shallow: false，表示是深监视，深劫持
 
+      // 四、shallowRef的使用（只会改变value值，不会进行对象的reactive处理）
       // m4:浅ref shallowRef
       // 打印m4中是一个Ref对象---不再是Proxy代理对象了,最外层属性和深层次属性的数据都能改变，但是不能触发页面更新
       // m4.value.name += '==';
@@ -78,6 +87,7 @@ export default defineComponent({
       // console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
 
       // m5:shallowRef只会处理value的响应式，不会进行对象的reactive处理
+      // 处理基本类型数据（非对象，Ref遇到对象，会reactive处理）数据改变，同时触发页面更新
       // m5.value += 1;
     }
     return {
@@ -102,9 +112,6 @@ export default defineComponent({
  * 3.一般情况下，用ref和reactive即可
  * 4.如果数据的结构比较深，需求是只处理最外层的属性，使用shallowReactive
  * 5.如果一个对象数据，后面会产生新的对象来替换，可以使用shallowRef
- *
- *
- *
  *
  */
 </script>
