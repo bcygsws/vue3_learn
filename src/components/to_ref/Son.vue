@@ -8,7 +8,7 @@
   <p>length:{{ length }}</p>
 </template>
 <script lang="ts">
-import { defineComponent, toRef, computed, Ref } from 'vue';
+import { defineComponent, toRef, computed, Ref } from "vue";
 // 别人封装的获取长度函数
 // const getLength=computed((age:Ref)=>{})
 function getLength(age: Ref) {
@@ -19,34 +19,33 @@ function getLength(age: Ref) {
   });
 }
 export default defineComponent({
-  name: 'Son',
+  name: "Son",
   props: {
     age: {
       type: Number,
-      required: true // 必须的
+      required: true, // required关键字声明，必须接收的props属性
     },
     money: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     // 要使用传入的age,使用setup的参数props
     console.log(props);
-    // 别人定义的函数getLength参数接收的是Ref类型数据，而目前age是number类型数据，因此需要把number类型转换成Ref类型
-    const length = getLength(toRef(props, 'age'));
+    // 别人定义的函数getLength参数接收的是Ref类型数据，props中接收的父组件toRef传递过来的age,是普通数值；
+    // 而目前age是number类型数据，因此需要把number类型转换成Ref类型
+    const length = getLength(toRef(props, "age"));
     return {
-      length
+      length,
     };
-  }
+  },
 });
 /**
  *
  *  @ age:Ref
  * 目前的参数是number类型，number类型转换成Ref类型，才能通过类型校验
  * toRef(props,'age');
- *
- *
  *
  */
 </script>
