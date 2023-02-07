@@ -20,11 +20,10 @@ function getLength(age: Ref) {
 }
 export default defineComponent({
   name: "Son",
-  // setup中没有返回age和money；原因是：另外声明了选项式API props,props里包含了age和money
   props: {
     age: {
       type: Number,
-      required: true, // 必须的
+      required: true, // required关键字声明，必须接收的props属性
     },
     money: {
       type: Number,
@@ -34,8 +33,8 @@ export default defineComponent({
   setup(props) {
     // 要使用传入的age,使用setup的参数props
     console.log(props);
-    // 别人定义的函数getLength参数接收的是Ref类型数据，父组件绑定传递过来的值age是number类型数据，因此需要把number类型
-    // 转换成Ref类型
+    // 别人定义的函数getLength参数接收的是Ref类型数据，props中接收的父组件toRef传递过来的age,是普通数值；
+    // 而目前age是number类型数据，因此需要把number类型转换成Ref类型
     const length = getLength(toRef(props, "age"));
     return {
       length,
@@ -47,8 +46,6 @@ export default defineComponent({
  *  @ age:Ref
  * 目前的参数是number类型，number类型转换成Ref类型，才能通过类型校验
  * toRef(props,'age');
- *
- *
  *
  */
 </script>
