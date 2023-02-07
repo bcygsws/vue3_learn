@@ -6,6 +6,7 @@
   <p>年龄：{{ age }}</p>
   <p>金钱：{{ money }}</p>
   <button @click="update">更新数据，观察数据变化</button>
+  <!-- 父组件自然流到子组件，单向数据流 -->
   <Son :age="age" :money="money"></Son>
 </template>
 <script lang="ts">
@@ -17,7 +18,7 @@ import Son from './Son.vue';
  * toRef 为源响应式对象上的某个属性创建了一个ref对象，二者同步操作的是同一数值，且同步更新
  * 语法：const age=toRef(state,'age');和解构toRefs(state)拿到age是一个意思
  *
- * ref相当于把原来的对象的属性做了一份拷贝，操作时和原来的数据之间互不影响
+ * 将对象中的某个属性引用传入ref(),相当于把原来的对象的属性做了一份拷贝，操作时和原来的数据之间互不影响
  *
  *
  */
