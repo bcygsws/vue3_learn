@@ -21,7 +21,7 @@ export default defineComponent({
     setInterval(function () {
       // info.name += '**';
       // 同toRefs处理，解构出来的name，是ref
-      name.value += '**';
+      // name.value += '**';
     }, 2000);
     // return { info };
     return { name, age };
