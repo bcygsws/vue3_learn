@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h3>这是Home组件</h3>
-    <HelloWorld></HelloWorld>
     <!-- <p>{number}</p> -->
     <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
     <p>{{ number }}</p>
@@ -13,7 +12,6 @@
 <script lang="ts">
 // vue3的script和setup语法，推荐使用Volar,注意Volar和原来vue2的Vetur是互斥的；使用Volar时，搜索Vetur插件禁用
 // 在Home中定义一个子组件HelloWorld
-import HelloWorld from '../components/HelloWorld.vue';
 import Learn from '../components/setup_ref/Learn.vue';
 import { defineComponent } from 'vue';
 // 暴露出一个定义好的组件
@@ -22,7 +20,6 @@ export default defineComponent({
   name: 'Home',
   components: {
     // 注册一个子组件
-    HelloWorld,
     Learn
   },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
