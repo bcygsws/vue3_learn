@@ -37,6 +37,7 @@
   <router-link to="/home/v_model">十七、v-model实现双向通信</router-link>
   <router-link to="/home/refs_comu">十八、vue组件通信之三-refs方法</router-link>
   <router-link to="/home/transition">十九、vue3内置组件transition</router-link>
+  <router-link to="/home/async_suspense">二十、vue3中定义异步组件和特殊组件Suspense</router-link>
   <router-view></router-view>
   <div class="home">
     <h3>这是Home组件</h3>

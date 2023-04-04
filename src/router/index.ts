@@ -31,6 +31,7 @@ import UsingAnimate from '../components/transition/UsingAnimate.vue';
 import TransitionGroup from '../components/transition/TransitionGroup.vue';
 import RandomNum from '../components/transition/RandomNum.vue';
 import GSAPWatch from '../components/transition/GSAPWatch.vue';
+import AsyncFat from '../components/async_suspense/AsyncFat.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -100,6 +101,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/home/attrs',
         component: AttrsFat
+      },
+      {
+        path:'/home/async_suspense',
+        component:AsyncFat
       },
       {
         path: '/home/transition',
