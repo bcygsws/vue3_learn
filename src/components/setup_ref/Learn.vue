@@ -40,7 +40,8 @@
  * 1.ref的作用是定义一个响应式数据，返回一个响应式对象，如果要对其值进行操作，使用count.value
  * let count=ref(0);在setup中count是一个对象，count.value可以拿到响应式对象count的初始值0
  *
- * 2.但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count
+ * 2.但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count;在模板中使用返回值时，vue3会自动浅层解包，
+ * 因此在模板中不需要书写.value
  *
  * 接上面，ref定义一个基本类型的响应式数据，那么引用类型的响应式数据，如何实现呢？
  * 使用reactive
