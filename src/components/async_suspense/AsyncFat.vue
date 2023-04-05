@@ -14,8 +14,8 @@
   </template>
 </template>
 <script>
-import Async from './Async.vue';
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
+const Async = defineAsyncComponent(() => import('./Async.vue'));
 export default {
   components: { Async },
   setup() {
