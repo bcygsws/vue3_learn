@@ -3,6 +3,12 @@
   <div>{{ msg }}</div>
 </template>
 <script>
+  /**
+   * 
+   *  Promise的使用
+   * 
+   * 
+    */
 const getInfo = async () => {
   // 2000ms后，再处理promise中的resolve;用new Promise做了一个延时操作；外层再套一个defineAsyncComponent实现定义异步组件（AsyncFat.vue文件中）
   await new Promise((resolve) => setTimeout(resolve, 2000));
