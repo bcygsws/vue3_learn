@@ -6,7 +6,8 @@
   /**
    * 
    *  Promise的使用
-   * 
+   * 参考文档：
+   * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
    * 
     */
 const getInfo = async () => {
