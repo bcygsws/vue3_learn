@@ -17,12 +17,18 @@
  * Promise.race([p1,p2,p3……]);
  * all函数：所有数据请求都成功了才执行
  * Promise.all([p1,p2,p3……]);
+ * 
+ * 特别注意：
+ * 1.await + Promise对象时，必须获取resolve和reject返回的结果，才会执行后面的代码；
+ * 2.如果是非Promise对象，把这个非Promise对象作为返回结果
  *
  *
  */
 const getInfo = async () => {
   // 2000ms后，再处理promise中的resolve;用new Promise做了一个延时操作；外层再套一个defineAsyncComponent实现定义异步组件（AsyncFat.vue文件中）
+  // （resolve,reject）其中resolve和reject参数都是函数
   await new Promise((resolve) => setTimeout(resolve, 2000));
+  console.log(1111);
   const info = {
     name: '蓉蓉',
     age: 18
