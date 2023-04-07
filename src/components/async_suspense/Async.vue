@@ -3,13 +3,23 @@
   <div>{{ msg }}</div>
 </template>
 <script>
-  /**
-   * 
-   *  Promise的使用
-   * 参考文档：
-   * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
-   * 
-    */
+/**
+ *
+ *  Promise的使用
+ * 参考文档：
+ * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
+ * 1.为解决回调地狱，提出的一种异步编程解决方案-Promise
+ * 2.Promise是一种链式调用
+ * pending到fulfilled表示 已成功
+ * pending到rejected表示 已失败
+ * 3.Promise还有两个重要方法：
+ * 竞争函数race；执行先成功获得数据的请求
+ * Promise.race([p1,p2,p3……]);
+ * all函数：所有数据请求都成功了才执行
+ * Promise.all([p1,p2,p3……]);
+ *
+ *
+ */
 const getInfo = async () => {
   // 2000ms后，再处理promise中的resolve;用new Promise做了一个延时操作；外层再套一个defineAsyncComponent实现定义异步组件（AsyncFat.vue文件中）
   await new Promise((resolve) => setTimeout(resolve, 2000));
