@@ -28,14 +28,18 @@
  * const xhr=new XMLHttpRequest();
  * 2.2 设置请求方法和请求地址url
  * xhr.open(方式,url)
- * 
+ * 注意：如果要得到json类型响应数据，需要手动设置请求类型为json
+ * 2.2.1 需要设置响应体为json
+ * xhr.responseType="json";
+ * 2.2.2 同时open中设置的请求方式仍然是get类型；xhr.open('get',url)
+ *
  * 2.3 发送请求
  * 如果是post请求方式，需要在send发送请求之前设置 请求响应头
  * xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
  * xhr.setRequestHeader('name','atGuiGu');
  * xhr.send();
  * 同时，post请求方式时，send可能需要传参，示例：xhr.send('a=100&b=200&c=300');
- * 
+ *
  * 2.4 监听服务端请求的返回状态
  * readyState值不同，表示ajax请求处于不同阶段
  * 0 未初始化
@@ -43,14 +47,31 @@
  * 2 send方法调用完毕
  * 3 服务端返回部分请求数据
  * 4 服务端返回所有请求数据
- * 
+ *
  * onreadystatechange=function(){
  *    if(xhr.readyState===4){
  *        if(xhr.status>=200 && xhr.status<300){
- * 
+ *
  *  }
- * 
+ *
  *  }
+ * }
+ *
+ * 二、取消请求
+ * btns[1].addEventListener('click',function(){
+ *    xhr.abort();
+ * })
+ * 三、请求超时异常
+ * 3.1 xhr对象创建以后，设置请求超时时间，假设设为2000ms
+ * xhr.timeout=2000;
+ * 超时回调
+ * xhr.ontimeout=function(){
+ * // 超时逻辑
+ * }
+ *
+ * 网络异常回调
+ * xhr.onerror=function(){
+ * // 网络异常逻辑代码
  * }
  *
  *
