@@ -17,15 +17,42 @@
  * Promise.race([p1,p2,p3……]);
  * all函数：所有数据请求都成功了才执行
  * Promise.all([p1,p2,p3……]);
- * 
+ *
  * 特别注意：
  * 1.await + Promise对象时，必须获取resolve和reject返回的结果，才会执行后面的代码；
  * 2.如果是非Promise对象，把这个非Promise对象作为返回结果
- * 
+ *
  * 二、回顾原生AJAX的创建过程：
  * https://blog.csdn.net/nilmao/article/details/123894943?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-123894943-blog-127348369.235%5Ev28%5Epc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-123894943-blog-127348369.235%5Ev28%5Epc_relevant_recovery_v2&utm_relevant_index=1
+ * 2.1 创建ajax对象
+ * const xhr=new XMLHttpRequest();
+ * 2.2 设置请求方法和请求地址url
+ * xhr.open(方式,url)
  * 
+ * 2.3 发送请求
+ * 如果是post请求方式，需要在send发送请求之前设置 请求响应头
+ * xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+ * xhr.setRequestHeader('name','atGuiGu');
+ * xhr.send();
+ * 同时，post请求方式时，send可能需要传参，示例：xhr.send('a=100&b=200&c=300');
  * 
+ * 2.4 监听服务端请求的返回状态
+ * readyState值不同，表示ajax请求处于不同阶段
+ * 0 未初始化
+ * 1 open方法调用完毕
+ * 2 send方法调用完毕
+ * 3 服务端返回部分请求数据
+ * 4 服务端返回所有请求数据
+ * 
+ * onreadystatechange=function(){
+ *    if(xhr.readyState===4){
+ *        if(xhr.status>=200 && xhr.status<300){
+ * 
+ *  }
+ * 
+ *  }
+ * }
+ *
  *
  */
 const getInfo = async () => {
