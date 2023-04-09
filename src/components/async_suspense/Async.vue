@@ -28,6 +28,7 @@
  * const xhr=new XMLHttpRequest();
  * 2.2 设置请求方法和请求地址url
  * xhr.open(方式,url)
+ * xhr.open(方式,url,第三个参数可选：布尔值，true表示异步/false表示同步)
  *
  * 注意：如果要得到j响应体数据类型为json，需要手动设置请求类型为json;这一步写在xhr.open()语句之前
  *
