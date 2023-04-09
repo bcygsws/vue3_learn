@@ -28,7 +28,9 @@
  * const xhr=new XMLHttpRequest();
  * 2.2 设置请求方法和请求地址url
  * xhr.open(方式,url)
- * 注意：如果要得到json类型响应数据，需要手动设置请求类型为json
+ *
+ * 注意：如果要得到j响应体数据类型为json，需要手动设置请求类型为json;这一步写在xhr.open()语句之前
+ *
  * 2.2.1 需要设置响应体为json
  * xhr.responseType="json";
  * 2.2.2 同时open中设置的请求方式仍然是get类型；xhr.open('get',url)
@@ -77,6 +79,15 @@
  *
  */
 const getInfo = async () => {
+  /**
+   *
+   * 参考文档：
+   * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
+   *
+   * await和Promise配合使用，效果是：
+   * await new Promise()返回一个resolve()或者reject()函数，必须等待resolve和reject执行完毕后，才会跟着执行当前语句后面的代码
+   *
+   */
   // 2000ms后，再处理promise中的resolve;用new Promise做了一个延时操作；外层再套一个defineAsyncComponent实现定义异步组件（AsyncFat.vue文件中）
   // （resolve,reject）其中resolve和reject参数都是函数
   await new Promise((resolve) => setTimeout(resolve, 2000));
