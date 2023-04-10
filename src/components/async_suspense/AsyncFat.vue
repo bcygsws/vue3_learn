@@ -3,7 +3,7 @@
   <br />
   <button @click="showAsync">展示异步组件</button>
   <template v-if="isShowButton">
-    <!-- Suspense组件的使用：等待异步组件渲染时，添加一些后备内容 -->
+    <!-- Suspense组件的使用：等待异步组件渲染时，添加一些后备内容，创建一个平滑的用户体验 -->
     <Suspense>
       <template #default>
         <Async></Async>
@@ -15,6 +15,15 @@
   </template>
 </template>
 <script>
+  /**
+   * 
+   * Suspense组件
+   * 为异步组件渲染等待时提供一些后备内容，以获得平滑的用户体验
+   * 使用Suspense组件
+   * 
+   * 
+   * 
+  */
 import { ref, defineAsyncComponent } from 'vue';
 const Async = defineAsyncComponent(() => import('./Async.vue'));
 export default {
