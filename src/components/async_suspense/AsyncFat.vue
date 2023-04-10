@@ -3,12 +3,13 @@
   <br />
   <button @click="showAsync">展示异步组件</button>
   <template v-if="isShowButton">
+    <!-- Suspense组件的使用：等待异步组件渲染时，添加一些后备内容 -->
     <Suspense>
       <template #default>
         <Async></Async>
       </template>
       <template #fallback>
-        <div>组件加载中……</div>
+        <div>组件正加载中……</div>
       </template>
     </Suspense>
   </template>
