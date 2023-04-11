@@ -3,7 +3,7 @@
   <br />
   <button @click="showAsync">展示异步组件</button>
   <template v-if="isShowButton">
-    <!-- Suspense组件的使用：等待异步组件渲染时，添加一些后备内容，创建一个平滑的用户体验 -->
+    <!-- Vue3新组件：Suspense是用于为等待异步组件渲染时，添加一些后备内容，创建一个平滑的用户体验 -->
     <Suspense>
       <template #default>
         <Async></Async>
