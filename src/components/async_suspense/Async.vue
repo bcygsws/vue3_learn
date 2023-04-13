@@ -26,6 +26,17 @@
  * 参考文档1：https://blog.csdn.net/nilmao/article/details/123894943?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-123894943-blog-127348369.235%5Ev28%5Epc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-123894943-blog-127348369.235%5Ev28%5Epc_relevant_recovery_v2&utm_relevant_index=1
  * post请求的三种编码格式
  * 参考文档2：https://blog.csdn.net/u013258447/article/details/101107743?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-101107743-blog-118662566.235%5Ev28%5Epc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-101107743-blog-118662566.235%5Ev28%5Epc_relevant_recovery_v2&utm_relevant_index=5
+ * Content-Type:application/x-www-form-urlencoded
+ * ajax的默认请求格式
+ * 请求体中的数据，以json字符串的形式发送到后端
+ * 
+ * Content-Type:application/json
+ * axios的默认请求格式
+ * 请求体中的数据，以普通表单的形式发送到后端
+ * 
+ * Content-Type:multipart/form-data
+ * 会将请求体中数据处理为一条消息，以标签为单元，用分隔符分开；既可以上传键值对，也可以上传文件
+ * 
  * get请求和post请求的区别：
  * 参考文档3:https://blog.csdn.net/wang037195/article/details/99585320?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-99585320-blog-101107743.235%5Ev28%5Epc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-99585320-blog-101107743.235%5Ev28%5Epc_relevant_recovery_v2&utm_relevant_index=4
  *
