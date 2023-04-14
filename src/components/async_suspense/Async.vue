@@ -4,8 +4,7 @@
 </template>
 <script>
 /**
- *
- *  一、Promise的使用
+ *  @一、Promise的使用
  * 参考文档：
  * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
  * 1.为解决回调地狱，提出的一种异步编程解决方案-Promise
