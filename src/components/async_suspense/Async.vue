@@ -9,8 +9,8 @@
  * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
  * 1.为解决回调地狱，提出的一种异步编程解决方案-Promise
  * 2.Promise是一种链式调用
- * pending到fulfilled表示 已成功
- * pending到rejected表示 已失败
+ * pending到fulfilled表示 未决定的到已成功
+ * pending到rejected表示 未决定的到已失败
  * 3.Promise还有两个重要方法：
  * 竞争函数race；执行先成功获得数据的请求
  * Promise.race([p1,p2,p3……]);
@@ -112,7 +112,7 @@ const getInfo = async () => {
   // 对比：设置一个2s的定时器
   // 与new Promise()实现的异步不同，setTimeout会进入异步宏任务，先返回info;2s后再处理setTimeout(f,2000)。达不到在当前组件模板中延迟
   // 显示info对象的目的
-  
+
   // setTimeout(() => {
   //   console.log(222);
   //   return;

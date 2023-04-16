@@ -15,13 +15,13 @@
   </template>
 </template>
 <script>
-  /**
-   * 
-   * Suspense组件
-   * 为异步组件渲染等待时提供一些后备内容，以获得平滑的用户体验
-   * 使用Suspense组件
-   * 
-  */
+/**
+ *
+ * Suspense组件
+ * 为异步组件渲染等待时提供一些后备内容，以获得平滑的用户体验
+ * 使用Suspense组件
+ *
+ */
 import { ref, defineAsyncComponent } from 'vue';
 const Async = defineAsyncComponent(() => import('./Async.vue'));
 export default {
