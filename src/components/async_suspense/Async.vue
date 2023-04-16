@@ -112,6 +112,7 @@ const getInfo = async () => {
   // 对比：设置一个2s的定时器
   // 与new Promise()实现的异步不同，setTimeout会进入异步宏任务，先返回info;2s后再处理setTimeout(f,2000)。达不到在当前组件模板中延迟
   // 显示info对象的目的
+  
   // setTimeout(() => {
   //   console.log(222);
   //   return;
