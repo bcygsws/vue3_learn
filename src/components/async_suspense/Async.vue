@@ -11,6 +11,16 @@
  * 2.Promise是一种链式调用
  * pending到fulfilled表示 未决定的到已成功
  * pending到rejected表示 未决定的到已失败
+ * 3.特别注意：
+ * new Promise(cb) cb中使用throw语句，可以将Promise的状态从【未决定的】修改为【已失败】
+ * 代码演示：
+ * let p=new Promise((resolve,reject)=>{
+ *    throw '出现异常';
+ * })
+ * 此时，promise状态，由pending变为rejected。而后，转向 执行失败后的回调
+ * 
+ *
+ * 参考文档：https://blog.csdn.net/weixin_44383261/article/details/117356106
  * 3.Promise还有两个重要方法：
  * 竞争函数race；执行先成功获得数据的请求
  * Promise.race([p1,p2,p3……]);
