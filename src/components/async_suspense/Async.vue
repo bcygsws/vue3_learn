@@ -8,9 +8,11 @@
  * 参考文档：
  * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
  * 1.为解决回调地狱，提出的一种异步编程解决方案-Promise
+ * 
  * 2.Promise是一种链式调用
  * pending到fulfilled表示 未决定的到已成功
  * pending到rejected表示 未决定的到已失败
+ * 
  * 3.特别注意：
  * new Promise(cb) cb中使用throw语句，可以将Promise的状态从【未决定的】修改为【已失败】
  * 代码演示：
