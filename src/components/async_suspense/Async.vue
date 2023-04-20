@@ -22,6 +22,7 @@
  * 此时，promise状态，由pending变为rejected。而后，转向 执行失败后的回调
  * 另外，Promise状态如果一直是pending，状态不改变，那么.then后面的已成功（或已失败）回调不会执行
  * 
+ * 4.Promise状态改变，第一个then会执行resolve和reject传递的值；后面再跟then，then里面的回调仍然继续执行；但是没有打印值
  * 
  * 参考文档：https://blog.csdn.net/weixin_44383261/article/details/117356106
  * 3.Promise还有两个重要方法：
