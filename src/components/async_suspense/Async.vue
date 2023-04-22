@@ -7,13 +7,13 @@
  *  @一、Promise的使用
  * 参考文档：
  * https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
- * 1.为解决回调地狱，提出的一种异步编程解决方案-Promise
- * 
- * 2.Promise是一种链式调用
+ * 1.1.为解决回调地狱，提出的一种异步编程解决方案-Promise
+ *
+ * 1.2.Promise是一种链式调用
  * pending到fulfilled:表示 未决定的到已成功
  * pending到rejected:表示 未决定的到已失败
- * 
- * 3.特别注意：
+ *
+ * 1.3.特别注意：
  * new Promise(cb) cb中使用throw语句，可以将Promise的状态从【未决定的】修改为【已失败】
  * 代码演示：
  * let p=new Promise((resolve,reject)=>{
@@ -21,23 +21,26 @@
  * })
  * 此时，promise状态，由pending变为rejected。而后，转向 执行失败后的回调
  * 另外，Promise状态如果一直是pending，状态不改变，那么.then后面的已成功（或已失败）回调不会执行
- * 
- * 4.Promise状态改变，第一个then会执行resolve和reject传递的值；后面再跟then，then里面的回调仍然继续执行；但是打印回调中的参数value为
- * undefined
- * 
- * 5.promise的异常穿透
- * 6.promise链的中断？
- * 
+ *
+ * 参考文档：https://blog.csdn.net/weixin_44383261/article/details/117356106
+ * 1.4.Promise状态改变，第一个then会执行resolve和reject传递的值；后面再跟then，then里面的回调仍然继续执行；但是打印回调中
+ * 的参数value为undefined
+ *
+ * 1.5.promise的异常穿透-上面4中resolve改成reject，就是promise异常穿透的含义
+ * 异常穿透：一旦第一个new Promise((resolve,reject)=>{
+ *  reject('fdasf');// 一旦是reject语句，无论后面接多少then,并不会像顺序执行了，而是只执行catch(error=>f(error);)
+ * })
+ * 1.6.promise链的中断？
+ * promise链中断：如果不书写任何resolve或reject的数据，promise链就会中断，后面的then回调都不会执行了
  * 代码示例：new Promise((resolve,reject)=>{
  *    // 如果不书写任何resolve或reject的数据，promise链就会中断，后面的then回调都不会执行了
  * })
  * .then()
  * .then()
  * ……
- * 
- * 
- * 参考文档：https://blog.csdn.net/weixin_44383261/article/details/117356106
- * 3.Promise还有两个重要方法：
+ *
+ *
+ * 1.7.Promise还有两个重要方法：
  * 竞争函数race；执行先成功获得数据的请求
  * Promise.race([p1,p2,p3……]);
  * all函数：所有数据请求都成功了才执行
