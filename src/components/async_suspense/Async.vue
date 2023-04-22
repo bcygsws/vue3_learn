@@ -27,7 +27,8 @@
  * 
  * 5.promise的异常穿透
  * 6.promise链的中断？
- * 手段：new Promise((resolve,reject)=>{
+ * 
+ * 代码示例：new Promise((resolve,reject)=>{
  *    // 如果不书写任何resolve或reject的数据，promise链就会中断，后面的then回调都不会执行了
  * })
  * .then()
