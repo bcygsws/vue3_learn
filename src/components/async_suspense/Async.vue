@@ -14,7 +14,7 @@
  * pending到rejected:表示 未决定的到已失败
  *
  * 1.3.特别注意：
- * new Promise(cb) cb中使用throw语句，可以将Promise的状态从【未决定的】修改为【已失败】
+ * new Promise(cb) cb中使用throw语句（等效于调用了一个reject()函数），可以将Promise的状态从【未决定的】修改为【已失败】
  * 代码演示：
  * let p=new Promise((resolve,reject)=>{
  *    throw '出现异常';
@@ -55,7 +55,6 @@
  * post请求的三种编码格式
  * 参考文档2：https://blog.csdn.net/u013258447/article/details/101107743?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-101107743-blog-118662566.235%5Ev28%5Epc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4-101107743-blog-118662566.235%5Ev28%5Epc_relevant_recovery_v2&utm_relevant_index=5
  *
- * 
  * Content-Type:application/x-www-form-urlencoded
  * ajax的默认请求格式
  * 请求体中的数据，以json字符串的形式发送到后端
