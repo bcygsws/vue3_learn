@@ -4,12 +4,12 @@
 </template>
 <script>
 /**
- *  @一、Promise的使用
+ *  @一、Promise的使用和race()、all()方法
  * 参考文档：https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
  * 参考文档1：https://blog.csdn.net/weixin_44383261/article/details/117356106
  * 1.1.为解决回调地狱，提出的一种异步编程解决方案-Promise
  *
- * 1.2.Promise是一种链式调用
+ *  1.2.Promise是一种链式调用
  * pending到fulfilled:表示 未决定的到已成功
  * pending到rejected:表示 未决定的到已失败
  * Promise本身是用来处理异步任务的，那么一般执行过程是：指定回调（选择执行那个then分支）->改变状态->执行回调；但是，
