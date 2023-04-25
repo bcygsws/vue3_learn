@@ -7,6 +7,7 @@
  *  @一、Promise的使用和race()、all()方法
  * 参考文档：https://blog.csdn.net/rjlmylover_zyw/article/details/122920303
  * 参考文档1：https://blog.csdn.net/weixin_44383261/article/details/117356106
+ * 参考文档2：https://blog.csdn.net/hlpp123/article/details/123706588
  * 1.1.为解决回调地狱，提出的一种异步编程解决方案-Promise
  *
  *  1.2.Promise是一种链式调用
@@ -46,6 +47,8 @@
  * Promise.race([p1,p2,p3……]);
  * all函数：所有数据请求都成功了才执行
  * Promise.all([p1,p2,p3……]);
+ * 只有p1,p2到所有的对象都是resolve状态，才会指定回调（才会选择成功回调）
+ * 只要p1,p2,p3……之中有一个是reject状态，指定回调（必然是失败的回调）
  *
  * 特别注意：
  * 1.await + Promise对象时，必须获取resolve和reject返回的结果，才会执行后面的代码；
