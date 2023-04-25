@@ -37,27 +37,28 @@
   <router-link to="/home/v_model">十七、v-model实现双向通信</router-link>
   <router-link to="/home/refs_comu">十八、vue组件通信之三-refs方法</router-link>
   <router-link to="/home/transition">十九、vue3内置组件transition</router-link>
-  <router-link to="/home/async_suspense">二十、vue3中定义异步组件和特殊组件Suspense</router-link>
+  <router-link to="/home/async_suspense"
+    >二十、vue3中定义异步组件和特殊组件Suspense</router-link
+  >
   <router-view></router-view>
-  <div class="home">
-    <h3>这是Home组件</h3>
-    <!-- <p>{number}</p> -->
-    <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
-    <p>{{ number }}</p>
-    <!-- setup和ref使用演示组件 -->
-    <Learn></Learn>
-  </div>
+  <!-- <div class="home"> -->
+  <!-- <h3>这是Home组件</h3> -->
+  <!-- <p>{number}</p> -->
+  <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
+  <!-- <p>{{ number }}</p> -->
+  <!-- start分支：setup和ref使用演示组件 -->
+  <!-- <Learn></Learn> -->
+  <!-- </div> -->
 </template>
 
 <script lang="ts">
-// 在Home中定义一个子组件HelloWorld
-import Learn from '../components/setup_ref/Learn.vue';
+// import Learn from '../components/setup_ref/Learn.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   // 注册一个子组件
-  components: {
-    Learn
-  },
+  // components: {
+  //   Learn
+  // },
   setup() {
     // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
     let number = 16;
