@@ -26,21 +26,25 @@
  * 注意：setup是composition API的入口函数
  * 三、setup的用法：
  * 结合文档：https://cn.vuejs.org/api/composition-api-setup.html#basic-usage
- * 基本使用
+ * 3.1 基本使用
  * 可以使用响应式API来声明响应式状态，setup函数的返回值可以作为模板和组件实例（this）调用（在setup内部打印this值为undefined，但是
  * 在其他选项API中，比如mounted中调用this.count;组件实例就是this）
  *
- * 在setup中声明了count3和事件处理函数handlePlus，但是点击按钮，没有反应
+ * 3.2 在setup中声明了count3和事件处理函数handlePlus，但是点击按钮，没有反应
  * 原因：此时count3还不是响应式数据
  * 何为响应式数据，数据更新了，这种更新也立即作用于页面（页面也同步更新）
  * 解决：引入ref,创建有一个响应式的数据对象count3,count3.value拿到值
  * let count=ref(0);  count是一个对象，count.value初始值为0
  *
- * ref用于定义一个基本数据类型的响应式数据
+ * 参考文档（js基本数据类型和引用数据类型）：https://www.cnblogs.com/libo-web/p/15746881.html
+ * 基本数据类型：String（js中单或双引号都是字符串，不同于java）、Number（数值型）、布尔型、undefined、null、symbol、BigInt
+ * 引用数据类型：Object对象（包括数组、date日期、function函数等，都属于Object）
+ *
+ * 3.3 ref用于定义一个基本数据类型的响应式数据
  * 1.ref的作用是定义一个响应式数据，返回一个响应式对象，如果要对其值进行操作，使用count.value
  * let count=ref(0);在setup中count是一个对象，count.value可以拿到响应式对象count的初始值0
  *
- * 2.但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count;在模板中使用返回值时，vue3会自动浅层解包，
+ * 3.4 但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count;在模板中使用返回值时，vue3会自动浅层解包，
  * 因此在模板中不需要书写.value
  *
  * 接上面，ref定义一个基本类型的响应式数据，那么引用类型的响应式数据，如何实现呢？
@@ -128,7 +132,8 @@ export default {
     // 需求：显示基本数据类型count3，点击按钮可以更新
     // count3的类型是Ref，自动浅层解包；基本数据类型常用ref这个响应式API
     const count3 = ref(0);
-    console.log(count3);
+    // count3打印结果：RefImpl{__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 0, _value: 0}
+    console.log(count3); // RefIml
     // 需求：显示用户的基本信息（包含多个基本数据类型，使用对象），点击按钮可以更新用户信息
     /**
      *
@@ -173,7 +178,8 @@ export default {
   // 选项式API钩子mounted,setup中响应式数据count3，可以在其他选项式API中被调用；
   mounted() {
     console.log(this.count3);
-    // RefImpl{__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 0, _value: 0}
+    // 0 在选项式API中，打印的值为mounted阶段渲染完成的0。但是，如果放在setup函数中调用，this.count3的值就是undefined
+    // 原因是：setup在beforeCreate钩子之前执行，此时不能操作dom，this还不存在
   }
 };
 </script>
