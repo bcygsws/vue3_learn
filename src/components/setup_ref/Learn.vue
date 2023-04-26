@@ -21,6 +21,7 @@
  * 需求:点击按钮实现，count2和count3数值的增加
  * 分别使用vue2和vue3的方式实现
  * 一、vue2 data +methods
+ * 
  * 二、vue3 setup,配合【响应式API】ref和reactive
  *
  * 注意：setup是composition API的入口函数
