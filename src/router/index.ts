@@ -32,6 +32,8 @@ import TransitionGroup from '../components/transition/TransitionGroup.vue';
 import RandomNum from '../components/transition/RandomNum.vue';
 import GSAPWatch from '../components/transition/GSAPWatch.vue';
 import AsyncFat from '../components/async_suspense/AsyncFat.vue';
+import RefImpl from '@/components/setup_ref/RefImpl.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -39,8 +41,14 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
     children: [
       {
+        component: Learn,
         path: '/home/learn',
-        component: Learn
+        children: [
+          {
+            path: '/home/learn/ref_impl',
+            component: RefImpl
+          }
+        ]
       },
       {
         path: '/home/update',
@@ -103,8 +111,8 @@ const routes: Array<RouteRecordRaw> = [
         component: AttrsFat
       },
       {
-        path:'/home/async_suspense',
-        component:AsyncFat
+        path: '/home/async_suspense',
+        component: AsyncFat
       },
       {
         path: '/home/transition',

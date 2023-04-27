@@ -34,6 +34,7 @@ var TransitionGroup_vue_1 = require("../components/transition/TransitionGroup.vu
 var RandomNum_vue_1 = require("../components/transition/RandomNum.vue");
 var GSAPWatch_vue_1 = require("../components/transition/GSAPWatch.vue");
 var AsyncFat_vue_1 = require("../components/async_suspense/AsyncFat.vue");
+var RefImpl_vue_1 = require("@/components/setup_ref/RefImpl.vue");
 var routes = [
     {
         path: '/',
@@ -41,8 +42,14 @@ var routes = [
         component: Home_vue_1["default"],
         children: [
             {
+                component: Learn_vue_1["default"],
                 path: '/home/learn',
-                component: Learn_vue_1["default"]
+                children: [
+                    {
+                        path: '/home/learn/ref_impl',
+                        component: RefImpl_vue_1["default"]
+                    }
+                ]
             },
             {
                 path: '/home/update',
