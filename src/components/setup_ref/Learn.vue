@@ -21,7 +21,7 @@
  * 需求:点击按钮实现，count2和count3数值的增加
  * 分别使用vue2和vue3的方式实现
  * 一、vue2 data +methods
- * 
+ *
  * 二、vue3 setup,配合【响应式API】ref和reactive
  *
  * 注意：setup是composition API的入口函数
@@ -44,6 +44,21 @@
  * 3.3 ref用于定义一个基本数据类型的响应式数据
  * 1.ref的作用是定义一个响应式数据，返回一个响应式对象，如果要对其值进行操作，使用count.value
  * let count=ref(0);在setup中count是一个对象，count.value可以拿到响应式对象count的初始值0
+ * 特别注意：
+ * 参考文档（vue3Watch监听RefImpl对象的说明）：https://blog.csdn.net/moxunjinmu/article/details/123320567
+ * a.count是一个RefImpl对象，watch监听时，监听这个count,而不是count.value
+ * b.假设let count=ref({
+ *    name:"张三",
+ *    age:16
+ * });
+ * 其内部情形，对象传递给ref时，此时count是一个RefImpl。vue3内部会调用reactive方法，将Proxy代理对象赋值给RefImpl。
+ * Proxy对象放在RefImpl对象的value属性下
+ * 也正因为如此，如果用let count=ref(obj);对count进行watch侦听时，和a情形不同的是，count.value才能作为监听对象，因为
+ * count.value上放的才Proxy代理;也可以还把count作为监听对象，此时需要进行深度监听设置，{deep：true}
+ *
+ * c.将在本项目中ref_impl分支进行代码演示
+ *
+ *
  *
  * 3.4 但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count;在模板中使用返回值时，vue3会自动浅层解包，
  * 因此在模板中不需要书写.value
@@ -157,7 +172,22 @@ export default {
     // 2.user对象的类型是Proxy,代理对象类型
     // 3.user是深层次的响应式，不论这个目标对象的层级有多深
     let user = reactive(obj);
+    let user1 = ref(obj);
     console.log(user);
+    console.log(user1);
+    /* 
+    RefImpl{__v_isShallow: false, dep:undefined, __v_isRef:true, _rawValue: {…}, _value:Proxy(Object)}
+    dep:undefined
+    __v_isRef: true
+    __v_isShallow: false
+    _rawValue: {name: '张三', age: 25, wife: {…}}
+    _value:Proxy(Object){name: '张三', age: 25, wife: {…}}
+    value: Proxy(Object)
+      [[Handler]]: Object
+      [[Target]]: Object
+      [[IsRevoked]]: false
+      [[Prototype]]: Object
+    */
     function handlePlus() {
       count3.value++;
       // 测试，数据count3是否变化了，count3变化，但是没有同步更新页面；react中的setState更改数据，立即更新页面
