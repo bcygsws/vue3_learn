@@ -12,6 +12,10 @@
   <h5>配偶：{{ user.wife }}</h5>
   <!-- 点击按钮，改变引用类型的数据 -->
   <button @click="handleObjChange">改变引用类型的响应式数据user</button>
+  <br/>
+  <!-- 演示ref(obj)和reactive(obj)在watch侦听时的区别 -->
+  <router-link to="/home/learn/ref_impl">演示ref(obj)和reactive(obj)在watch侦听时的区别</router-link>
+  <router-view></router-view>
 </template>
 <script>
 /**
@@ -56,7 +60,7 @@
  * 也正因为如此，如果用let count=ref(obj);对count进行watch侦听时，和a情形不同的是，count.value才能作为监听对象，因为
  * count.value上放的才Proxy代理;也可以还把count作为监听对象，此时需要进行深度监听设置，{deep：true}
  *
- * c.将在本项目中ref_impl分支进行代码演示
+ * c.将在当前start分支中RefImpl组件进行代码演示
  *
  *
  *

@@ -5,7 +5,10 @@
     <!-- 注意：在vue中使用模板是双括号，react中是单括号 -->
     <p>{{ number }}</p>
     <!-- setup和ref使用演示组件 -->
-    <Learn></Learn>
+    <router-link to="/home/learn"
+      >二、vue3的setup函数、ref和reactive</router-link
+    >
+    <router-view></router-view>
   </div>
 </template>
 
@@ -18,10 +21,6 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   // 当前组件名称
   name: 'Home',
-  components: {
-    // 注册一个子组件
-    Learn
-  },
   // setup相当于一个回调函数，里面返回的任何对象，对象的属性和方法，在模板中可以直接使用
   setup() {
     let number = 16;
