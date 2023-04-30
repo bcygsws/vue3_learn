@@ -59,10 +59,7 @@
  * Proxy对象放在RefImpl对象的value属性下
  * 也正因为如此，如果用let count=ref(obj);对count进行watch侦听时，和a情形不同的是，count.value才能作为监听对象，因为
  * count.value上放的才Proxy代理;也可以还把count作为监听对象，此时需要进行深度监听设置，{deep：true}
- *
  * c.将在当前start分支中RefImpl组件进行代码演示
- *
- *
  *
  * 3.4 但是，在html模板中，直接使用count拿到数值，并不使用count.value,而是直接count;在模板中使用返回值时，vue3会自动浅层解包，
  * 因此在模板中不需要书写.value
