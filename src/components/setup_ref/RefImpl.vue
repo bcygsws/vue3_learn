@@ -22,11 +22,11 @@
 <script>
 import { ref, watch, reactive } from 'vue';
 /**
- * 
+ *
  * 参考文档：vue3Watch监听RefImpl对象的说明
  * 文档链接：https://blog.csdn.net/moxunjinmu/article/details/123320567
- * 
-*/
+ *
+ */
 export default {
   name: 'RefImpl',
   setup() {
@@ -71,6 +71,7 @@ export default {
       },
       { deep: true }
     );
+    // c.rea本身就是对象传入了reactive，rea本身就可以作为监听对象---在上面[Vue Warn]中可以看到哪些数据能作为警告
     watch(rea, (newVal, oldVal) => {
       console.log(rea, newVal.skills, oldVal.skills);
     });
@@ -81,6 +82,7 @@ export default {
       res.value.skills[0] += '*';
     };
     const MyChangeSkill = () => {
+      // rea是Proxy对象，直接使用reactive定义的；所以rea不需要带value
       rea.skills[0] += '&';
     };
     return {
