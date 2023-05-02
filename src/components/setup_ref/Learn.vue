@@ -75,6 +75,27 @@
  * reactive 接收一个普通对应，返回一个响应式的代理器对象
  * 其内部是通过ES6的proxy实现的，通过【代理对象】 操作【源对象或者目标对象或者被代理对象】内部的数据是响应式的
  *
+ * 四、vue3响应式的核心
+ * Proxy代理对象：拦截data对象的属性的操作（13种操作），包括属性的读写、属性的添加和属性的删除等操作
+ * Reflect反射对象：动态地对被代理对象的属性进行特定的操作
+ *
+ * new Proxy(data,{
+ *    // 拦截属性的读取
+ *    get(target,prop){
+ *      return  Reflect.get(target,prop);
+ *     }
+ *    // 拦截属性的修改(包括属性的设置和添加)
+ *    set(target,prop,value){
+ *      return  Reflect.set(target,prop,value);
+ *    }
+ *    // 拦截属性的删除
+ *    deleteProperty(target,prop){
+ *      return Reflect.deleteProperty(target,prop);
+ *    }
+ * })
+ *
+ *
+ *
  */
 // defineComponent({})可以不写，仍然如vue2中写成export default{}也是可以的
 // import { defineComponent, ref, reactive } from 'vue';
