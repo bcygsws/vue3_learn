@@ -12,9 +12,11 @@
   <h5>配偶：{{ user.wife }}</h5>
   <!-- 点击按钮，改变引用类型的数据 -->
   <button @click="handleObjChange">改变引用类型的响应式数据user</button>
-  <br/>
+  <br />
   <!-- 演示ref(obj)和reactive(obj)在watch侦听时的区别 -->
-  <router-link to="/home/learn/ref_impl">演示ref(obj)和reactive(obj)在watch侦听时的区别</router-link>
+  <router-link to="/home/learn/ref_impl"
+    >演示ref(obj)和reactive(obj)在watch侦听时的区别</router-link
+  >
   <router-view></router-view>
 </template>
 <script>
@@ -29,6 +31,10 @@
  * 二、vue3 setup,配合【响应式API】ref和reactive
  *
  * 注意：setup是composition API的入口函数
+ * 含义：
+ * 2.1 所有组合式API都在此使用，且只在初始化时执行一次
+ * 2.2 setup如果返回对象，对象中的属性或方法，可以在模板中直接使用
+ *
  * 三、setup的用法：
  * 结合文档：https://cn.vuejs.org/api/composition-api-setup.html#basic-usage
  * 3.1 基本使用
