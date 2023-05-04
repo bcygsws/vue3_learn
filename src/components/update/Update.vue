@@ -8,8 +8,8 @@
   <button @click="updatePage">更新数据和页面</button>
 </template>
 <script lang="ts">
-// 定义代理对象的接口
-import {  defineComponent,reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
+// 引入代理对象的接口
 import IObj from '../../types/person';
 // 代理数据影响界面更新
 /**
@@ -23,16 +23,16 @@ import IObj from '../../types/person';
  * 2.使用obj.gender/delete obj.age 是不能实现页面更新的；obj.gender的方式，不能将属性添加
  * 到目标对象obj中，页面不会更新；delete obj.age的方式，确实可以从目标对象中删除age属性，但
  * 是无法更新页面
- * 
+ *
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
  */
 export default defineComponent({
   name: 'Update',
-    setup(){
+  setup() {
     // const obj = {
     // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面，最终失败，gender显示还是空值，
     //  而且Proxy代理对象中也没有gender属性；将obj的any类型注解去掉，恢复原状
-    const obj= {
+    const obj = {
       name: '张三',
       age: 25,
       wife: {
@@ -42,11 +42,9 @@ export default defineComponent({
       }
     };
     // 定义一个代理对象user,目标对象是obj
-    let user:IObj= reactive(obj);
+    let user: IObj = reactive(obj);
     function updatePage() {
-      // 方式1：期待使用obj点语法，为user增加一个属性，且更新页面
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
-      // 结果：控制台打印的obj对象确实增加了一个属性，gender，但是界面没有更新
       // obj.gender = '男'; // 报错：obj对象上不存在gender属性，为obj添加一个any的类型注解
       // 结果：控制台打印的 obj对象确实删除了age属性，但是界面没有更新
       // delete obj.age; // age的值没了，目标对象obj中也没有age属性了，但是页面没有更新
@@ -59,7 +57,7 @@ export default defineComponent({
       // delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
       console.log(user);
     }
-   return { user, updatePage };
+    return { user, updatePage };
   }
 });
 </script>
