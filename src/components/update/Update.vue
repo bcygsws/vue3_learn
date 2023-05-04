@@ -8,8 +8,8 @@
   <button @click="updatePage">更新数据和页面</button>
 </template>
 <script lang="ts">
-// 定义代理对象的接口
 import { defineComponent, reactive } from 'vue';
+// 引入代理对象的接口
 import IObj from '../../types/person';
 // 代理数据影响界面更新
 /**
