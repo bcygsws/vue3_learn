@@ -25,6 +25,27 @@ import IObj from '../../types/person';
  * 是无法更新页面
  *
  * b.尝试使用泛型或者接口，来去掉any这种类型定义
+ *
+ * 二、vue3学习文档
+ * 参考:https://blog.csdn.net/qq_44999663/article/details/128145045
+ * 2.1 在vue2中，使用defineProperty()拦截对象的属性操作，包括属性的读写、属性的添加或删除等；
+ * 缺陷：defineProperty处理对象有个缺陷，属性的添加或删除，页面不会更新；
+ * 2.2 同样在vue2，通过重写数组的元素操作的所有方法，来拦截数组元素的操作
+ * 缺陷：通过下标改变元素值，和改变数组的长度，页面不会更新
+ *
+ * 辅助解决：Vue.set the.$set() / Vue.delete this.$delete()
+ *
+ * 2.3 在vue3中，这个问题就不存在了。可以直接操作被代理对象，页面会自动更新
+ * 添加属性：user.gender="男";
+ * 删除属性：delete user.age;
+ * 页面会自动更新
+ *
+ * Vue3响应式的原理是：两个对象Proxy和Reflect
+ * Proxy：拦截date对象的任意属性的任意操作（多达13种操作），属性的读写、属性的添加和删除等
+ * Reflect：动态地对被代理对象（reactive(obj)之后的对象）的属性进行特定的操作
+ *
+ *
+ *
  */
 export default defineComponent({
   name: 'Update',
@@ -43,7 +64,8 @@ export default defineComponent({
     };
     // 定义一个代理对象user,目标对象是obj
     let user: IObj = reactive(obj);
-    function updatePage() {
+    // 注意：Vue3中事件处理函数（类似vue2中的methods中的方法），要写成箭头函数的形式
+    const updatePage = () => {
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
       // obj.gender = '男'; // 报错：obj对象上不存在gender属性，为obj添加一个any的类型注解
       // 结果：控制台打印的 obj对象确实删除了age属性，但是界面没有更新
@@ -53,10 +75,10 @@ export default defineComponent({
       // 首先user.gender上也报错，提示类型不匹配的问题，为reactive添加泛型reactive<any>(obj)，这个
       // 报错bug解决；然后，点击按钮，查看性别处，由【空值】变成了【男】，页面更新了，而且打印的代理对象
       // 中user也增加了gender这个键值对，obj目标对象上也有gender这个属性了
-      user.gender = '男';
-      // delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
+      // user.gender = '男';
+      delete user.age; // age的值没了，目标对象中也没有age属性了，页面更新了
       console.log(user);
-    }
+    };
     return { user, updatePage };
   }
 });

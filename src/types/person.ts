@@ -2,7 +2,7 @@
  * @Description:
  * @Author: bcygsws@163.com
  * @Date: 2023-01-20 13:52:50
- * @LastEditTime: 2023-05-05 03:09:49
+ * @LastEditTime: 2023-05-05 20:27:36
  * @FilePath: \vue_shop_serverd:\Web-project\vue3_learn\src\types\person.ts
  */
 // 任意名字的可选属性[propName:string]:string
@@ -10,7 +10,7 @@
 // gender?: string;
 export default interface IObj {
   name: string;
-  age: number;
+  age?: number;
   // [propName: string]: string;
   gender?: string;
   wife: {
