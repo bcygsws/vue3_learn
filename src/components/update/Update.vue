@@ -44,8 +44,6 @@ import IObj from '../../types/person';
  * Proxy：拦截date对象的任意属性的任意操作（多达13种操作），属性的读写、属性的添加和删除等
  * Reflect：动态地对被代理对象（reactive(obj)之后的对象）的属性进行特定的操作
  *
- *
- *
  */
 export default defineComponent({
   name: 'Update',
@@ -64,6 +62,7 @@ export default defineComponent({
     };
     // 定义一个代理对象user,目标对象是obj
     let user: IObj = reactive(obj);
+    console.log(user);
     // 注意：Vue3中事件处理函数（类似vue2中的methods中的方法），要写成箭头函数的形式
     const updatePage = () => {
       // 为普通对象obj,增加或删除属性，对象的属性值确实发生了改变，但是界面不会更新
