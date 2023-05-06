@@ -6,7 +6,7 @@
     bug修复：弹出此警告的原因是：vue3中定义组件，模板template中不严格要求唯一根节点;Fat.vue文件中传入msg2属性；只需要同vue2中
   为Son子组件添加一个唯一根节点 div.son_container即可，警告随之消失-->
   <div class="son_container">
-    <h5>这是Son子组件</h5>
+    <h4>这是Son子组件</h4>
     <!-- 父组件传递的数据 -->
     <p>{{ cmsg }}</p>
     <!-- 子组件中data返回的属性会和setup中返回的属性合并，成组件的属性，重名setup中的优先 -->
@@ -117,9 +117,9 @@ export default defineComponent({
     console.log(context.emit); // (event, ...args) => instance.emit(event, ...args)
 
     console.log('setup在beforeCrete之前执行了~');
-    function handle() {
+    const handle = () => {
       console.log('调用了setup中的handle');
-    }
+    };
     // 单向数据流，需要使用emit向父组件Fat中传递一个事件
     // 模拟的实际上是子组件向父组件传值，改变了父组件中的msg的值，而这个msg值又是响应式的，会影响当前子组件中
     const toFat = () => {
