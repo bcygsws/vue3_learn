@@ -1,7 +1,7 @@
 /**书写ts的文件中，切换成vue文件 */
 <template>
   <div>
-    <h2>Fat组件，演示setup的执行时机</h2>
+    <h2>四、Fat组件，演示setup的执行时机</h2>
     <!-- setup中数据渲染 -->
     <p>{{ msg }}</p>
     <button @click="handle">更新数据</button>
@@ -30,7 +30,7 @@
 import { defineComponent, ref } from 'vue';
 import Son from './Son.vue';
 import Detail from './Detail.vue';
-import ExpFat from './ExpFat.vue'
+import ExpFat from './ExpFat.vue';
 export default defineComponent({
   name: 'Fat',
   // 解决传入组件的属性不能自动继承的警告
@@ -42,16 +42,16 @@ export default defineComponent({
     ExpFat
   },
   setup() {
-    // msg这个目标对象（代理对象），是引用类型；栈中存储对象的地址，堆中存放对象的键值；此时键值变化，是可以使用const关键字声明的 
+    // msg这个目标对象（代理对象），是引用类型；栈中存储对象的地址，堆中存放对象的键值；此时键值变化，是可以使用const关键字声明的
     const msg = ref('what are you nong sha lei');
-    function handle() {
+    const handle = () => {
       // 点击按钮更新数据
       msg.value += '***';
-    }
+    };
     // 子组件Son分发的事件名称，emitxxx,传递的参数'***'
-    function handleEvent(val: string) {
+    const handleEvent = (val: string) => {
       msg.value += val;
-    }
+    };
     return {
       msg,
       handle,

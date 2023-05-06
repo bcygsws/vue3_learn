@@ -57,7 +57,7 @@
  * 然后，在setup中操作name.value就可以了，这是toRefs的用法，将一个对象分解，而不丧失其响应式，对象中的每个属性都是一个ref
  * 3.5 expose用于显式的限制组件实例暴露属性，当父组件通过模板引用访问该组件实例时，将仅能访问expose暴露出的那些属性（有选择的
  * 关闭一些属性）
- * 
+ *
  * 其中props：包含了props配置声明且传了的所有属性的对象
  * props.cmsg可以拿到传入的属性值
  *
@@ -122,11 +122,11 @@ export default defineComponent({
     }
     // 单向数据流，需要使用emit向父组件Fat中传递一个事件
     // 模拟的实际上是子组件向父组件传值，改变了父组件中的msg的值，而这个msg值又是响应式的，会影响当前子组件中
-    function toFat() {
+    const toFat = () => {
       // 分发事件
       // context.emit('父组件中@的事件名',传给父组件的参数)
       context.emit('emitxx', '---');
-    }
+    };
     const info = ref('望极蓝桥，但暮云千里，几重山，几重水');
     return { info, handle, toFat };
   }
