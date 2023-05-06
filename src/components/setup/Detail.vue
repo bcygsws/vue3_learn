@@ -13,12 +13,15 @@
  * 2.ref主要用基本数据类型的响应式，reactive用于深度的响应式数据
  * 3.ref也可以处理对象和数组(在setup中要多加一个.value,而reactive方式不需要.value)，
  * 当ref中传入对象或数组时，系统内部会用reactive来处理它（打印m3，能看到里面包含代理对象）
+ *
  * 4.ref内部是通过getter/setter来实现数据劫持的
- * 5.proxy内部通过Proxy对象拦截传入的属性对象的任何属性的任何操作（多达13种操作），通过反射对象Reflect来处理Proxy
+ *
+ * 5.reactive内部实现是通过两个对象：代理对象Proxy和反射对象Reflect;
+ * 原理：通过Proxy对象拦截传入data对象的任意属性的任意操作（多达13种操作），包括属性的读写、属性的添加和删除等；
+ * Reflect对象：动态地对被代理对象（reactive创建的对象）的属性进行特定的操作
  * 拦截的属性的操作
  * 6.ref在setup中处理时，const user=ref('dfaggfa');要添加一个value(user.value才能拿到值)，才能拿到值；
- * 在模板中处理它时，系统会自动加value,不用带value
- *
+ * 在模板中处理它时，系统会自动加value,不用带value；原因是：vue3内部会进行自动浅层解包，所以ref定义的数据，模板中不带value
  *
  *
  */
@@ -45,11 +48,11 @@ export default defineComponent({
         info: '未解忆长安'
       }
     });
-    function handle() {
+    const handle = () => {
       m1.value += '~';
       m2.wife.info += '**';
       m3.value.wife.info += '&&';
-    }
+    };
     return {
       m1,
       m2,
