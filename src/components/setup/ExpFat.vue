@@ -18,7 +18,14 @@
  *
  *
  */
-import { defineComponent, ref, toRefs, onMounted, computed } from 'vue';
+import {
+  defineComponent,
+  ref,
+  toRefs,
+  onMounted,
+  computed,
+  reactive
+} from 'vue';
 import ExpSon from './ExpSon.vue';
 export default defineComponent({
   components: {
@@ -46,15 +53,17 @@ export default defineComponent({
     // onMounted(() => {
     //   count = ref(mySon.value.count);
     // });
-    const count = computed(() => {
+
+    // 数据ct的格式为：{"count",1} ct.count会报错
+    const ct = computed(() => {
       console.log('计算属性执行了');
-      return mySon.value;
+      return mySon.value;// mySon.value.count在计算属性中也会报错
     });
     const changeCount = () => {
       console.log(mySon.value); // 点击按钮时，mounted阶段已经执行，mySon.value才由undefined变成对象，而且是一个Proxy代理对象
       mySon.value.count += 1;
     };
-    return { mySon, changeCount, count };
+    return { mySon, changeCount, ct};
   }
 });
 </script>
