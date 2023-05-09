@@ -99,22 +99,24 @@ export default defineComponent({
   },
   setup(props, context) {
     // 项目中，常用解构的方法书写，不直接写context
-    // setup(props, {attrs,slots,emit}) {
+    // setup(props, {attrs,slots,emit,expose}) {
     // 1.props包含了props配置声明且传入的所有属性对象
     console.log(props); // Proxy {cmsg:'what are you nong sha lei'}
     console.log(props.cmsg);
     // 2.context 参数也是是一个对象
     console.log(context);
-    // 2.1 context.attrs是用于获取当前组件标签上的未在props上声明的属性对象
+    // 2.1 context.attrs是用于获取当前组件标签上的未在props上声明的属性对象；非响应式对象，等价于$attrs
     // Proxy {msg2: '真香啊',__vInternal: 1}
     console.log(context.attrs);
     console.log(context.attrs.msg2);
-    // 2.2 打印具名插槽
+    // 2.2 打印具名插槽,非响应式对象；等价于 $slots
     // Proxy {_: 1,__vInternal: 1, slot1: f, slot2: f}
     console.log(context.slots);
-    // console.log(context.slots.slot1);
-    // 2.3 context.emit是用于分发事件的
+    console.log(context.slots.slot1);
+    // 2.3 context.emit是用于分发事件的,等价于$emit
     console.log(context.emit); // (event, ...args) => instance.emit(event, ...args)
+    // 2.4 暴露公共属性，那么在父组件模板引用该组件时，将只能获得该子组件暴露的内容
+    console.log(context.expose);
 
     console.log('setup在beforeCrete之前执行了~');
     const handle = () => {
