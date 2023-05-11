@@ -46,6 +46,10 @@
         placeholder="显示姓名"
         v-model="fullName5"
       /><br />
+      原始密码：<input type="text" /><br />
+      更改密码：<input type="text" /><br />
+      <!-- disabled="true"或者disabled="false"按钮都被禁用了，disabled失效了；尝试用js的方式控制按钮的使用或禁用 :disable="isReset"-->
+      <input type="button" value="重置" disabled="false" /><br />
     </fieldset>
   </form>
 </template>
@@ -67,6 +71,21 @@ export default defineComponent({
     const user = reactive({
       firstName: '东方',
       lastName: '不败'
+    });
+    // 演示监听多个数据
+    const pwd = reactive({
+      pwdArr: [
+        {
+          password: '',
+          text: '请输入不少于16个字符'
+        },
+        {
+          password: '',
+          text: '请输入修改的密码'
+        }
+      ],
+      // 控制重置按钮的能否使用
+      isReset: true
     });
     console.log(user.firstName);
     console.log(user.lastName);
@@ -167,10 +186,11 @@ export default defineComponent({
     /**
      * @二、上面用watchEffect进行等效
      * 2.1.watchEffect不用配置监视对象回调中使用哪些数据，就监视这些数据，默认执行一次
-     *
      * 也即：watchEffect省去了 起因数据user这个第一个参数
+     * 
      * 2.2.同时，第三个参数{immediate:true,deep:true}也省去了
      * watchEffect监视默认会执行一次，实现watch中immediate：true的作用
+     * 
      *
      */
     // 收集要监视的对象，一对多，fullName4是引起变化的数据，firstName和lastName是监听数据
@@ -186,7 +206,7 @@ export default defineComponent({
        * @ 三、Vue3中使用数组作为监控对象，watch可以监听多个数据
        * 参考文档：结合应用，理解watch监听多个数据的应用场景
        * https://blog.csdn.net/qq_50950033/article/details/125632885
-       * 
+       *
        * 1.监听多个数据，必须使用数组，数组中依次写入多个被监测的数据
        * 2.在这个数组中，如果是ref对象，直接使用
        * 3.在这个数组中，如果是reactive对象里的属性，要使用函数的形式()=>user.firstName
