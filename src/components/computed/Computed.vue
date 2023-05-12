@@ -46,10 +46,12 @@
         placeholder="显示姓名"
         v-model="fullName5"
       /><br />
-      原始密码：<input type="text" /><br />
-      更改密码：<input type="text" /><br />
+      <div v-for="(item, index) in pwd.pwdArr" :key="index">
+        <span>密码{{ index + 1 }}:</span>
+        <input type="text" v-model="item.password" /><br />
+      </div>
       <!-- disabled="true"或者disabled="false"按钮都被禁用了，disabled失效了；尝试用js的方式控制按钮的使用或禁用 :disable="isReset"-->
-      <input type="button" value="重置" disabled="false" /><br />
+      <input type="button" value="重置" :disabled="pwd.isReset" /><br />
     </fieldset>
   </form>
 </template>
@@ -72,6 +74,8 @@ export default defineComponent({
       firstName: '东方',
       lastName: '不败'
     });
+    console.log(user.firstName);
+    console.log(user.lastName);
     // 演示监听多个数据
     const pwd = reactive({
       pwdArr: [
@@ -85,10 +89,40 @@ export default defineComponent({
         }
       ],
       // 控制重置按钮的能否使用
-      isReset: true
+      isReset: true,
+      // 原密码框和修改密码框中的值;passVals是一个ComputedImplRef,和ref定义的ImplRef略有不同；所以watch监听
+      // 下面watch监听pwdPassVals数组时，仍然需要使用watch(()=>pwd.pwdPassVals)
+      passVals: computed(() => getArr())
     });
-    console.log(user.firstName);
-    console.log(user.lastName);
+    const getArr = (): string[] => {
+      let myArr = pwd.pwdArr.map((item) => {
+        return item.password;
+      });
+      // 返回密码数组
+      return myArr;
+    };
+    /**
+     *
+     * watch监听密码框数组passVals
+     * 1.pwd.passVals是计算属性computed得到的，它返回的是ComputedImplRef；不是ref定义的ImplRef；所以watch监听多个数据时，使用了
+     * 函数形式：()=>pwd.passVals
+     * 2.pwd.passVals数据格式为：['密码1','密码2']
+     * 所以，监听其中的两个元素的参数写成[newVal1,newVal2]:像分别解构一样
+     * 3.因为修改密码时，原密码和新密码都不能为空；只要有一个为空，将重置按钮设置为不可用，以示提醒（修改的密码不能为空）
+     *
+     */
+    watch(
+      () => pwd.passVals,
+      ([newVal1, newVal2]) => {
+        if (newVal1 !== '' && newVal2 !== '') {
+          pwd.isReset = false;
+        } else {
+          pwd.isReset = true;
+        }
+      },
+      { immediate: true, deep: true }
+    );
+
     // 只有getter的计算属性,一个回调；如果是getter+setter的计算属性，回调函数被{get(){},set(){}}取代
     /**
      *
@@ -105,6 +139,20 @@ export default defineComponent({
       console.log(user.lastName); // undefined
       return user.firstName + '-' + user.lastName;
     });
+    console.log(fullName1); // 打印一个ComputedRefImpl，可以验证Vue3中computed的返回值是一个ComputedRefImpl
+    /* 
+    ComputedRefImpl{dep:undefined,__v_isRef:true,_dirty:true,effect:ReactiveEffect,_setter:ƒ,…} 
+    dep:Set(1){ReactiveEffect}
+    effect:ReactiveEffect{active:true,deps:Array(2),parent:undefined,fn: ƒ,scheduler:ƒ,…}
+    __v_isReadonly: true
+    __v_isRef:true
+    _cacheable:true
+    _dirty:false
+    _setter:() => {…}
+    _value:"东方-不败"
+    value:(...)
+    [[Prototype]]:Object
+    */
     // 有getter和setter的计算属性
     const fullName2 = computed({
       get() {
@@ -187,10 +235,10 @@ export default defineComponent({
      * @二、上面用watchEffect进行等效
      * 2.1.watchEffect不用配置监视对象回调中使用哪些数据，就监视这些数据，默认执行一次
      * 也即：watchEffect省去了 起因数据user这个第一个参数
-     * 
+     *
      * 2.2.同时，第三个参数{immediate:true,deep:true}也省去了
      * watchEffect监视默认会执行一次，实现watch中immediate：true的作用
-     * 
+     *
      *
      */
     // 收集要监视的对象，一对多，fullName4是引起变化的数据，firstName和lastName是监听数据
@@ -226,7 +274,8 @@ export default defineComponent({
       fullName2,
       fullName3,
       fullName4,
-      fullName5
+      fullName5,
+      pwd
     };
   }
 });
