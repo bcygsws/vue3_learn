@@ -153,11 +153,12 @@ export default defineComponent({
     value:(...)
     [[Prototype]]:Object
     */
-    // 有getter和setter的计算属性
+    // 特殊情况：带getter和setter的计算属性
     const fullName2 = computed({
       get() {
         return user.firstName + '-' + user.lastName;
       },
+      // val的值，就是get中return的值，自然val参数的类型也是string
       set(val: string) {
         let arr = val.split('-');
         console.log(val);
