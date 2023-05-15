@@ -4,6 +4,7 @@ import {
   onBeforeUnmount
 } from 'vue';
 export default function getXAndY(){
+  // x表示鼠标点击点的绝对横坐标，y表示鼠标点击点的绝对纵坐标
   // 保证x,y都是响应式的，如果设置成reactive({x:-1,y:-1}),不能随便解构，为了不丢失其响应式，需要使用toRefs来解构
   const x = ref(-1);
   const y = ref(-1);
@@ -11,7 +12,7 @@ export default function getXAndY(){
    * 
    * 参考文档：
    * https://blog.csdn.net/katherin_wanzi/article/details/118736288
-   * offfsetX= e.pageX-this.offsetleft
+   * offsetX= e.pageX-this.offsetLeft
    * 区分offsetX、clientX、pageX（坐标和clientX一样，但是受滚动条的影响）、screenX
    * https://www.jianshu.com/p/f4d086b5adb7
    * 
