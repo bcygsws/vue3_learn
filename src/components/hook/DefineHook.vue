@@ -81,6 +81,7 @@ export default defineComponent({
     // 使用的是函数泛型的用法，在函数调用时，明确其返回值的类型
     const { loading, data, errorMsg } =
       urlRequests<IAddress>('data/address.json');
+    // data和data1的类型和泛型的类型一致，data是T,data1是T[]
     // 为了和上面的区别，为products解构出的变量起别名，loading:loading1,data:data1,errorMsg:errorMsg1
     // 总结：
     // 1. 解构中起别名，像键值一样，从起别名之后，data1就代替解构的键data了
