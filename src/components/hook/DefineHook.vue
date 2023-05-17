@@ -58,7 +58,7 @@ interface IAddress {
 export default defineComponent({
   name: 'DefineHook',
   setup() {
-    // 将代码封装为一个函数-自定义钩子
+    // 最终，将下列代码封装为一个函数-自定义钩子
     // let x = ref(-1);
     // let y = ref(-1);
     // // 点击页面，获取坐标，至少需要页面加载完成，最早在mounted阶段
