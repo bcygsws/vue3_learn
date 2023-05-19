@@ -36,9 +36,6 @@
  * 类似于vue2中的混入技术
  * 自定义hook的优势：很清楚复用代码的来源，更清楚易懂
  *
- *
- *
- *
  */
 // 案例：点击页面，获取页面中该处的x,y坐标，并显示在组件中
 import { defineComponent, watch } from 'vue';
