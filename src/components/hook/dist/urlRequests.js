@@ -10,7 +10,6 @@ exports.__esModule = true;
  */
 var vue_1 = require("vue");
 var axios_1 = require("axios");
-// 应对res的不同类型，使用泛型来约束data
 /**
  *
  * @ 对get请求数据做了很好的封装
@@ -20,6 +19,7 @@ var axios_1 = require("axios");
  * data 获取的数据ref<T|null>(null)
  * 出错时 提示消息，是string字符串
  *
+ * 应对res的不同类型，使用泛型来约束data
  *
  */
 function urlRequests(url) {
