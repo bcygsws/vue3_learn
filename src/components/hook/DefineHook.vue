@@ -76,6 +76,14 @@ export default defineComponent({
     // 进入页面，就请求数据，在created生命周期钩子中引入自定义钩子urlRequests.ts
     // 结构自定义钩子调用的返回对象
     // 使用的是函数泛型的用法，在函数调用时，明确其返回值的类型
+    /**
+     *
+     * 一、重点：关于数据urlRequests(url: string)中的路径问题：
+     * 1.项目启动时，index.html托管在内存中，在http://localhost:8080
+     * 2.所以，将data文件夹放在和index.html同级别的public文件夹下
+     * 3.访问的路径就是 'data/address.json',路径'data/products.json'同理
+     *
+     */
     const { loading, data, errorMsg } =
       urlRequests<IAddress>('data/address.json');
     // data和data1的类型和泛型的类型一致，data是T,data1是T[]
