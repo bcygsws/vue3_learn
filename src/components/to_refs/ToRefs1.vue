@@ -34,8 +34,5 @@ export default defineComponent({
  *
  * 改进：我们希望直接使用name,age这两个变量，并将其引进到模板中使用，而且不能丢失其响应式
  *
- *
- *
- *
  */
 </script>
