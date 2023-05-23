@@ -50,7 +50,7 @@ export default defineComponent({
     // 只处理value的响应式(基本类型数据的)，传入的对象不会进行reactive处理
     const m5 = shallowRef(4);
     // 更新数据的方法changeData
-    function changeData() {
+    const changeData = () => {
       // 注意：这俩操作要单独验证，观看状态
 
       // m1：深度监视、深度响应式，深度劫持
@@ -68,29 +68,43 @@ export default defineComponent({
       // 2.3 m2最外层和最内层的对象更改操作都有，则深层次的更改仍然会显示在页面中（原因是存在浅层的劫持name,更新页面的同时，会将
       // 深层次改变的数据，显示在页面上）
 
+      // 2.1.a 单独作用内层的red属性，观察效果，数据更新，但不会触发页面更新
       // m2.fallow.cars.red += '1';
       // console.log(m2);
       // 三、Ref对象的使用（Ref作用于对象，会按照reactive进行处理）
       // 1.m3：ref传入对象，内部会按照reactive进行处理，等效于第一种情形了
-      // 2.m3中 _value是一个代理对象Proxy
+      // 2.挂载在m3 Ref对象上的value属性，m3.value是一个代理对象Proxy（这也是m3.value等效于m1的原因）
       // 3.m3深监视、深劫持、深度响应式
-      m3.value.name += '==';
-      m3.value.fallow.cars.red += '11';
-      console.log(m3); // m3里面的属性_shallow: false，表示是深监视，深劫持
+      // m3.value.name += '==';
+      // m3.value.fallow.cars.red += '11';
+      // console.log(m3); // m3里面的属性_shallow: false，表示是深监视，深劫持
 
       // 四、shallowRef的使用（只会改变value值，不会进行对象的reactive处理）
-      // m4:浅ref shallowRef
+      /**
+       *
+       * @对比：ref和shallowRef
+       *
+       * 对比m3，会发现shallowRef和Ref包裹对象的区别：
+       * 4.1 m3=ref(obj),m3.value是一个Proxy代理对象
+       * 4.2 m4=shallowRef(obj),m4.value就只是一个普通的对象了{}，不再具有响应式的功能，所以只会更改内层和外层属性的数据，不会触发页面更新了
+       * m4:浅ref shallowRef
+       * 4.3 shallowRef只能用于处理基础数据类型：包括string,number,boolean,null,undefined等;就如同ref处理基本数据类型一样；但是，当
+       * 遇到引用数据类型（Function Object和Array时），shallowRef就无能为力了
+       *
+       *
+       */
+
       // 打印m4中是一个Ref对象---不再是Proxy代理对象了,最外层属性和深层次属性的数据都能改变，但是不能触发页面更新
-      // m4.value.name += '==';
+      m4.value.name += '==';
       // 打印m4，m4中的_value是一个普通对象，不是像m3中的代理对象了；cars的red值确实变化了，但是没有触发页面更新
       // m4.value.fallow.cars.red += '1';
-      // console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
-      
+      console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
+
       // 五、shallowRef处理基本数据类型的value响应式，传入对象时，不会按照reactive处理
       // m5:shallowRef只会处理value的响应式，不会进行对象的reactive处理
       // 处理基本类型数据（非对象，Ref遇到对象，会reactive处理）数据改变，同时触发页面更新
       // m5.value += 1;
-    }
+    };
     return {
       m1,
       m2,
