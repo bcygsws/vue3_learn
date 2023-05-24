@@ -4,7 +4,7 @@
   <button @click="changeUser">浅只读-点击后，对象的深度不执行只读转换</button>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, readonly, shallowReadonly } from "vue";
+import { defineComponent, reactive, readonly, shallowReadonly } from 'vue';
 interface IUser {
   name: string;
   age: number;
@@ -13,22 +13,24 @@ interface IUser {
   };
 }
 export default defineComponent({
-  name: "ReadOnlyProperty",
+  name: 'ReadOnlyProperty',
   setup() {
     const user = reactive({
-      name: "张恒",
+      name: '张恒',
       age: 15,
       cars: {
-        red: "法拉利",
-      },
+        red: '法拉利'
+      }
     });
     // 1.深只读，嵌套对象的所有层级的属性都是只读的，不能更改
     const user1 = readonly(user);
-    // user1.name += '==';// error: Cannot assign to 'name' because it is a read-only property.
+    console.log(user1); // Proxy代理对象
+    // user1.name += '=='; // error: Cannot assign to 'name' because it is a read-only property.
     // user1.cars.red = '劳斯莱斯';// error: Cannot assign to 'red' because it is a read-only property.
     // 2.浅只读：创建了一个代理，对象自身的property只读，但是不对嵌套对象的深度进行只读转换
     // const user2 = shallowReadonly(user);
     const user2 = shallowReadonly<IUser>(user);
+    console.log(user2);
     function changeUser() {
       // Error:Cannot assign to 'name' because it is a read-only property.
       // user1.name += "==";
@@ -40,15 +42,16 @@ export default defineComponent({
       // user2.cars.red += "666";
       // 3.特别注意：浅只读的时候，red属性用接口声明为可选的，才可以删除
       // The operand of a 'delete' operator must be optional.
-      // delete user2.cars.red;
+      // 且在Vue3中，delete删除属性，不必使用$set语句来辅助更新界面；delete语句后，会自动更新界面
+      delete user2.cars.red;
       // console.log(user2); // Proxy{}
     }
     return {
       user1,
       user2,
-      changeUser,
+      changeUser
     };
-  },
+  }
 });
 /**
  *
