@@ -95,15 +95,15 @@ export default defineComponent({
        */
 
       // 打印m4中是一个Ref对象---不再是Proxy代理对象了,最外层属性和深层次属性的数据都能改变，但是不能触发页面更新
-      m4.value.name += '==';
+      // m4.value.name += '==';
       // 打印m4，m4中的_value是一个普通对象，不是像m3中的代理对象了；cars的red值确实变化了，但是没有触发页面更新
       // m4.value.fallow.cars.red += '1';
-      console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
+      // console.log(m4); // __v_isShallow: true,表示浅监视，浅Ref
 
       // 五、shallowRef处理基本数据类型的value响应式，传入对象时，不会按照reactive处理
       // m5:shallowRef只会处理value的响应式，不会进行对象的reactive处理
       // 处理基本类型数据（非对象，Ref遇到对象，会reactive处理）数据改变，同时触发页面更新
-      // m5.value += 1;
+      m5.value += 1;
     };
     return {
       m1,
