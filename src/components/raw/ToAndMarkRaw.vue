@@ -24,7 +24,7 @@ import { defineComponent, reactive, toRaw, markRaw } from 'vue';
  * 1.toRaw 是一个还原方法，可以用于临时读取，但是对象不被代理/跟踪，数据可以改变，页面不能更新
  *
  * 2.markRaw 标记一个对象，永远不能转化为代理对象；返回对象本身
- * 使用场景：
+ * markRow的使用场景：
  * 1.适用于不适宜定义为响应式的对象，第三方类实例或Vue组件对象不宜定义为响应式
  * 2.在渲染不可变数据源的大列表时，使用markRaw可以提升性能
  *
