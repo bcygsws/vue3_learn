@@ -1,5 +1,6 @@
 <template>
   <h3>十二、演示toRef的用法</h3>
+  <!-- 原响应式数据源是否变化,观察toRef和ref的不同点 -->
   <p>年龄：{{ state.age }}</p>
   <p>金钱：{{ state.money }}</p>
   <hr />
@@ -14,7 +15,7 @@ import Son from './Son.vue';
 /**
  *
  * 区别：
- * toRef 为源响应式对象上的某个属性创建了一个ref对象，二者同步操作的是同一数值，且同步更新
+ * toRef:为源响应式对象上的某个属性创建了一个ref对象，二者同步操作的是同一数值，同步更新
  * 语法：const age=toRef(state,'age');和解构toRefs(state)拿到age是一个意思
  *
  * ref相当于把原来的对象的属性做了一份拷贝，操作时和原来的数据之间互不影响
@@ -33,8 +34,10 @@ export default defineComponent({
     });
     // 使用toRef拿到age属性，返回一个ref
     const age = toRef(state, 'age');
+    console.log(age); // ObjectRefImpl
     // 把响应式数据对象中某个属性用ref包装
     const money = ref(state.money);
+    console.log(money);// RefImpl
     const update = () => {
       // {{state.age}}和{{age}}中的数据都改变了
       age.value += 1;
