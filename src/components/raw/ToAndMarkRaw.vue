@@ -61,15 +61,15 @@ export default defineComponent({
       const likes = ['吃', '喝', '玩', '乐'];
       console.log(state);
       // 情形a.此时likes还是响应式的
-      state.likes = likes;
+      // state.likes = likes;
 
       // 情形b.此时likes不是响应式的
-      // state.likes = markRaw(likes);
+      state.likes = markRaw(likes);
       const arr = state.likes;
       window.setTimeout(() => {
         arr[0] += '***';
         console.log(state);
-        console.log('分支执行了~');
+        console.log('reactive响应式对象添加属性，看是否执行了？');
       }, 1000);
       // 这行likes[0]=likes[0]+"***";点击无数次按钮后，state.likes[0]="吃***"，最外层和深层次的所有属性值，都不会再改变了。
       // 而且，界面更不会更新
