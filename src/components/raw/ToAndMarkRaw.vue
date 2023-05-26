@@ -39,7 +39,7 @@ export default defineComponent({
         red: '劳斯莱斯'
       }
     });
-    // raw初始的，原始的
+    // raw:含义，初始的，原始的
     // 1.toRaw是一个还原方法，将成为深度响应式的对象还原成普通对象，可读可写，但是页面不会更新
     // Object--->Reactive(深度响应式)--->Object 数据最外层和深层次都能变化，但是页面不会更新
     const handleToRaw = () => {
