@@ -1,5 +1,6 @@
 import { customRef } from 'vue';
 // 关于防抖的封装见文档：https://blog.csdn.net/weixin_41246825/article/details/115206682
+// 相当于useBounceRef最终返回了一个Ref(value)
 export default function useBounceRef<T>(value: T, delay = 200) {
   // 定时器是number类型，在setTimeout第一个函数参数内部，清除定时器，timer=null;将其声明为联合类型
   let timer: number | null;
@@ -18,6 +19,7 @@ export default function useBounceRef<T>(value: T, delay = 200) {
         }
 
         timer = setTimeout(() => {
+          // 进行的操作
           value = newVal;
           // 触发界面更新
           trigger();
