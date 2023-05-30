@@ -30,6 +30,23 @@
 </template>
 
 <script lang="ts">
+/**
+ *
+ * 一、Suspense Vue3新组件
+ * 用途：为等待加载的异步组件添加后备内容
+ *
+ * 1.Suspense中的两个template标签实际上是一个选择结构，类似v-if 和v-else-if
+ * 2.vue3新组件的出现，对分支选择进行了简化，使得程序开发者在展示后备内容时（<template v-slot:fallback），后备内容
+ * 可以直接在模板中编写
+ * 3.而更多的让程序开发者，把注意力集中在v-slot:default这个分支上
+ *  3.1.defineAsyncComponent(()=>import('路径'))
+ *  3.2.使用axios
+ *  3.3.使用promise
+ *  3.4.使用await解构
+ *
+ *
+ *
+ */
 import { defineComponent, defineAsyncComponent } from 'vue';
 import UsePromise from './UsePromise.vue';
 import UseAxios from './UseAxios.vue';
