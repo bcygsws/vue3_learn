@@ -15,7 +15,7 @@
  * 在提供出provide("标识",数据)
  * 在接收处，const data=inject("标识");// data是一个响应式对象，在setup中data.value可以拿到值
  *
- * 几个判别对象的方法
+ * 了解几个判别对象的方法
  * isRef 判断是否为ref创建的对象
  * isReactive 判断是否是reactive创建的响应式代理
  * isReadonly 判断是否是readonly创建的只读代理
