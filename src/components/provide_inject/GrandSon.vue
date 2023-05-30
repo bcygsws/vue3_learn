@@ -15,8 +15,6 @@ import { defineComponent, inject, Ref } from 'vue';
  *
  * 在祖父级组件中，更改数据时，孙子组件模板中数据改变，页面更新；但是，setup只是在孙子组件初次渲染时，执行了一次
  *
- *
- *
  */
 export default defineComponent({
   name: 'GrandSon',
