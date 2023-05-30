@@ -16,6 +16,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'UseSuspense',
   setup() {
+    // setup最终返回的是{msg:res.msg}，作为setup的返回值
     return new Promise((resolve, reject) => {
       // 相当于3.5后，setup才返回了msg；在此期间，使用Suspense标签内的后备内容模板
       setTimeout(() => {
