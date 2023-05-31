@@ -20,7 +20,6 @@ const props = defineProps({
 });
 // 文本框中输入的内容
 const txt = ref('');
-// 声明要分发的事件
 /**
  *
  * @ v-model实现父组件向子组件传值时
@@ -31,13 +30,16 @@ const txt = ref('');
  * 2.defineEmits中拿到emits时，同步声明事件名称；例：const emits=defineEmits(['update:list']);
  * 3.分发事件时，emits('update:list',传参);
  *
- *
+ * Vue3 defineEmits的使用详解
+ * 结合子组件改变父组件值的计数器案例来体会
+ * 参考文档：https://blog.csdn.net/weixin_47228574/article/details/128144067
  */
+// 声明要分发的事件
 const emits = defineEmits(['update:list']);
 // console.log(emits);
 const handleChange = () => {
   const arr = props.list;
-  // 新添加的数据，放在数组元素最前面，unshift方法
+  // 新添加的数据，放在数组元素最前面，unshift方法（unshift 含义：数组头部插入）
   arr.unshift(txt.value);
   // update:props属性名，是固定写法，表示更新某个属性
   emits('update:list', arr);
