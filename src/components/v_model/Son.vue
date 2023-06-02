@@ -45,12 +45,19 @@ const num = ref(0);
  * 参考文档：https://blog.csdn.net/weixin_47228574/article/details/128144067
  * 2.2.分发事件的名称可以自己定义，此处命名为 update:list是为了见名知义，表示分发的事件是为了更新list列表
  *
+ */
+/**
+ *
+ * @ 所有分发事件必须声明在defineEmits(['分发事件1,分发事件2.……'])
+ * 1.子组件改变父组件的数组元素，分发事件名：update:list1
+ * 2.分发的加法事件：toFatInc
+ * 3.分发减法的事件：toFatDec
  *
  *
  */
-// 声明要分发的事件
+// 声明所有要分发的事件
 // const emits = defineEmits(['xay']);
-const emits = defineEmits(['update:list']);
+const emits = defineEmits(['update:list', 'toFatInc', 'toFatDec']);
 // console.log(emits);
 const handleChange = () => {
   const arr = props.list;
