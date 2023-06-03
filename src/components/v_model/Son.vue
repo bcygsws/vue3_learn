@@ -47,13 +47,11 @@ const num = ref(0);
  *
  */
 /**
- *
  * @ 所有分发事件必须声明在defineEmits(['分发事件1,分发事件2.……'])
  * 1.子组件改变父组件的数组元素，分发事件名：update:list1
  * 2.分发的加法事件：toFatInc
  * 3.分发减法的事件：toFatDec
- *
- *
+ * 
  */
 // 声明所有要分发的事件
 // const emits = defineEmits(['xay']);
