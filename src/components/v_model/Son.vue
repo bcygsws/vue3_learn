@@ -1,7 +1,7 @@
 <template>
   <div class="son_container">
     <h4>我是Son子组件</h4>
-    <!-- 键盘弹起事件，enter键 -->
+    <!-- 键盘弹起事件，enter键,写法：@keyup.enter="" -->
     <input
       type="text"
       placeholder="请输入一段文本"
