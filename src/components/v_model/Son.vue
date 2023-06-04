@@ -18,6 +18,7 @@
 <script lang="ts" setup>
 // 使用setup语法糖
 import { defineProps, defineEmits, ref } from 'vue';
+// 等价于原选项式API，props
 const props = defineProps({
   list: {
     type: Array,
