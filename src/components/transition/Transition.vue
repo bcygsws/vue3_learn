@@ -2,7 +2,7 @@
   <div class="main">
     <h3>1.vue3中transition的使用</h3>
     <button @click="flag = !flag">点击按钮，切换动画</button>
-    <!-- transition指定name属性后，过渡动画中的类v系列名称，变成fade-enter-from fade-endter-active等等 -->
+    <!-- transition指定name属性后，过渡动画中的类v系列名称，变成fade-enter-from fade-enter-active等等 -->
     <transition name="fade">
       <div v-if="flag" class="box"></div>
     </transition>
