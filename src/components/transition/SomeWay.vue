@@ -25,6 +25,9 @@
     <router-link to="/home/transition/gsap_watch"
       >8.gsap配合watch监听</router-link
     >
+    <router-link to="/home/transition/cross_component_animation"
+      >9.路由守卫+gsap实现跨组件动画</router-link
+    >
     <router-view></router-view>
   </div>
 </template>

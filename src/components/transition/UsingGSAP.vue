@@ -23,6 +23,10 @@
  * gsap除了可以设置过渡效果外，还能设置一个reactive对象的过渡效果，
  * 在GSAPWatch中监听了num(定义的一个reactive对象)
  *
+ * 二、跨组件动画，使用gsap+路由守卫实现
+ * 参考文档：https://www.bilibili.com/video/BV1iL4y1j75D/?vd_source=2806005ba784a40cae4906d632a64bd6
+ * 三、vue路由钩子
+ * 参考文档：https://blog.csdn.net/GXY1551705593/article/details/127415406
  *
  *
  *
@@ -36,6 +40,17 @@ export default defineComponent({
   name: 'UsingGSAP',
   setup() {
     const flag = ref(true);
+    /**
+     * 
+     * @before-enter
+     * @enter
+     * @leave
+     * 三个生命周期钩子对应的事件处理函数，结合gsap.set/gsap.to的用法，来描绘红色方块的点击显示和点击隐藏
+     * 
+     * 
+     * 
+    */
+    // transition生命周期钩子@before-enter对应
     const beforeEnter = (el: Element) => {
       // gsap.set()
       gsap.set(el, {
@@ -44,6 +59,7 @@ export default defineComponent({
         opacity: 0
       });
     };
+    // transition生命周期钩子@enter对应
     const enterActive = (el: Element, done: gsap.Callback) => {
       // gsap.to()
       gsap.to(el, {
@@ -53,6 +69,7 @@ export default defineComponent({
         onComplete: done
       });
     };
+    // transition生命周期钩子@leave对应
     const leaveActive = (el: Element, done: gsap.Callback) => {
       gsap.to(el, {
         width: 0,
