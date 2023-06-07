@@ -35,6 +35,8 @@ import AsyncFat from '../components/async_suspense/AsyncFat.vue';
 import RefImpl from '@/components/setup_ref/RefImpl.vue';
 
 import Page from '../components/transition/cross-component-animation/Page.vue';
+import Page1 from '../components/transition/cross-component-animation/Page1.vue';
+import Page2 from '../components/transition/cross-component-animation/Page2.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -153,7 +155,17 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             path:"/home/transition/cross_component_animation",
-            component:Page
+            component:Page,
+            children:[
+              {
+                path:"/home/transition/cross_component_animation/page1",
+                component:Page1
+              },
+              {
+                path:"/home/transition/cross_component_animation/page2",
+                component:Page2
+              },
+            ]
           }
         ]
       }
@@ -181,7 +193,17 @@ const routes: Array<RouteRecordRaw> = [
 ];
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  /**
+   * 
+   * 1.全局配置激活的路由的class,覆盖默认名称：router-link-active，使用linkActiveClass
+   * 2.全局配置精准匹配的路由的class,覆盖默认名称：router-link-exact-active，使用linkExactActiveClass
+   * 
+   * 一般选择覆盖router-link-exact-active这个类样式，覆盖linkActiveClass，并没有在router-link标签中显示
+   */
+  // linkActiveClass:'_active',
+  // 通常我们选择覆盖linkExactActiveClass
+  linkExactActiveClass:'exact_active'
 });
 
 export default router;

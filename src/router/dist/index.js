@@ -36,6 +36,8 @@ var GSAPWatch_vue_1 = require("../components/transition/GSAPWatch.vue");
 var AsyncFat_vue_1 = require("../components/async_suspense/AsyncFat.vue");
 var RefImpl_vue_1 = require("@/components/setup_ref/RefImpl.vue");
 var Page_vue_1 = require("../components/transition/cross-component-animation/Page.vue");
+var Page1_vue_1 = require("../components/transition/cross-component-animation/Page1.vue");
+var Page2_vue_1 = require("../components/transition/cross-component-animation/Page2.vue");
 var routes = [
     {
         path: '/',
@@ -154,7 +156,17 @@ var routes = [
                     },
                     {
                         path: "/home/transition/cross_component_animation",
-                        component: Page_vue_1["default"]
+                        component: Page_vue_1["default"],
+                        children: [
+                            {
+                                path: "/home/transition/cross_component_animation/page1",
+                                component: Page1_vue_1["default"]
+                            },
+                            {
+                                path: "/home/transition/cross_component_animation/page2",
+                                component: Page2_vue_1["default"]
+                            },
+                        ]
                     }
                 ]
             }
@@ -183,6 +195,16 @@ var routes = [
 ];
 var router = vue_router_1.createRouter({
     history: vue_router_1.createWebHashHistory(),
-    routes: routes
+    routes: routes,
+    /**
+     *
+     * 1.全局配置激活的路由的class,覆盖默认名称：router-link-active，使用linkActiveClass
+     * 2.全局配置精准匹配的路由的class,覆盖默认名称：router-link-exact-active，使用linkExactActiveClass
+     *
+     * 一般选择覆盖router-link-exact-active这个类样式，覆盖linkActiveClass，并没有在router-link标签中显示
+     */
+    // linkActiveClass:'_active',
+    // 通常我们选择覆盖linkExactActiveClass
+    linkExactActiveClass: 'exact_active'
 });
 exports["default"] = router;
