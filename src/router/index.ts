@@ -34,6 +34,7 @@ import GSAPWatch from '../components/transition/GSAPWatch.vue';
 import AsyncFat from '../components/async_suspense/AsyncFat.vue';
 import RefImpl from '@/components/setup_ref/RefImpl.vue';
 
+import Page from '../components/transition/cross-component-animation/Page.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -149,6 +150,10 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/home/transition/gsap_watch',
             component: GSAPWatch
+          },
+          {
+            path:"/home/transition/cross_component_animation",
+            component:Page
           }
         ]
       }

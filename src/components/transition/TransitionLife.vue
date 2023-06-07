@@ -50,9 +50,7 @@ export default defineComponent({
     //   console.log('transition过渡离开的钩子调用了', el);
     // };
     const afterLeaveHook = (el: HTMLElement) => {
-      el.style.width = '0px';
-      el.style.height = '0px';
-      el.style.opacity = '0';
+     console.log('transition过渡动画离开的钩子调用了',el);
     };
     return {
       flag,
