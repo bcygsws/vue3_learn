@@ -33,12 +33,9 @@ var UsingAnimate_vue_1 = require("../components/transition/UsingAnimate.vue");
 var TransitionGroup_vue_1 = require("../components/transition/TransitionGroup.vue");
 var RandomNum_vue_1 = require("../components/transition/RandomNum.vue");
 var GSAPWatch_vue_1 = require("../components/transition/GSAPWatch.vue");
-<<<<<<< HEAD
 var AsyncFat_vue_1 = require("../components/async_suspense/AsyncFat.vue");
 var RefImpl_vue_1 = require("@/components/setup_ref/RefImpl.vue");
-=======
 var Page_vue_1 = require("../components/transition/cross-component-animation/Page.vue");
->>>>>>> transition
 var routes = [
     {
         path: '/',
@@ -46,7 +43,6 @@ var routes = [
         component: Home_vue_1["default"],
         children: [
             {
-<<<<<<< HEAD
                 component: Learn_vue_1["default"],
                 path: '/home/learn',
                 children: [
@@ -55,10 +51,6 @@ var routes = [
                         component: RefImpl_vue_1["default"]
                     }
                 ]
-=======
-                path: '/home/learn',
-                component: Learn_vue_1["default"]
->>>>>>> transition
             },
             {
                 path: '/home/update',
@@ -121,13 +113,10 @@ var routes = [
                 component: AttrsFat_vue_1["default"]
             },
             {
-<<<<<<< HEAD
                 path: '/home/async_suspense',
                 component: AsyncFat_vue_1["default"]
             },
             {
-=======
->>>>>>> transition
                 path: '/home/transition',
                 component: SomeWay_vue_1["default"],
                 children: [
@@ -162,13 +151,10 @@ var routes = [
                     {
                         path: '/home/transition/gsap_watch',
                         component: GSAPWatch_vue_1["default"]
-<<<<<<< HEAD
-=======
                     },
                     {
                         path: "/home/transition/cross_component_animation",
                         component: Page_vue_1["default"]
->>>>>>> transition
                     }
                 ]
             }
