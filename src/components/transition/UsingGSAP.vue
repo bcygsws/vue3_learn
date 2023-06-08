@@ -33,23 +33,23 @@
  */
 import { defineComponent, ref } from 'vue';
 // 引入gsap库
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 // 导入样式
-import 'animate.css';
+// import 'animate.css';
 export default defineComponent({
   name: 'UsingGSAP',
   setup() {
     const flag = ref(true);
     /**
-     * 
+     *
      * @before-enter
      * @enter
      * @leave
      * 三个生命周期钩子对应的事件处理函数，结合gsap.set/gsap.to的用法，来描绘红色方块的点击显示和点击隐藏
-     * 
-     * 
-     * 
-    */
+     *
+     *
+     *
+     */
     // transition生命周期钩子@before-enter对应
     const beforeEnter = (el: Element) => {
       // gsap.set()

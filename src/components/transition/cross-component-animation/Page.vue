@@ -12,7 +12,19 @@
     <router-view />
   </div>
 </template>
-<script></script>
+<script>
+/**
+ * 跨组件动画的实现
+ * gsap+路由守卫
+ *
+ * 参考文档：https://github.com/baobaomi900901/cross-component-animation
+ * 参考文档1：https://www.seozhh.com/15024.html
+ * 参考文档2：http://www.taodudu.cc/news/show-1774783.html?action=onClick
+ *
+ *
+ *
+ */
+</script>
 <style lang="less" scoped>
 .cross_container {
   .bar {
@@ -31,8 +43,8 @@
       color: #111;
       justify-content: space-between;
     }
-    >a.exact_active{
-      color:red;
+    > a.exact_active {
+      color: red;
     }
   }
 }
