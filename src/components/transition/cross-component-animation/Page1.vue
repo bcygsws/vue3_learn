@@ -3,7 +3,7 @@
     <div class="box Page1">page1</div>
   </div>
 </template>
-<script lang="ts">
+<script>
 /**
  *
  * @ gsap+路由守卫实现，跨组件动画
@@ -39,8 +39,8 @@ export default {
     // 路由离开导航守卫
     onBeforeRouteLeave((to) => {
       // 如果离开Page1组件，组件要进入Page2组件
-      if (to.path == '/home/transition/cross_component_animation/page2') {
-        // if (to.name == 'Page2') {
+      // if (to.path == '/home/transition/cross_component_animation/page2') {
+      if (to.name == 'Page2') {
         to.query = {
           x: x.value,
           y: y.value,
@@ -74,14 +74,14 @@ export default {
             scale: route.query.scale,
             rotation: route.query.rotation
           },
+          // 动画持续时间（默认单位为秒），需要设置，设置为1s
           {
             x: x.value,
             y: y.value,
             background: background.value,
             scale: scale.value,
             rotation: rotation.value,
-            // 动画持续时间（默认单位为秒），需要设置，设置为1s
-            duration: 3
+            duration: 1
           }
         );
       }

@@ -6,7 +6,7 @@
     <!-- tag属性可以，设置包裹的标签，多加一层 -->
     <!-- <transition-group tag="selection"> -->
     <div class="wraps">
-      <!-- animate_backInLeft从左侧进入，animate__InRight从右侧进入 -->
+      <!-- animate_backInLeft从左侧背景里面进入，animate__InRight从右侧背景里进入 -->
       <transition-group
         enter-active-class="animate__animated animate__backInLeft"
         leave-active-class="animate__animated animate__backInRight"
