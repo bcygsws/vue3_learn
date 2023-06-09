@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h3>6.使用transition-group实现动画</h3>
+    <h3>7.使用transition-group实现随机数组</h3>
     <!-- lodash的shuffle([1,2,3,4]) 创建了一个打乱了的数组，可能是[2,3,4,1] -->
     <button @click="random">随机数组</button>
     <!-- tag属性可以，设置包裹的标签，多加一层 -->
@@ -39,7 +39,19 @@ export default defineComponent({
   name: 'RandomNum',
   setup() {
     const list = ref(
-      Array.apply(null, { length: 81 } as number[]).map((item, index) => {
+      /**
+       * 
+       * @ apply/call方法第一个参数传入null或者undefined时，js中this的指向是哪里？
+       * 
+       * 结论：apply/call方法的第一个参数是null(或者undefined)时，this指向JavaScript中的全局变量，在浏览器中就是
+       * Window，在node.js环境中就是global
+       * 
+      */
+      // Array.apply生成数组参考文档：http://www.javashuo.com/article/p-ehgnddrf-gn.html
+      // Array.apply三种定义数组的方法：
+      // Array.apply(null, { length: 81 } as number[]).map((item, index) => {
+      // Array.apply(null, Array(81) as number[]).map((item, index) => {
+      Array.apply(null, new Array(81) as number[]).map((item, index) => {
         return {
           id: index,
           // 周期性拿到1,2,3，……9

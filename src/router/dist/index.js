@@ -148,10 +148,12 @@ var routes = [
                         children: [
                             {
                                 path: "/home/transition/cross_component_animation/page1",
+                                name: 'Page1',
                                 component: Page1_vue_1["default"]
                             },
                             {
                                 path: "/home/transition/cross_component_animation/page2",
+                                name: 'Page2',
                                 component: Page2_vue_1["default"]
                             },
                         ]

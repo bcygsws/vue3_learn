@@ -146,10 +146,12 @@ const routes: Array<RouteRecordRaw> = [
             children:[
               {
                 path:"/home/transition/cross_component_animation/page1",
+                name:'Page1',
                 component:Page1
               },
               {
                 path:"/home/transition/cross_component_animation/page2",
+                name:'Page2',
                 component:Page2
               },
             ]

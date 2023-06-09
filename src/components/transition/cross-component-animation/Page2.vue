@@ -3,7 +3,7 @@
     <div class="box Page2">page2</div>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { gsap } from 'gsap';
 // import 'animate.css';
 import { ref, onMounted } from 'vue';
@@ -12,7 +12,8 @@ export default {
   name: 'Page2',
   setup() {
     const route = useRoute();
-    // x:宽，y:高，color颜色，scale:放大特效，rotate：旋转特效
+    // x: 盒子距离父组件的原点横坐标，y:盒子距离父组件的原点纵坐标，
+    // color颜色，scale:放大特效，rotate：旋转特效
     const toX = ref(200);
     const toY = ref(200);
     const toBackground = ref('green');
@@ -21,7 +22,8 @@ export default {
     // 路由离开导航守卫
     onBeforeRouteLeave((to) => {
       // 如果离开Page2组件，组件要进入Page1组件
-      if (to.path == '/home/transition/cross_component_animation/page1') {
+      // if (to.path == '/home/transition/cross_component_animation/page1') {
+      if (to.name == 'Page1') {
         to.query = {
           x: toX.value,
           y: toY.value,
@@ -50,7 +52,7 @@ export default {
           scale: toScale.value,
           rotation: toRotation.value,
           // 动画持续时间（默认单位为秒），需要设置，设置为1s
-          duration: 3
+          duration: 1
         }
       );
     });
