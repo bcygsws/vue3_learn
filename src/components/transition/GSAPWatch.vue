@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h3>7.使用gsap和watch监听</h3>
+    <h3>8.使用gsap和watch监听</h3>
     <input type="text" v-model="curNum" placeholder="请输入一个整数" />
     <!-- 数值.toFixed(n)保留n位小数，四舍五入 -->
     <!-- parseInt(只能前面就是数字的字符) -->

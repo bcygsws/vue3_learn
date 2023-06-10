@@ -9,7 +9,7 @@
       <!-- animate_backInLeft从左侧背景里面进入，animate__InRight从右侧背景里进入 -->
       <transition-group
         enter-active-class="animate__animated animate__backInLeft"
-        leave-active-class="animate__animated animate__backInRight"
+        leave-active-class="animate__animated animate__backOutRight"
       >
         <div class="item" v-for="(item, index) in arr" :key="index">
           {{ item }}
@@ -27,8 +27,6 @@
  * cnpm i animate.css --save
  *
  * 主要是通过添加类名来实现
- *
- *
  *
  */
 import { defineComponent, reactive } from 'vue';

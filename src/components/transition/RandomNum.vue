@@ -42,6 +42,7 @@ export default defineComponent({
       /**
        * 
        * @ apply/call方法第一个参数传入null或者undefined时，js中this的指向是哪里？
+       * 参考文档：https://www.cnblogs.com/memphis-f/p/12072915.html
        * 
        * 结论：apply/call方法的第一个参数是null(或者undefined)时，this指向JavaScript中的全局变量，在浏览器中就是
        * Window，在node.js环境中就是global
@@ -61,7 +62,7 @@ export default defineComponent({
     );
     console.log(list);
     const random = () => {
-      // shuffle将传入的数组内元素变换位置
+      // shuffle（洗牌，改换次序）将传入的数组内元素变换位置
       list.value = lodash.shuffle(list.value);
     };
     return {
