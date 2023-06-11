@@ -37,6 +37,7 @@ export default defineComponent({
   setup() {
     const arr = reactive<number[]>([1, 2, 3, 4]);
     const addItem = () => {
+      // push(arr.length+1)，实际就是在数组的（索引+1）的位置逐个添加正整数
       arr.push(arr.length + 1);
     };
     const delItem = () => {
