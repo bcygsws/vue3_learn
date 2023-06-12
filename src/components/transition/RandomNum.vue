@@ -27,8 +27,6 @@
  * 1.引用lodash时，需要在在 shims-vue.d.ts 文件夹下添加 declare module 'lodash'
  * 2.结合lodash官网，https://www.lodashjs.com/ ，使用他的属性和方法
  *
- *
- *
  */
 import { defineComponent, ref } from 'vue';
 // 引入动画插件

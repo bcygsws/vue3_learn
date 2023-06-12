@@ -29,14 +29,16 @@ import { useRoute, onBeforeRouteLeave } from 'vue-router';
 export default {
   name: 'Page1',
   setup() {
+    // useRoute()类似拿到了vue2中this.$route这个对象
+    // 参考文档：https://juejin.cn/post/7006289875674595365
     const route = useRoute();
-    // x:宽，y:高，color颜色，scale:放大特效，rotate：旋转特效
+    // x：距离父组件原点的横坐标，y:距离父组件的原点纵坐标，color颜色，scale:放大特效，rotate：旋转特效
     const x = ref(100);
     const y = ref(100);
     const background = ref('red');
     const scale = ref(1);
     const rotation = ref(0);
-    // 路由离开导航守卫
+    // 路由离开导航守卫，to,from参数都是route类型的对象，具有path,name,params,query,hash等一系列属性
     onBeforeRouteLeave((to) => {
       // 如果离开Page1组件，组件要进入Page2组件
       // if (to.path == '/home/transition/cross_component_animation/page2') {
@@ -64,6 +66,7 @@ export default {
         return;
       }
       // 如果传入值，则使用gsap的fromTo动画，x,y,background,scale,rotation值
+      // x：距离父组件原点的横坐标，y:距离父组件的原点纵坐标，color颜色，scale:放大特效，rotate：旋转特效
       if (route.query.x) {
         gsap.fromTo(
           '.Page1',

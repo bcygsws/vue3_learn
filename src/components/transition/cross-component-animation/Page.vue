@@ -2,12 +2,8 @@
   <div class="cross_container">
     <h3>9.gsap+路由守卫实现跨组件动画</h3>
     <div class="bar">
-      <router-link to="/home/transition/cross_component_animation/page1"
-        >Page1</router-link
-      >
-      <router-link to="/home/transition/cross_component_animation/page2"
-        >Page2</router-link
-      >
+      <router-link :to="{ name: 'Page1' }">Page1</router-link>
+      <router-link :to="{ name: 'Page2' }">Page2</router-link>
     </div>
     <router-view />
   </div>
