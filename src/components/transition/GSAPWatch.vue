@@ -59,6 +59,8 @@ export default defineComponent({
         //     tweenedNumber: newV
         //   });
         // }
+
+        // gsap.to duration:1设置后，类似transition：all 1s ease;即：在1s内，tweenedNumber被最终设置为newV的最新值
         gsap.to(num, {
           duration: 1,
           tweenedNumber: newV

@@ -46,8 +46,9 @@ export default defineComponent({
      * @enter
      * @leave
      * 三个生命周期钩子对应的事件处理函数，结合gsap.set/gsap.to的用法，来描绘红色方块的点击显示和点击隐藏
-     *
-     *
+     * 
+     * 生命周期钩子+配合GSAP,弥补了直接通过生命周期钩子（TransitionLife.vue）来控制动画的缺点，可以通过生命周期
+     * 钩子的处理函数+gsap，实现丝滑动画
      *
      */
     // transition生命周期钩子@before-enter对应
