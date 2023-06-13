@@ -53,6 +53,8 @@ export default defineComponent({
     width: 400px;
     height: 400px;
     background-color: #fff;
+    /* 注意：当flex-direction设置为column时，y为主轴，当我们只要求它在水平方向居中时，x就是交叉轴；交叉轴的居中问题使用
+    align-items:center; */
     align-items: center;
   }
 }
