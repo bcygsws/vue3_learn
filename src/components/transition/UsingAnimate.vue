@@ -6,8 +6,8 @@
     @enter-active-class="animate__fadeInLeft"在左侧向右侧进入；
     @leave-active-class="animate_fadeInRight" 从右侧向左侧隐藏  -->
     <transition
-      enter-active-class="animate__animated animate__fadeInLeft"
-      leave-active-class="animate__animated animate__fadeInRight"
+      enter-active-class="animate__animated animate__bounceInLeft"
+      leave-active-class="animate__animated animate__fadeInLeft"
     >
       <div v-if="flag" class="box"></div>
     </transition>
