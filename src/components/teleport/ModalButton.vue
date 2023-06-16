@@ -39,6 +39,7 @@ export default defineComponent({
 /* 注意：这种带灰色背景的html结构的书写方式*/
 .modal {
   position: absolute;
+  /* 绝对定位+4个方向上的偏移值为0 */
   left: 0;
   top: 0;
   right: 0;
