@@ -21,7 +21,7 @@
  *
  * @ 注意：如果Teleport 瞬移标签中to="body",
  * 该组件ModalButton要成为App的子组件时，按钮开始位于App的第一行，便于观察效果
- * 
+ *
  *
  */
 import { defineComponent, ref } from 'vue';
@@ -36,7 +36,7 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="less">
-  /* 注意：这种带灰色背景的html结构的构建方式 */
+/* 注意：这种带灰色背景的html结构的书写方式*/
 .modal {
   position: absolute;
   left: 0;
