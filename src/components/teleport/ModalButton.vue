@@ -1,7 +1,7 @@
 <template>
   <h3>十五、瞬移组件</h3>
   <button @click="openDia = true">点击按钮打开对话框</button>
-  <!-- to还可以接收id选择器，比如：to="#wrapper" -->
+  <!-- to还可以接收标签、还可以使用id选择器，比如：to="#wrapper" -->
   <Teleport to="body">
     <!-- 加上标签以后，这个组件ModalButton就干净地 瞬移 到了body中 -->
     <!-- 注意：v-if和v-show的区别：1.v-if有较大的切换渲染消耗，每次v-if的值改变都会触发生命周期狗子，内部是通过添加或删除
